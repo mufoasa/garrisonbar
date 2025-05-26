@@ -359,9 +359,9 @@
         }
 
         /* Gallery */
-        .gallery-grid {
+       .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Exactly 4 items per row */
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
@@ -369,39 +369,29 @@
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 200px; /* square size */
-}
-
-.gallery-item:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  height: 200px;
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
+  display: block;
 }
 
 .gallery-item span {
   position: absolute;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  color: white;
-  text-align: center;
-  font-size: 0.9rem;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6); /* dark transparent background */
+  color: #fff;
   padding: 0.4rem;
+  text-align: center;
   font-weight: bold;
-  transition: background 0.3s ease;
+  font-size: 0.9rem;
 }
+
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
@@ -416,6 +406,40 @@
 
 .gallery-item:hover span {
   background: rgba(0, 0, 0, 0.7);
+}
+
+.gallery-quote {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 2rem; /* Make it bigger */
+  font-weight: bold;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(90deg, #d4af37, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 1.2s ease-out both;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .gallery-quote {
+    font-size: 1.4rem;
+  }
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -1549,13 +1573,18 @@
         <div class="gallery-grid fade-in">
 
             <div class="gallery-item">
-                <img src="https://source.unsplash.com/800x600/?bar,interior" alt="Bar Interior">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNP-QecKsxSVKjvksOL3V-OW0l8Szyo4Otng&s" alt="Bar Interior">
                 <span data-en="Bar Interior" data-al="Brendësia e Barit" data-mk="Ентериер на Барот">Bar Interior</span>
             </div>
 
             <div class="gallery-item">
                 <img src="https://static.vecteezy.com/system/resources/previews/026/378/566/non_2x/various-cocktail-collection-with-varying-glassware-handmade-craft-cocktails-dalcoholic-beverages-on-the-bar-in-the-restaurant-behind-it-is-a-liquor-showcase-photo.jpg" alt="Cocktail Collection">
                 <span data-en="Cocktail Collection" data-al="Koleksioni i Kokteleve" data-mk="Колекција Коктели">Cocktail Collection</span>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://nuvomagazine.com/wp-content/uploads/2019/11/assorted-wine-bottles-1283219.jpg" alt="Alcohol Collection">
+                <span data-en="Alcohol Collection" data-al="Koleksioni i Pijeve Alkoolike" data-mk="Колекција На Алкохолички Пијалоци">Alcohol Collection</span>
             </div>
 
             <div class="gallery-item">
@@ -1582,8 +1611,14 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdMcyLmqft3Hr-vOgA58x3OHVeRCQ59h-Bfe4WEK26Y3XyykPBctoOyGUjfZ4lerP00AU&usqp=CAU" alt="Night Events">
                 <span data-en="Night Events" data-al="Ngjarjet e Natës" data-mk="Ноќни Настани">Night Events</span>
             </div>
-
+            
         </div>
+        <p class="gallery-quote fade-in"
+   data-en="Where moments become memories."
+   data-al="Aty ku momentet bëhen kujtime."
+   data-mk="Каде што моментите стануваат спомени.">
+   Where moments become memories.
+</p>
     </div>
 </div>
 
