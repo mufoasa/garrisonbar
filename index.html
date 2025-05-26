@@ -716,7 +716,21 @@
             font-size: 1.2rem;
             margin: 0;
         }
-
+        .gallery-quote {
+          display: block; /* Ensure it's treated as a block-level element */
+          width: 100%;
+          max-width: 800px;
+          margin: 3rem auto 0 auto; /* Top margin + center horizontally */
+          text-align: center;
+          font-size: 2rem;
+          font-weight: bold;
+          font-family: 'Georgia', serif;
+          line-height: 1.5;
+          background: linear-gradient(90deg, #d4af37, #ffffff);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: fadeInUp 1.2s ease-out both;
+        }
         /* Footer */
         .footer {
             background: var(--secondary-dark);
@@ -1579,6 +1593,12 @@
             </div>
 
         </div>
+        <p class="gallery-quote fade-in"
+   data-en="Where moments become memories."
+   data-al="Aty ku momentet bëhen kujtime."
+   data-mk="Каде што моментите стануваат спомени.">
+   Where moments become memories.
+</p>
     </div>
 </div>
 
