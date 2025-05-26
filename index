@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="form-action 'self' https://formspree.io;">
+  <title>The Garrison Bar - Tetovo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-gold: #d4af37;
+            --accent-neon: #00ffff;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --gradient-1: linear-gradient(135deg, #d4af37, #ffd700);
+            --gradient-2: linear-gradient(135deg, #00ffff, #0080ff);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .lang-toggle {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--accent-gold);
+            color: var(--text-light);
+            padding: 0.3rem 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .lang-btn.active,
+        .lang-btn:hover {
+            background: var(--gradient-1);
+            color: var(--primary-dark);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23000" width="1200" height="800"/><circle cx="300" cy="200" r="100" fill="%23d4af37" opacity="0.1"/><circle cx="900" cy="600" r="150" fill="%2300ffff" opacity="0.1"/><rect x="0" y="350" width="1200" height="100" fill="%23d4af37" opacity="0.05"/></svg>') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Menu Page */
+        .menu-section {
+            margin-bottom: 4rem;
+            background: var(--secondary-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .menu-section h3 {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+/* Menu Page */
+.menu-section {
+    margin-bottom: 4rem;
+    background: var(--secondary-dark);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+/* Mobile-first responsive padding */
+@media (max-width: 768px) {
+    .menu-section {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+.menu-section h3 {
+    color: var(--accent-gold);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .menu-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 1rem;
+}
+
+/* Tablet and desktop */
+@media (min-width: 769px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    gap: 1rem;
+}
+
+/* Mobile menu item adjustments */
+@media (max-width: 768px) {
+    .menu-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+    
+    .menu-item-content {
+        flex: 1;
+    }
+    
+    .menu-item-price {
+        align-self: flex-end;
+        margin-top: 0.5rem;
+    }
+}
+
+.menu-item:hover {
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateX(10px);
+}
+
+/* Reduce hover transform on mobile for better touch experience */
+@media (max-width: 768px) {
+    .menu-item:hover {
+        transform: translateX(5px);
+    }
+}
+
+.menu-item-name {
+    font-weight: bold;
+}
+
+.menu-item-desc {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+}
+
+.menu-item-price {
+    color: var(--accent-gold);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+        .shisha-flavors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .flavor-item {
+            background: rgba(200, 200, 200, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .flavor-item:hover {
+            background: rgba(0,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--accent-gold), transparent);
+            opacity: 0.1;
+        }
+
+        /* Reservation Form */
+        .reservation-form {
+            background: var(--secondary-dark);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--secondary-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .map-container {
+            height: 300px;
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-dark);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reservation-form {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-dark);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-top: 3px solid var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Featured Drinks Section */
+        .featured-section {
+            padding: 5rem 0;
+            background: var(--secondary-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .featured-drinks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .drink-card {
+            background: var(--primary-dark);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drink-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .drink-card:hover::before {
+            left: 100%;
+        }
+
+        .drink-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--accent-gold);
+        }
+
+        .drink-image {
+            margin-bottom: 1.5rem;
+        }
+
+        .drink-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .drink-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .drink-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .drink-price {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            font-weight: bold;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        /* Mini Gallery Section */
+        .mini-gallery-section {
+            padding: 5rem 0;
+            background: var(--primary-dark);
+        }
+
+        .mini-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .mini-gallery-item {
+            aspect-ratio: 4/3;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mini-gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2rem;
+            color: white;
+        }
+
+        .gallery-overlay h4 {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-dark);
+            padding: 3rem 0 2rem 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--text-gray);
+            line-height: 1.8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--text-gray);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 0.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">THE GARRISON BAR</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" onclick="showPage('home')" data-en="Home" data-al="Shtëpia" data-mk="Дома">Home</a></li>
+                <li><a href="#" onclick="showPage('menu')" data-en="Menu" data-al="Menyja" data-mk="Мени">Menu</a></li>
+                <li><a href="#" onclick="showPage('gallery')" data-en="Gallery" data-al="Galeria" data-mk="Галерија">Gallery</a></li>
+                <li><a href="#" onclick="showPage('reservation')" data-en="Reserve" data-al="Rezervo" data-mk="Резервирај">Reserve</a></li>
+                <li><a href="#" onclick="showPage('contact')" data-en="Contact" data-al="Kontakt" data-mk="Контакт">Contact</a></li>
+            </ul>
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="changeLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="changeLanguage('al')">AL</button>
+                <button class="lang-btn" onclick="changeLanguage('mk')">MK</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDsu2v3zkJb-L3dbfQhPJfbw94ai-1SVU4lQ&s" alt="Garrison Bar Logo" style="display: block; margin: 0 auto 2rem auto; max-width: 180px; border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.25); background: #fff;">
+                <h1 data-en="THE GARRISON BAR" data-al="THE GARRISON BAR" data-mk="THE GARRISON BAR">THE GARRISON BAR</h1>
+                <p data-en="Experience the finest cocktails, premium shisha, and vibrant nightlife in the heart of Tetovo" data-al="Përjetoni koktelat më të mira, shisha premium dhe jetën e natës në zemër të Tetovës" data-mk="Доживејте ги најдобрите коктели, премиум наргиле и живиот ноќен живот во срцето на Тетово">Experience the finest cocktails, premium shisha, and vibrant nightlife in the heart of Tetovo</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary" onclick="showPage('menu')" data-en="View Menu" data-al="Shiko Menynë" data-mk="Погледни Мени">View Menu</a>
+                    <a href="#" class="btn btn-secondary" onclick="showPage('reservation')" data-en="Make Reservation" data-al="Bëj Rezervim" data-mk="Направи Резервација">Make Reservation</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Drinks Section -->
+        <section class="featured-section">
+            <div class="container">
+                <h2 class="section-title" data-en="Featured Drinks" data-al="Pije të Veçanta" data-mk="Препорачани Пијалоци">Featured Drinks</h2>
+                <div class="featured-drinks">
+                    <div class="drink-card fade-in">
+                        <div class="drink-image">
+                            <div class="drink-placeholder" style="background: var(--gradient-1);">🍸</div>
+                        </div>
+                        <h3 data-en="Garrison Gold" data-al="Garrison Gold" data-mk="Garrison Gold">Garrison Gold</h3>
+                        <p data-en="Our signature whiskey cocktail with golden rum and honey" data-al="Kokteli ynë i veçantë me viski, rum ari dhe mjaltë" data-mk="Нашиот потписен виски коктел со златен рум и мед">Our signature whiskey cocktail with golden rum and honey</p>
+                        <span class="drink-price">450 MKD</span>
+                    </div>
+                    <div class="drink-card fade-in">
+                        <div class="drink-image">
+                            <div class="drink-placeholder" style="background: var(--gradient-2);">🍹</div>
+                        </div>
+                        <h3 data-en="Neon Nights" data-al="Neon Nights" data-mk="Неонски Ноќи">Neon Nights</h3>
+                        <p data-en="Electric blue cocktail that glows in the dark atmosphere" data-al="Koktel blu elektrik që shkëlqen në atmosferën e errët" data-mk="Електрично син коктел кој сјае во темна атмосфера">Electric blue cocktail that glows in the dark atmosphere</p>
+                        <span class="drink-price">380 MKD</span>
+                    </div>
+                    <div class="drink-card fade-in">
+                        <div class="drink-image">
+                            <div class="drink-placeholder" style="background: linear-gradient(45deg, #ff6b6b, #ffd700);">🥃</div>
+                        </div>
+                        <h3 data-en="Macedonian Mule" data-al="Macedonian Mule" data-mk="Македонски Мул">Macedonian Mule</h3>
+                        <p data-en="Local rakija meets international style in copper mug" data-al="Rakija vendore takon stilin ndërkombëtar në gotë bakri" data-mk="Локална ракија се сретнува со меѓународен стил во бакарна чаша">Local rakija meets international style in copper mug</p>
+                        <span class="drink-price">350 MKD</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini Gallery Section -->
+        <section class="mini-gallery-section">
+            <div class="container">
+                <h2 class="section-title" data-en="Atmosphere" data-al="Atmosfera" data-mk="Атмосфера">Atmosphere</h2>
+                <div class="mini-gallery">
+
+                    <!-- Elegant Interior -->
+                    <div class="mini-gallery-item fade-in">
+                        <a href="https://images.unsplash.com/photo-1721715115717-8dfeea6bfb8a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aW50ZXJpb3IlMjBkZXNpZ24lMjBiYXJ8ZW58MHx8MHx8fDA%3D" target="_blank">
+                            <div class="gallery-placeholder">
+                                <img src="https://images.unsplash.com/photo-1721715115717-8dfeea6bfb8a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aW50ZXJpb3IlMjBkZXNpZ24lMjBiYXJ8ZW58MHx8MHx8fDA%3D" alt="Elegant Interior" style="width: 100%; height: 100%; object-fit: cover;">
+                                <div class="gallery-overlay">
+                                    <h4 data-en="Elegant Interior" data-al="Brendësi Elegante" data-mk="Елегантен Ентериер">Elegant Interior</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Vibrant Nightlife -->
+                    <div class="mini-gallery-item fade-in">
+                        <a href="https://images.unsplash.com/photo-1707242022610-c60684b14967?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHZpYnJhbnQlMjBuaWdodGxpZmUlMjBiYXJ8ZW58MHx8MHx8fDA%3D" target="_blank">
+                            <div class="gallery-placeholder">
+                                <img src="https://images.unsplash.com/photo-1707242022610-c60684b14967?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHZpYnJhbnQlMjBuaWdodGxpZmUlMjBiYXJ8ZW58MHx8MHx8fDA%3D" alt="Vibrant Nightlife" style="width: 100%; height: 100%; object-fit: cover;">
+                                <div class="gallery-overlay">
+                                    <h4 data-en="Vibrant Nightlife" data-al="Jetë Nate e Gjallë" data-mk="Живиот Ноќен Живот">Vibrant Nightlife</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Premium Shisha -->
+                    <div class="mini-gallery-item fade-in">
+                        <a href="https://images.unsplash.com/photo-1630175772812-3368aad7982d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hpc2hhfGVufDB8fDB8fHww" target="_blank">
+                            <div class="gallery-placeholder">
+                                <img src="https://images.unsplash.com/photo-1630175772812-3368aad7982d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hpc2hhfGVufDB8fDB8fHww" alt="Premium Shisha" style="width: 100%; height: 100%; object-fit: cover;">
+                                <div class="gallery-overlay">
+                                    <h4 data-en="Premium Shisha" data-al="Shisha Premium" data-mk="Премиум Наргиле">Premium Shisha</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Menu Page -->
+    <div id="menu" class="page">
+        <div class="container">
+            <h2 class="page-title" data-en="Our Menu" data-al="Menyja Jonë" data-mk="Нашето Мени">Our Menu</h2>
+
+            <!-- Hot Drinks -->
+            <div class="menu-section fade-in">
+                <h3 data-en="Hot Drinks" data-al="Pije të Nxehta" data-mk="Топли Пијалоци">Hot Drinks</h3>
+                <div class="menu-grid">
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG" alt="Espresso" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Espresso" data-al="Espresso" data-mk="Еспресо">Espresso</div>
+                                <div class="menu-item-desc" data-en="Rich Italian coffee" data-al="Kafe e pasur italiane" data-mk="Богато италијанско кафе">Rich Italian coffee</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">80 MKD</div>
+                    </div>
+                   
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://es.jura.com/-/media/global/images/coffee-recipes/images-redesign-2020/cappuccino_2000x1400px.jpg?mw=536" alt="Machiato" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Machiato" data-al="Makiato" data-mk="Макиато">Machiato</div>
+                                <div class="menu-item-desc" data-en="Espresso with milk" data-al="Espresso me qumesht" data-mk="Еспресо со млеко">Machiato with milk</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">80 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://www.aicr.org/wp-content/uploads/2020/06/peppermint-tea-on-teacup-1417945.jpg" alt="Tea" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Tea" data-al="Caj" data-mk="Чај">Tea</div>
+                                <div class="menu-item-desc" data-en="Fruit,Menthol,Camomile,Wild Cherry" data-al="Frutash,Kamomile,Brusnice,Nane,Mint" data-mk="Зелени,Камилица,Нане,Брусница,Мента">Fruit,Menthol,Camomile...</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">80 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://cafefabrique.com/cdn/shop/articles/Cappuccino.jpg" alt="Cappuccino" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Cappuccino" data-al="Cappuccino" data-mk="Капучино">Cappuccino</div>
+                                <div class="menu-item-desc" data-en="Espresso with steamed milk foam" data-al="Espresso me shkumë qumështi" data-mk="Еспресо со млечна пена">Espresso with steamed milk foam</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">120 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://khansama.com.sg/wp-content/uploads/2024/07/Nescafe.webp" alt="Turkish Coffee" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Nescafe" data-al="Neskafe" data-mk="нескафе">Nescafe</div>
+                                <div class="menu-item-desc" data-en="Chocolate,Vanilla,Classic" data-al="Cokollade,Vanile,Klasike" data-mk="ТЧоколадо, ванила, класика">Chocolate,Vanilla,Classic</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://www.foodandwine.com/thmb/V1OEgtLQGUv_w2Fvm40WMLsJ4rk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Indulgent-Hot-Chocolate-FT-RECIPE0223-fd36942ef266417ab40440374fc76a15.jpg" alt="Hot Chocolate" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Hot Chocolate" data-al="Çokollatë e Nxehtë" data-mk="Топла Чоколада">Hot Chocolate</div>
+                                <div class="menu-item-desc" data-en="Premium chocolate" data-al="Çokollatë premium " data-mk="Премиум белгиска чоколада">Premium hocolate</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">150 MKD</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cold Drinks -->
+            
+            <div class="menu-section fade-in">
+                <h3 data-en="Cold Drinks" data-al="Pije të Ftohta" data-mk="Ладни Пијалоци">Cold Drinks</h3>
+                <div class="menu-grid">
+
+                    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbWCQ_gAw_hIiWnpDVWMl9DtCnM98AhUI6opxQhauHsPSdVwa852xtpjF_g7PG35eCQwY&usqp=CAU" alt="Water" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Water" data-al="Ujë" data-mk="Вода">Water</div>
+                <div class="menu-item-desc" data-en="Water" data-al="Ujë" data-mk="Вода">Water</div>
+            </div>
+        </div>
+        <div class="menu-item-price">50 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmfwhmrpo3AjLYj8xRLOwW-21qEJwRjDqRUJwsmEKZC3ZvkiLo_bVRzr4Mv4QLa0weZ9s&usqp=CAU" alt="Sparkling Water" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Sparkling Water" data-al="Ujë me Gaz" data-mk="Газирана Вода">Sparkling Water</div>
+                <div class="menu-item-desc" data-en="Sparkling Water" data-al="Ujë me Gaz" data-mk="Газирана Вода">Sparkling Water</div>
+            </div>
+        </div>
+        <div class="menu-item-price">60 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Coca_Cola_Flasche_-_Original_Taste.jpg/250px-Coca_Cola_Flasche_-_Original_Taste.jpg" alt="Coca Cola" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Coca Cola" data-al="Coca Cola" data-mk="Кока Кола">Coca Cola</div>
+                <div class="menu-item-desc" data-en="Coca Cola" data-al="Coca Cola" data-mk="Кока Кола">Coca Cola</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://repotmarket.com/cdn/shop/products/colazerobotella-min_x630@2x.png?v=1631102931" alt="Coca Cola Zero" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Coca Cola Zero" data-al="Coca Cola Zero" data-mk="Кока Кола Зеро">Coca Cola Zero</div>
+                <div class="menu-item-desc" data-en="Coca Cola Zero" data-al="Coca Cola Zero" data-mk="Кока Кола Зеро">Coca Cola Zero</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://www.drinksupermarket.com/media/catalog/product/cache/8240349af4c6b2aac4dc703710c4a1d6/3/8/381717001_fanta-orange-330ml_temp.jpg" alt="Fanta Orange" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Fanta Orange" data-al="Fanta Portokalli" data-mk="Фанта Портокал">Fanta Orange</div>
+                <div class="menu-item-desc" data-en="Fanta Orange" data-al="Fanta Portokalli" data-mk="Фанта Портокал">Fanta Orange</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://londonliquorstore.com/cdn/shop/products/SCH125_BL1.jpg?v=1640326533" alt="Schweppes" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Schweppes" data-al="Schweppes" data-mk="Швепс">Schweppes</div>
+                <div class="menu-item-desc" data-en="Schweppes" data-al="Schweppes" data-mk="Швепс">Schweppes</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://m.media-amazon.com/images/I/51i+eYwNJAL._SL1500_.jpg" alt="Schweppes Tonic" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Schweppes Tonic" data-al="Schweppes Tonik" data-mk="Швепс Тоник">Schweppes Tonic</div>
+                <div class="menu-item-desc" data-en="Schweppes Tonic" data-al="Schweppes Tonik" data-mk="Швепс Тоник">Schweppes Tonic</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://gajba.mk/media/2022/07/42357544.png" alt="Schweppes Tangerine" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Schweppes Tangerine" data-al="Schweppes Mandarine" data-mk="Швепс Мандарина">Schweppes Tangerine</div>
+                <div class="menu-item-desc" data-en="Schweppes Tangerine" data-al="Schweppes Mandarine" data-mk="Швепс Мандарина">Schweppes Tangerine</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://delomall.com/wp-content/webpc-passthru.php?src=https://delomall.com/wp-content/uploads/2022/04/sp-1.jpg&nocache=1" alt="Sprite" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Sprite" data-al="Sprite" data-mk="Спрајт">Sprite</div>
+                <div class="menu-item-desc" data-en="Sprite" data-al="Sprite" data-mk="Спрајт">Sprite</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://i5.walmartimages.com/seo/Red-Bull-Energy-Drink-189mg-Caffeine-20-fl-oz-Can_beb7fd14-9609-412c-812d-50f0f5891bef.f7c3d96ccbafc845b0a3e34b828a51ed.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" alt="Red Bull" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Red Bull" data-al="Red Bull" data-mk="Ред Бул">Red Bull</div>
+                <div class="menu-item-desc" data-en="Red Bull" data-al="Red Bull" data-mk="Ред Бул">Red Bull</div>
+            </div>
+        </div>
+        <div class="menu-item-price">200 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://goldeneagle-ks.com/wp-content/uploads/2023/11/Golden-Eagle-250ml.png" alt="Golden Eagle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Golden Eagle" data-al="Golden Eagle" data-mk="Голден Игл">Golden Eagle</div>
+                <div class="menu-item-desc" data-en="Golden Eagle" data-al="Golden Eagle" data-mk="Голден Игл">Golden Eagle</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://img.freepik.com/premium-photo/plastic-cup-orange-juice-with-clear-lid-yellow-liquid-bottom_729592-1892.jpg" alt="Orange Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Orange Juice" data-al="Lëng Portokalli" data-mk="Сок од Портокал">Orange Juice</div>
+                <div class="menu-item-desc" data-en="Orange Juice" data-al="Lëng Portokalli" data-mk="Сок од Портокал">Orange Juice</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://img.freepik.com/premium-photo/berry-smoothie-fruit-juice-straw-drink-wild-berries-cup-isolated-white_770123-2240.jpg?semt=ais_hybrid&w=740" alt="Red Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Red Juice" data-al="Lëng i Kuq" data-mk="Црвен Сок">Red Juice</div>
+                <div class="menu-item-desc" data-en="Red Juice" data-al="Lëng i Kuq" data-mk="Црвен Сок">Red Juice</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://img.freepik.com/premium-photo/close-up-orange-juice-against-white-background_1048944-17588775.jpg?semt=ais_hybrid&w=740" alt="Wake Me Up Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Wake Me Up Juice" data-al="Wake Me Up Lëng" data-mk="Разбуди ме Сок">Wake Me Up Juice</div>
+                <div class="menu-item-desc" data-en="Wake Me Up Juice" data-al="Wake Me Up Lëng" data-mk="Разбуди ме Сок">Wake Me Up Juice</div>
+            </div>
+        </div>
+        <div class="menu-item-price">100 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://www.shutterstock.com/image-photo/fresh-mango-ripe-organic-yellow-600nw-2153292643.jpg" alt="Garrison Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Garrison Juice" data-al="Lëng Garrison" data-mk="Гарисон Сок">Garrison Juice</div>
+                <div class="menu-item-desc" data-en="Garrison Juice" data-al="Lëng Garrison" data-mk="Гарисон Сок">Garrison Juice</div>
+            </div>
+        </div>
+        <div class="menu-item-price">150 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdnV1tuf3in3Nx5jxlqT37ODHzB4EpsNrEWw&s" alt="Leng Molle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Leng Molle" data-al="Lëng Molle" data-mk="Сок од Јаболко">Leng Molle</div>
+                <div class="menu-item-desc" data-en="Leng Molle" data-al="Lëng Molle" data-mk="Сок од Јаболко">Leng Molle</div>
+            </div>
+        </div>
+        <div class="menu-item-price">80 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://scontent.fskp4-2.fna.fbcdn.net/v/t39.30808-6/481998378_3963229760583011_9077771231537665698_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ihKnMDu_SS4Q7kNvwGQHdF6&_nc_oc=AdlM-1Wkz4oxIwicM9-uX_AdGBvs-BWmGir-RDMN7cJQId95VUz_k9KzubzkscyMkco&_nc_zt=23&_nc_ht=scontent.fskp4-2.fna&_nc_gid=PL-Y2B4yu8jkxfC1cytq2w&oh=00_AfLxYLh8npPIKdTgNQH9L9AxNIzNpx-KWRK9PYXX32DJlg&oe=683A7630" alt="Leng Pjeshke" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Peach" data-al="Lëng Pjeshke" data-mk="Сок од Праска">Peach</div>
+                <div class="menu-item-desc" data-en="Peach" data-al="Lëng Pjeshke" data-mk="Сок од Праска">Peach</div>
+            </div>
+        </div>
+        <div class="menu-item-price">80 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://balkanappetite.com/cdn/shop/files/IMG-3016_1080x.png?v=1721617844" alt="Ice Tea" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Ice Tea" data-al="Ice Tea" data-mk="Леден Чај">Ice Tea</div>
+                <div class="menu-item-desc" data-en="Ice Tea" data-al="Ice Tea" data-mk="Леден Чај">Ice Tea</div>
+            </div>
+        </div>
+        <div class="menu-item-price">80 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://wigmorewholesale.com/image/cache/wkseller/5637/Screenshot%202024-03-27%20105639-637x430.png" alt="Leng Dredhze" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Strawberry Juice" data-al="Lëng Dredhëz" data-mk="Сок од Јагода">Strawberry Juice</div>
+                <div class="menu-item-desc" data-en="Strawberry Juice" data-al="Lëng Dredhëz" data-mk="Сок од Јагода">Strawberry Juice</div>
+            </div>
+        </div>
+        <div class="menu-item-price">80 MKD</div>
+    </div>
+    
+    <div class="menu-item">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+            <img src="https://jaffachampion.com/wp-content/uploads/2022/03/cherry-scaled.jpg" alt="Leng Vishnje" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+            <div>
+                <div class="menu-item-name" data-en="Sour Cherry" data-al="Lëng Vishnje" data-mk="Сок од Вишна">Sour Cherry</div>
+                <div class="menu-item-desc" data-en="Sour Cherry" data-al="Lëng Vishnje" data-mk="Сок од Вишна">Sour Cherry</div>
+            </div>
+        </div>
+        <div class="menu-item-price">80 MKD</div>
+    </div>
+
+                </div>
+            </div>
+
+        <!-- Beers & Wines -->
+<div class="menu-section fade-in">
+    <h3 data-en="Beers & Wines" data-al="Birra & Vera" data-mk="Пива и Вина">Beers & Wines</h3>
+    <div class="menu-grid">
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://gajba.mk/media/2022/07/53102164-1.png" alt="Skopsko" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Skopsko" data-al="Skopsko" data-mk="Скопско">Skopsko</div>
+                    <div class="menu-item-desc" data-en="Local Macedonian beer" data-al="Birrë vendase maqedonase" data-mk="Домашно македонско пиво">Local Macedonian beer</div>
+                </div>
+            </div>
+            <div class="menu-item-price">100 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://webshop.rotodinamic.hr/image/cache/cache/2001-3000/2173/main/647a-01753-0-3-1200x630.jpg" alt="Tuborg" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Tuborg" data-al="Tuborg" data-mk="Туборг">Tuborg</div>
+                    <div class="menu-item-desc" data-en="Danish lager beer" data-al="Birrë daneze" data-mk="Данско пиво">Danish lager beer</div>
+                </div>
+            </div>
+            <div class="menu-item-price">100 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://players.mk/wp-content/uploads/2021/09/heinkeken-makedonija.jpg" alt="Heineken" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Heineken" data-al="Heineken" data-mk="Хајнекен">Heineken</div>
+                    <div class="menu-item-desc" data-en="Premium Dutch beer" data-al="Birrë premium holandeze" data-mk="Премиум холандско пиво">Premium Dutch beer</div>
+                </div>
+            </div>
+            <div class="menu-item-price">100 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://yushop.ch/wp-content/uploads/2021/09/2.-ZLATEN-DAB-0.33-1-300x300.jpg" alt="Zlaten Dab" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Zlaten Dab" data-al="Zlaten Dab" data-mk="Златен Даб">Zlaten Dab</div>
+                    <div class="menu-item-desc" data-en="Golden Macedonian beer" data-al="Birrë maqedonase e artë" data-mk="Златно македонско пиво">Golden Macedonian beer</div>
+                </div>
+            </div>
+            <div class="menu-item-price">100 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://gajba.mk/media/2022/07/5310008004845-3-1.jpg" alt="Alexandria Small" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Alexandria (Small)" data-al="Aleksandria (e Vogël)" data-mk="Александрија (мало)">Alexandria (Small)</div>
+                    <div class="menu-item-desc" data-en="Red or white wine glass" data-al="Gotë vere e kuqe ose e bardhë" data-mk="Чаша црвено или бело вино">Red or white wine glass</div>
+                </div>
+            </div>
+            <div class="menu-item-price">170 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://tikves.com.mk/wp-content/uploads/2019/06/Alexandria_White.jpg" alt="Alexandria Bottle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Alexandria (Bottle)" data-al="Aleksandria (Shishe)" data-mk="Александрија (шише)">Alexandria (Bottle)</div>
+                    <div class="menu-item-desc" data-en="Full bottle of Alexandria wine" data-al="Shishe vere Aleksandria" data-mk="Шише вино Александрија">Full bottle of Alexandria wine</div>
+                </div>
+            </div>
+            <div class="menu-item-price">700 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://fino-vino.ch/images/com_hikashop/upload/tga-za-jug-von-tikves-2dl.png" alt="T'ga za Jug Small" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="T'ga za Jug (Small)" data-al="T'ga për Jug (e Vogël)" data-mk="Т'га за Југ (мало)">T'ga za Jug (Small)</div>
+                    <div class="menu-item-desc" data-en="Glass of T'ga za Jug wine" data-al="Gotë verë T'ga për Jug" data-mk="Чаша Т'га за Југ вино">Glass of T'ga za Jug wine</div>
+                </div>
+            </div>
+            <div class="menu-item-price">200 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://tikves.com.mk/wp-content/uploads/2021/12/T_GA_new.jpg" alt="T'ga za Jug Bottle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="T'ga za Jug (Bottle)" data-al="T'ga për Jug (Shishe)" data-mk="Т'га за Југ (шише)">T'ga za Jug (Bottle)</div>
+                    <div class="menu-item-desc" data-en="Full bottle of T'ga za Jug wine" data-al="Shishe e plotë e verës T'ga për Jug" data-mk="Шише Т'га за Југ вино">Full bottle of T'ga za Jug wine</div>
+                </div>
+            </div>
+            <div class="menu-item-price">1000 MKD</div>
+        </div>
+
+    </div>
+</div>
+
+           <div class="menu-section fade-in">
+    <h3 data-en="Mocktails" data-al="Mocktails (Pa Alkool)" data-mk="Безалкохолни Коктели">Mocktails</h3>
+    <div class="menu-grid">
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://cocktailbart.de/wp-content/uploads/2024/06/Blue-Hawaii-Cocktail.jpg" alt="Blue Hawai" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Blue Hawai" data-al="Blue Hawai" data-mk="Блу Хаваи">Blue Hawai</div>
+                    <div class="menu-item-desc" data-en="Tropical juice blend with pineapple and blue syrup" data-al="Pije tropikale me ananas dhe shurup blu" data-mk="Тропски сок со ананас и син сируп">Tropical juice blend with pineapple and blue syrup</div>
+                </div>
+            </div>
+            <div class="menu-item-price">400 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://iheartumami.com/wp-content/uploads/2018/08/Watermelon-peach-mocktail-recipe.jpg" alt="Watermelon" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Watermelon" data-al="Shalqi" data-mk="Лубеница">Watermelon</div>
+                    <div class="menu-item-desc" data-en="Fresh watermelon juice with mint" data-al="Lëng shalqiri i freskët me mentë" data-mk="Свеж сок од лубеница со мента">Fresh watermelon juice with mint</div>
+                </div>
+            </div>
+            <div class="menu-item-price">380 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://imbibemagazine.com/wp-content/uploads/2018/03/seven-year-itch-vertical2-crdt-tk.jpg" alt="Strawberry" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Strawberry" data-al="Luleshtrydhe" data-mk="Јагода">Strawberry</div>
+                    <div class="menu-item-desc" data-en="Strawberry purée with citrus and ice" data-al="Pure luleshtrydheje me agrume dhe akull" data-mk="Јагодово пире со цитрус и мраз">Strawberry purée with citrus and ice</div>
+                </div>
+            </div>
+            <div class="menu-item-price">380 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://www.acouplecooks.com/wp-content/uploads/2022/10/Pina-Colada-056.jpg" alt="Pina Colada" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Pina Colada" data-al="Pina Colada" data-mk="Пина Колада">Pina Colada</div>
+                    <div class="menu-item-desc" data-en="Coconut cream with pineapple juice" data-al="Krem kokosi me lëng ananasi" data-mk="Кокосов крем со ананасов сок">Coconut cream with pineapple juice</div>
+                </div>
+            </div>
+            <div class="menu-item-price">420 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://images.cocktailwave.com/fruit-punch.png" alt="Fruit Punch" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Fruit Punch" data-al="Përzierje Frutash" data-mk="Овошен Пунч">Fruit Punch</div>
+                    <div class="menu-item-desc" data-en="Mixed tropical fruit juices" data-al="Lëngje të përziera frutash tropikale" data-mk="Мешани тропски овошни сокови">Mixed tropical fruit juices</div>
+                </div>
+            </div>
+            <div class="menu-item-price">350 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://www.cruzanrum.com/sites/default/files/styles/original/public/2021-11/CZ_Batch_7_CocktailCard_1000x1000_Mojito_Static%20%281%29.png.webp?itok=IRCdLXGt" alt="Mojito" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Mojito" data-al="Mojito" data-mk="Мохито">Mojito</div>
+                    <div class="menu-item-desc" data-en="Lime, mint, sugar and soda water" data-al="Gëlqere, mentë, sheqer dhe ujë sodik" data-mk="Лајм, мента, шеќер и сода вода">Lime, mint, sugar and soda water</div>
+                </div>
+            </div>
+            <div class="menu-item-price">370 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://images.surferseo.art/2c1a821e-ebd9-4940-8039-2bda2cb6459c.jpeg" alt="Cocktail Redbull" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Cocktail Redbull" data-al="Koktel Redbull" data-mk="Коктел Редбул">Cocktail Redbull</div>
+                    <div class="menu-item-desc" data-en="Redbull with citrus and ice" data-al="Redbull me agrume dhe akull" data-mk="Редбул со цитрус и мраз">Redbull with citrus and ice</div>
+                </div>
+            </div>
+            <div class="menu-item-price">450 MKD</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="menu-section fade-in">
+    <h3 data-en="Cocktails" data-al="Koktele (Me Alkool)" data-mk="Коктели (Со Алкохол)">Cocktails</h3>
+    <div class="menu-grid">
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://www.acouplecooks.com/wp-content/uploads/2021/07/Malibu-Bay-Breeze-007s.jpg" alt="Malibu Bay Breeze" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Malibu Bay Breeze" data-al="Malibu Bay Breeze" data-mk="Малибу Беј Бриз">Malibu Bay Breeze</div>
+                    <div class="menu-item-desc" data-en="Malibu rum, cranberry juice, pineapple juice" data-al="Rum Malibu, lëng boronice, lëng ananasi" data-mk="Малибу рум, сок од брусница, ананасов сок">Malibu rum, cranberry juice, pineapple juice</div>
+                </div>
+            </div>
+            <div class="menu-item-price">450 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://barossadistilling.com/wp-content/uploads/2023/07/Gin-Daisy-Cocktail.png" alt="Gin Daisy" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Gin Daisy" data-al="Gin Daisy" data-mk="Џин Дејзи">Gin Daisy</div>
+                    <div class="menu-item-desc" data-en="Gin, lemon juice, grenadine, soda" data-al="Xhin, lëng limoni, grenadinë, sodë" data-mk="Џин, лимонов сок, гренадин, сода">Gin, lemon juice, grenadine, soda</div>
+                </div>
+            </div>
+            <div class="menu-item-price">380 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://images.immediate.co.uk/production/volatile/sites/30/2018/04/tequila-sunrise-18167a1.jpg" alt="Tequila Sunrise" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Tequila Sunrise" data-al="Tequila Sunrise" data-mk="Текила Санрајз">Tequila Sunrise</div>
+                    <div class="menu-item-desc" data-en="Tequila, orange juice, grenadine" data-al="Tekilë, lëng portokalli, grenadinë" data-mk="Текила, сок од портокал, гренадин">Tequila, orange juice, grenadine</div>
+                </div>
+            </div>
+            <div class="menu-item-price">420 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://cubavodka.com/wp-content/uploads/2017/12/drink-passion-sunrise-cuba-passion-360x490.png" alt="Mama Mia" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Mama Mia" data-al="Mama Mia" data-mk="Мама Миа">Mama Mia</div>
+                    <div class="menu-item-desc" data-en="Vodka, strawberry purée, lime, mint" data-al="Vodkë, pure luleshtrydheje, gëlqere, mentë" data-mk="Водка, јагодово пире, лајм, мента">Vodka, strawberry purée, lime, mint</div>
+                </div>
+            </div>
+            <div class="menu-item-price">350 MKD</div>
+        </div>
+
+        <div class="menu-item">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                <img src="https://3f4c2184e060ce99111b-f8c0985c8cb63a71df5cb7fd729edcab.ssl.cf2.rackcdn.com/media/16339/rainbowrumslushies.jpg" alt="Rainbow Paradise" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                <div>
+                    <div class="menu-item-name" data-en="Rainbow Paradise" data-al="Parajsa me Ngjyra" data-mk="Раинбоу Парадајс">Rainbow Paradise</div>
+                    <div class="menu-item-desc" data-en="Rum, orange juice, blue curaçao, grenadine" data-al="Rum, lëng portokalli, curaçao blu, grenadinë" data-mk="Рум, портокалов сок, сино кирасо, гренадин">Rum, orange juice, blue curaçao, grenadine</div>
+                </div>
+            </div>
+            <div class="menu-item-price">400 MKD</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="menu-section fade-in">
+    <h3 data-en="Alcoholic Drinks" data-al="Pije Alkoolike" data-mk="Алкохолни Пијалоци">Alcoholic Drinks</h3>
+    <div class="menu-grid">
+        <div class="shisha-flavors">
+            <!-- Vodka -->
+            <div class="flavor-item" data-en="Vodka Absolut" data-al="Vodka Absolut" data-mk="Водка Абсолут">Vodka Absolut - 250 MKD</div>
+            <div class="flavor-item" data-en="Vodka Smirnoff" data-al="Vodka Smirnoff" data-mk="Водка Смирноф">Vodka Smirnoff - 240 MKD</div>
+            <div class="flavor-item" data-en="Vodka Belvedere" data-al="Vodka Belvedere" data-mk="Водка Белведере">Vodka Belvedere - 450 MKD</div>
+            <div class="flavor-item" data-en="Vodka Grey Goose" data-al="Vodka Grey Goose" data-mk="Водка Греј Гус">Vodka Grey Goose - 480 MKD</div>
+
+            <!-- Whiskey -->
+            <div class="flavor-item" data-en="Jack Daniel's" data-al="Jack Daniel's" data-mk="Џек Даниелс">Jack Daniel's - 350 MKD</div>
+            <div class="flavor-item" data-en="Jack Daniel's Honey" data-al="Jack Daniel's Mjaltë" data-mk="Џек Даниелс Мед">Jack Daniel's Honey - 360 MKD</div>
+            <div class="flavor-item" data-en="Jack Daniel's Apple" data-al="Jack Daniel's Mollë" data-mk="Џек Даниелс Јаболко">Jack Daniel's Apple - 360 MKD</div>
+            <div class="flavor-item" data-en="Jameson Irish Whiskey" data-al="Jameson Irish Whiskey" data-mk="Џејмсон Ириш Виски">Jameson Irish Whiskey - 340 MKD</div>
+            <div class="flavor-item" data-en="Johnnie Walker Black Label" data-al="Johnnie Walker Black Label" data-mk="Џони Вокер Блек Лејбл">Johnnie Walker Black Label - 450 MKD</div>
+            <div class="flavor-item" data-en="Johnnie Walker Red Label" data-al="Johnnie Walker Red Label" data-mk="Џони Вокер Ред Лејбл">Johnnie Walker Red Label - 330 MKD</div>
+            <div class="flavor-item" data-en="Chivas Regal" data-al="Chivas Regal" data-mk="Чивас Регал">Chivas Regal - 460 MKD</div>
+            <div class="flavor-item" data-en="Ballantine's" data-al="Ballantine's" data-mk="Балантајнс">Ballantine's - 320 MKD</div>
+
+            <!-- Gin -->
+            <div class="flavor-item" data-en="Bombay Sapphire Gin" data-al="Xhin Bombay Sapphire" data-mk="Џин Бомбај Сафир">Bombay Sapphire Gin - 370 MKD</div>
+            <div class="flavor-item" data-en="Tanqueray Gin" data-al="Xhin Tanqueray" data-mk="Џин Танкереј">Tanqueray Gin - 390 MKD</div>
+            <div class="flavor-item" data-en="Beefeater Gin" data-al="Xhin Beefeater" data-mk="Џин Бифитер">Beefeater Gin - 310 MKD</div>
+            <div class="flavor-item" data-en="SAX Gin Classic" data-al="Xhin SAX Klasik" data-mk="Џин САКС Класик">SAX Gin Classic - 280 MKD</div>
+            <div class="flavor-item" data-en="SAX Gin Pink" data-al="Xhin SAX Pink" data-mk="Џин САКС Пинк">SAX Gin Pink - 290 MKD</div>
+
+
+            <!-- Other Spirits -->
+            <div class="flavor-item" data-en="Hennessy" data-al="Hennessy" data-mk="Хенеси">Hennessy - 600 MKD</div>
+            <div class="flavor-item" data-en="Tequila" data-al="Tekilë" data-mk="Текила">Tequila - 290 MKD</div>
+            <div class="flavor-item" data-en="Badel" data-al="Badel" data-mk="Бадел">Badel - 250 MKD</div>
+            <div class="flavor-item" data-en="Ouzo Plomari" data-al="Ouzo Plomari" data-mk="Узо Пломари">Ouzo Plomari - 270 MKD</div>
+            <div class="flavor-item" data-en="Stock 84" data-al="Stock 84" data-mk="Сток 84">Stock 84 - 280 MKD</div>
+        </div>
+    </div>
+</div>
+
+            <div class="menu-section fade-in">
+                <h3 data-en="Premium Shisha Menu" data-al="Menyja Premium e Shishës" data-mk="Премиум Наргиле Мени">Premium Shisha Menu</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name" data-en="Classic Shisha" data-al="Shisha Klasike" data-mk="Класична Наргиле">Classic Shisha</div>
+                            <div class="menu-item-desc" data-en="Traditional tobacco blend" data-al="Përzierje tradicionale duhani" data-mk="Традиционална мешавина тутун">Traditional tobacco blend</div>
+                        </div>
+                        <div class="menu-item-price">400 MKD</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name" data-en="Premium Shisha" data-al="Shisha Premium" data-mk="Премиум Наргиле">Premium Shisha</div>
+                            <div class="menu-item-desc" data-en="Premium imported tobacco" data-al="Duhan premium i importuar" data-mk="Премиум увезен тутун">Premium imported tobacco</div>
+                        </div>
+                        <div class="menu-item-price">600 MKD</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="menu-item-name" data-en="Fruit Mix Special" data-al="Përzierje Speciale Frutash" data-mk="Специјална Овошна Мешавина">Fruit Mix Special</div>
+                            <div class="menu-item-desc" data-en="3 fruit flavors of choice" data-al="3 shije frutash sipas zgjedhjes" data-mk="3 овошни вкуса по избор">3 fruit flavors of choice</div>
+                        </div>
+                        <div class="menu-item-price">550 MKD</div>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--accent-neon); margin: 2rem 0 1rem 0; text-align: center;" data-en="Available Shisha Flavors" data-al="Shije të Disponueshme Shishe" data-mk="Достапни Вкусови за Наргиле">Available Shisha Flavors</h4>
+                <div class="shisha-flavors">
+                    <div class="flavor-item" data-en="Double Apple" data-al="Mollë e Dyfishtë" data-mk="Двојно Јаболко">Double Apple</div>
+                    <div class="flavor-item" data-en="Mint" data-al="Mentë" data-mk="Мента">Mint</div>
+                    <div class="flavor-item" data-en="Orange" data-al="Portokall" data-mk="Портокал">Orange</div>
+                    <div class="flavor-item" data-en="Grape" data-al="Rrush" data-mk="Грозје">Grape</div>
+                    <div class="flavor-item" data-en="Watermelon" data-al="Shalqi" data-mk="Лубеница">Watermelon</div>
+                    <div class="flavor-item" data-en="Peach" data-al="Pjeshkë" data-mk="Праска">Peach</div>
+                    <div class="flavor-item" data-en="Strawberry" data-al="Luleshtrydhe" data-mk="Јагода">Strawberry</div>
+                    <div class="flavor-item" data-en="Blueberry" data-al="Boronicë" data-mk="Боровница">Blueberry</div>
+                    <div class="flavor-item" data-en="Lemon" data-al="Limon" data-mk="Лимон">Lemon</div>
+                    <div class="flavor-item" data-en="Cherry" data-al="Qershi" data-mk="Цреша">Cherry</div>
+                    <div class="flavor-item" data-en="Vanilla" data-al="Vanilë" data-mk="Ванила">Vanilla</div>
+                    <div class="flavor-item" data-en="Chocolate" data-al="Çokollatë" data-mk="Чоколада">Chocolate</div>
+                    <div class="flavor-item" data-en="Rose" data-al="Trëndafil" data-mk="Роза">Rose</div>
+                    <div class="flavor-item" data-en="Coconut" data-al="Kokos" data-mk="Кокос">Coconut</div>
+                    <div class="flavor-item" data-en="Mango" data-al="Mango" data-mk="Манго">Mango</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Page -->
+    <div id="gallery" class="page">
+        <div class="container">
+            <h2 class="page-title" data-en="Gallery" data-al="Galeria" data-mk="Галерија">Gallery</h2>
+            <div class="gallery-grid fade-in">
+                <div class="gallery-item" style="background: linear-gradient(45deg, #d4af37, #1a1a1a); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    <span data-en="Bar Interior" data-al="Brendësia e Barit" data-mk="Ентериер на Барот">Bar Interior</span>
+                </div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #00ffff, #1a1a1a); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    <span data-en="Cocktail Collection" data-al="Koleksioni i Kokteleve" data-mk="Колекција Коктели">Cocktail Collection</span>
+                </div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #d4af37, #00ffff); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    <span data-en="Shisha Lounge" data-al="Saloni i Shishës" data-mk="Наргиле Салон">Shisha Lounge</span>
+                </div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #ff6b6b, #1a1a1a); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    <span data-en="Night Events" data-al="Ngjarjet e Natës" data-mk="Ноќни Настани">Night Events</span>
+                </div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #4ecdc4, #1a1a1a); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    <span data-en="VIP Section" data-al="Seksioni VIP" data-mk="ВИП Секција">VIP Section</span>
+                </div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #45b7d1, #d4af37); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    <span data-en="Terrace View" data-al="Pamja e Terrasës" data-mk="Поглед од Тераса">Terrace View</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- Reservation Page -->
+<div id="reservation" class="page">
+  <div class="container">
+    <h2 class="page-title" data-en="Make a Reservation" data-al="Bëj një Rezervim" data-mk="Направете Резервација">Make a Reservation</h2>
+    
+    <form id="reservation-form" class="reservation-form fade-in">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" required />
+      </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input id="date" name="date" type="date" required />
+      </div>
+      <div class="form-group">
+        <label for="time">Time</label>
+        <input id="time" name="time" type="time" required />
+      </div>
+      <div class="form-group">
+        <label for="people">Number of People</label>
+        <input id="people" name="people" type="number" required />
+      </div>
+      <div class="form-group">
+        <label for="requests">Special Requests</label>
+        <textarea name="requests" id="requests" placeholder="Any special requests or occasions..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Reserve</button>
+    </form>
+
+    <div id="form-response" style="margin-top: 1rem; display: none; text-align: center; font-weight: bold;"></div>
+  </div>
+</div>
+
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <div class="container">
+            <h2 class="page-title" data-en="Contact Us" data-al="Na Kontaktoni" data-mk="Контактирајте Не">Contact Us</h2>
+            <div class="contact-grid fade-in">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3 data-en="Address" data-al="Adresa" data-mk="Адреса">Address</h3>
+                    <p data-en="St.Dervish Cara, Tetovo 1200, North Macedonia" data-al="Rr. Dervish Cara, Tetovë 1200, Maqedonia e Veriut" data-mk="Ул.Дервиш Цара, Тетово 1200, Северна Македонија">Rr. Dervish Cara<br>Tetovo 1200<br>North Macedonia</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3 data-en="Phone" data-al="Telefon" data-mk="Телефон">Phone</h3>
+                    <p>+389 71 848 454<br>+389 71 623 232</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3 data-en="Email" data-al="Email" data-mk="Е-пошта">Email</h3>
+                    <p>thegarrisonbarmk@gmail.com<br>reservations@garrisonbar.mk</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🕒</div>
+                    <h3 data-en="Opening Hours" data-al="Orari i Punës" data-mk="Работно Време">Opening Hours</h3>
+                    <p data-en="&#8202; &#8202; &#8202; &#8202; &#8202; Monday - Friday: 08:00 - 00:00  &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; Saturday: 10:00 - 00:00 &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; Sunday: 16:00 - 00:00"
+                       data-al="&#8202; &#8202; &#8202; &#8202; &#8202; E Hënë - E Premte: 08:00 - 00:00 &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; E Shtunë: 10:00 - 00:00 &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; E Diel: 16:00 - 00:00"
+                       data-mk="&#8202; &#8202;&#8202; &#8202;  Понеделник - Петок: 08:00 - 00:00 &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202;  Сабота: 10:00 - 00:00 &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202; &#8202;  Недела: 16:00 - 00:00">
+                        Monday - Friday: 08:00 - 00:00<br>Saturday: 10:00 - 00:00<br>Sunday: 16:00 - 00:00
+                    </p>
+                    </p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3 data-en="Social Media" data-al="Rrjetet Sociale" data-mk="Социјални Мрежи">Social Media</h3>
+                    <p>@TheGarrisonBar_<br>Facebook | Instagram | TikTok</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💳</div>
+                    <h3 data-en="Payment Methods" data-al="Metodat e Pagesës" data-mk="Начини на Плаќање">Payment Methods</h3>
+                    <p data-en="Cash, Card, Bank Transfer" data-al="Para në dorë, Kartë, Transfer bankar" data-mk="Готовина, Картичка, Банков трансфер">Cash, Card<br>Bank Transfer</p>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <div style="text-align: center;">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 1rem;" data-en="Find Us in Tetovo" data-al="Na Gjeni në Tetovë" data-mk="Најдете Не во Тетово">Find Us in Tetovo</h3>
+                    <p data-en="Located in the heart of Tetovo's nightlife district" data-al="E vendosur në zemër të qytetit të jetës së natës së Tetovës" data-mk="Лоцирано во срцето на ноќниот живот во Тетово">Located in the heart of Tetovo's nightlife district</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-en="Contact Info" data-al="Informata Kontakti" data-mk="Контакт Информации">Contact Info</h4>
+                    <p data-en="📍 Dervish Cara, Tetovo 1200" data-al="📍 Rr. Dervish Cara, Tetovë 1200" data-mk="📍 Ул.Дервиш Цара, Тетово 1200">📍 Rr.Dervish Cara, Tetovë 1200</p>
+                    <p>📞 +389 71 848 454</p>
+                    <p>📧 thegarrisonbarmk@gmail.com</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/TheGarrisonBar" class="social-link" target="_blank" rel="noopener" aria-label="Facebook">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="width:24px;height:24px;vertical-align:middle;filter:invert(80%) sepia(20%) saturate(500%) hue-rotate(10deg);">
+                        </a>
+                        <a href="https://instagram.com/TheGarrisonBar_" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width:24px;height:24px;vertical-align:middle;filter:invert(80%) sepia(20%) saturate(500%) hue-rotate(10deg);">
+                        </a>
+                        <a href="https://tiktok.com/@TheGarrissonBar" class="social-link" target="_blank" rel="noopener" aria-label="TikTok">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok" style="width:24px;height:24px;vertical-align:middle;filter:invert(80%) sepia(20%) saturate(500%) hue-rotate(10deg);">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Opening Hours" data-al="Orari i Punës" data-mk="Работно Време">Opening Hours</h4>
+                    <p data-en="Monday - Friday" data-al="E Hënë - E Premte" data-mk="Понеделник - Петок">Monday - Friday</p>
+                    <p>08:00 - 00:00</p>
+                    <p data-en="Saturday" data-al="E Shtunë" data-mk="Сабота">Saturday</p>
+                    <p>10:00 - 00:00</p>
+                    <p data-en="Sunday" data-al="E Diel" data-mk="Недела">Sunday</p>
+                    <p>16:00 - 00:00</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-al="Lidhje të Shpejta" data-mk="Брзи Врски">Quick Links</h4>
+                    <p><a href="#" onclick="showPage('menu')" data-en="View Menu" data-al="Shiko Menynë" data-mk="Погледни Мени">View Menu</a></p>
+                    <p><a href="#" onclick="showPage('reservation')" data-en="Make Reservation" data-al="Bëj Rezervim" data-mk="Направи Резервација">Make Reservation</a></p>
+                    <p><a href="#" onclick="showPage('gallery')" data-en="Gallery" data-al="Galeria" data-mk="Галерија">Gallery</a></p>
+                    <p><a href="#" onclick="showPage('contact')" data-en="Contact Us" data-al="Na Kontaktoni" data-mk="Контактирајте Не">Contact Us</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Specialties" data-al="Specialitetet" data-mk="Специјалитети">Specialties</h4>
+                    <p data-en="🍸 Signature Cocktails" data-al="🍸 Koktele Ekskluzive" data-mk="🍸 Потписни Коктели">🍸 Signature Cocktails</p>
+                    <p data-en="💨 Premium Shisha" data-al="💨 Shisha Premium" data-mk="💨 Премиум Наргиле">💨 Premium Shisha</p>
+                    <p data-en="🎵 Live DJ Sets" data-al="🎵 DJ Set të Drejtpërdrejtë" data-mk="🎵 Живи ДЈ Сетови">🎵 Live DJ Sets</p>
+                    <p data-en="👥 VIP Experience" data-al="👥 Përvojë VIP" data-mk="👥 ВИП Искуство">👥 VIP Experience</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Garrison Bar. <span data-en="All rights reserved." data-al="Të gjitha të drejtat e rezervuara." data-mk="Сите права задржани.">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLanguage = 'en';
+
+        // Language switching
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update all text elements
+            document.querySelectorAll('[data-' + lang + ']').forEach(element => {
+                element.textContent = element.getAttribute('data-' + lang);
+            });
+
+            // Update form placeholders
+            updateFormPlaceholders(lang);
+        }
+
+        function updateFormPlaceholders(lang) {
+            const placeholders = {
+                en: "Any special requests or occasions...",
+                al: "Ndonjë kërkesë të veçantë ose rast...",
+                mk: "Било какви специјални барања или повод..."
+            };
+
+            const textarea = document.querySelector('textarea[name="requests"]');
+            if (textarea) {
+                textarea.placeholder = placeholders[lang];
+            }
+        }
+
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Add fade-in animation to content
+            setTimeout(() => {
+                document.querySelectorAll('#' + pageId + ' .fade-in').forEach(element => {
+                    element.style.animation = 'fadeInUp 0.6s ease';
+                });
+            }, 100);
+
+            // Close mobile menu if open
+            document.getElementById('navMenu').classList.remove('active');
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Reservation form submission
+        function submitReservation(event) {
+            event.preventDefault();
+
+            // Show loading
+            document.getElementById('loading').style.display = 'flex';
+
+            // Simulate form submission
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+
+                const messages = {
+                    en: "Thank you! Your reservation has been submitted. We will contact you shortly to confirm.",
+                    al: "Faleminderit! Rezervimi juaj është dërguar. Ne do t'ju kontaktojmë së shpejti për konfirmim.",
+                    mk: "Ви благодариме! Вашата резервација е поднесена. Ние ќе ве контактираме наскоро за потврда."
+                };
+
+                alert(messages[currentLanguage]);
+                event.target.reset();
+            }, 2000);
+        }
+
+        // Smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function () {
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.6s ease';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Set minimum date for reservation to today
+            const dateInput = document.querySelector('input[type="date"]');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+            }
+        });
+
+        // Add hover effects to menu items
+        document.addEventListener('mouseover', function (e) {
+            if (e.target.classList.contains('menu-item')) {
+                e.target.style.transform = 'translateX(10px)';
+                e.target.style.background = 'rgba(212, 175, 55, 0.1)';
+            }
+        });
+
+        document.addEventListener('mouseout', function (e) {
+            if (e.target.classList.contains('menu-item')) {
+                e.target.style.transform = 'translateX(0)';
+                e.target.style.background = 'rgba(255,255,255,0.05)';
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+                navbar.style.backdropFilter = 'blur(15px)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Gallery item click effect
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function () {
+                this.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.05)';
+                }, 200);
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            // Animate hero content on load
+            const heroElements = document.querySelectorAll('.hero-content > *');
+            heroElements.forEach((element, index) => {
+                element.style.animationDelay = (index * 0.3) + 's';
+            });
+        });
+    </script>
+<script>
+  document.getElementById("reservation-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const form = this;
+    const responseBox = document.getElementById("form-response");
+    const formData = new FormData(form);
+
+    fetch("https://formspree.io/f/mblovavk", {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: formData,
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();
+        responseBox.style.display = "block";
+        responseBox.style.color = "limegreen";
+        responseBox.textContent = "✅ Reservation sent successfully!";
+      } else {
+        responseBox.style.display = "block";
+        responseBox.style.color = "red";
+        responseBox.textContent = "❌ Error sending reservation. Please try again.";
+      }
+    })
+    .catch(error => {
+      responseBox.style.display = "block";
+      responseBox.style.color = "red";
+      responseBox.textContent = "❌ Network error. Please try again later.";
+    });
+  });
+</script>
+</body>
+</html>
+</body>
+</html>
