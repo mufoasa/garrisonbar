@@ -1920,112 +1920,34 @@
             });
         });
     </script>
-    <script>
-        document.getElementById("reservation-form").addEventListener("submit", function (e) {
-            e.preventDefault();
-            const form = this;
-            const responseBox = document.getElementById("form-response");
-            const formData = new FormData(form);
+   <script>
+    document.getElementById("reservation-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const form = this;
+        const formData = new FormData(form);
 
-            fetch("https://formspree.io/f/mblovavk", {
-                method: "POST",
-                headers: { "Accept": "application/json" },
-                body: formData,
-            })
-                .then(response => {
-                    if (response.ok) {
-                        form.reset();
-                        responseBox.style.display = "block";
-                        responseBox.style.color = "limegreen";
-                        responseBox.textContent = "✅ Reservation sent successfully!";
-                    } else {
-                        responseBox.style.display = "block";
-                        responseBox.style.color = "red";
-                        responseBox.textContent = "❌ Error sending reservation. Please try again.";
-                    }
-                })
-                .catch(error => {
+        fetch("https://formspree.io/f/mblovavk", {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: formData,
+        })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "thank-you.html"; // Change if needed
+                } else {
+                    const responseBox = document.getElementById("form-response");
                     responseBox.style.display = "block";
                     responseBox.style.color = "red";
-                    responseBox.textContent = "❌ Network error. Please try again later.";
-                });
-        });
-    </script>
-
-<!-- Thank You Page -->
-<div id="thankyou" class="page">
-    <div class="container" style="text-align: center; padding: 5rem 2rem;">
-        <h2 class="page-title" data-en="Thank You!" data-al="Faleminderit!" data-mk="Ви Благодариме!">Thank You!</h2>
-        <p style="font-size: 1.2rem; color: var(--text-gray);" 
-           data-en="Your reservation has been received. We look forward to seeing you at The Garrison Bar!" 
-           data-al="Rezervimi juaj u mor. Me padurim presim të ju shohim në The Garrison Bar!" 
-           data-mk="Вашата резервација е примена. Со нетрпение ве очекуваме во The Garrison Bar!">
-           Your reservation has been received. We look forward to seeing you at The Garrison Bar!
-        </p>
-        <a href="#" class="btn btn-primary" onclick="showPage('home')" 
-           data-en="Back to Home" data-al="Kthehu në Faqe" data-mk="Назад на Почетна">Back to Home</a>
-    </div>
-</div>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const reservationForm = document.querySelector(".reservation-form form");
-    if (reservationForm) {
-        reservationForm.addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            // Optional: Show loading animation
-            document.getElementById("loading").style.display = "flex";
-
-            // Simulate delay for form processing (replace with actual form submission logic if needed)
-            setTimeout(function() {
-                document.getElementById("loading").style.display = "none";
-                showPage('thankyou');
-            }, 1000);
-        });
-    }
-});
+                    responseBox.textContent = "❌ Error sending reservation. Please try again.";
+                }
+            })
+            .catch(error => {
+                const responseBox = document.getElementById("form-response");
+                responseBox.style.display = "block";
+                responseBox.style.color = "red";
+                responseBox.textContent = "❌ Network error. Please try again later.";
+            });
+    });
 </script>
-
-</body>
-</html>
-
-<!-- Thank You Page -->
-<div id="thankyou" class="page">
-    <div class="container" style="text-align: center; padding: 5rem 2rem;">
-        <h2 class="page-title" data-en="Thank You!" data-al="Faleminderit!" data-mk="Ви Благодариме!">Thank You!</h2>
-        <p style="font-size: 1.2rem; color: var(--text-gray);" 
-           data-en="Your reservation has been received. We look forward to seeing you at The Garrison Bar!" 
-           data-al="Rezervimi juaj u mor. Me padurim presim të ju shohim në The Garrison Bar!" 
-           data-mk="Вашата резервација е примена. Со нетрпение ве очекуваме во The Garrison Bar!">
-           Your reservation has been received. We look forward to seeing you at The Garrison Bar!
-        </p>
-        <a href="#" class="btn btn-primary" onclick="showPage('home')" 
-           data-en="Back to Home" data-al="Kthehu në Faqe" data-mk="Назад на Почетна">Back to Home</a>
-    </div>
-</div>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const reservationForm = document.querySelector(".reservation-form form");
-    if (reservationForm) {
-        reservationForm.addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            // Optional: Show loading animation
-            document.getElementById("loading").style.display = "flex";
-
-            // Simulate delay for form processing (replace with actual form submission logic if needed)
-            setTimeout(function() {
-                document.getElementById("loading").style.display = "none";
-                showPage('thankyou');
-            }, 1000);
-        });
-    }
-});
-</script>
-
 </body>
 </html>
