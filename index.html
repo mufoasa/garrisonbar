@@ -578,100 +578,73 @@
             }
         }
 
-        /* Featured Drinks Section */
-        .featured-section {
-            padding: 5rem 0;
-            background: var(--secondary-dark);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .featured-drinks {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .drink-card {
-            background: var(--primary-dark);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-            .drink-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
-                transition: left 0.5s ease;
+       /* Featured Drinks Section */
+            .featured-section {
+              padding: 5rem 0;
+              background: #000;
             }
-
-            .drink-card:hover::before {
-                left: 100%;
+            
+            .section-title {
+              text-align: center;
+              font-size: 2.5rem;
+              margin-bottom: 3rem;
+              color: #d4af37;
+              font-weight: bold;
+              letter-spacing: 1px;
             }
-
+            
+            .featured-drinks {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 2rem;
+              max-width: 1000px;
+              margin: 0 auto;
+              padding: 0 1rem;
+            }
+            
+            .drink-card {
+              background: #111;
+              border: 1px solid rgba(212, 175, 55, 0.4);
+              border-radius: 20px;
+              padding: 2rem;
+              text-align: center;
+              transition: all 0.3s ease;
+              box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+              position: relative;
+              overflow: hidden;
+            }
+            
             .drink-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
-                border-color: var(--accent-gold);
+              transform: translateY(-10px);
+              border-color: #d4af37;
+              box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
             }
-
-        .drink-image {
-            margin-bottom: 1.5rem;
-        }
-
-        .drink-placeholder {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .drink-card h3 {
-            color: var(--accent-gold);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .drink-card p {
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .drink-price {
-            color: var(--accent-gold);
-            font-size: 1.3rem;
-            font-weight: bold;
-            background: rgba(212, 175, 55, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            display: inline-block;
-        }
+            
+            .drink-img {
+              width: 80px;
+              margin-bottom: 1rem;
+            }
+            
+            .drink-card h3 {
+              color: #d4af37;
+              font-size: 1.6rem;
+              margin: 0.5rem 0;
+            }
+            
+            .drink-card p {
+              color: #ccc;
+              font-size: 1rem;
+              margin-bottom: 1.5rem;
+            }
+            
+            .drink-price {
+              color: #000;
+              background-color: #d4af37;
+              padding: 0.4rem 1rem;
+              border-radius: 25px;
+              font-weight: bold;
+              font-size: 1.1rem;
+            }
 
         /* Mini Gallery Section */
         .mini-gallery-section {
