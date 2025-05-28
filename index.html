@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="form-action 'self' https://formspree.io;">
-  <title>The Garrison Bar - Tetovo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="form-action 'self' https://formspree.io;">
+    <title>The Garrison Bar - Tetovo</title>
     <style>
         * {
             margin: 0;
@@ -66,31 +66,31 @@
             gap: 2rem;
         }
 
-        .nav-menu a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+            .nav-menu a {
+                color: var(--text-light);
+                text-decoration: none;
+                transition: all 0.3s ease;
+                position: relative;
+            }
 
-        .nav-menu a:hover {
-            color: var(--accent-gold);
-        }
+                .nav-menu a:hover {
+                    color: var(--accent-gold);
+                }
 
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-1);
-            transition: width 0.3s ease;
-        }
+                .nav-menu a::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -5px;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background: var(--gradient-1);
+                    transition: width 0.3s ease;
+                }
 
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
+                .nav-menu a:hover::after {
+                    width: 100%;
+                }
 
         .lang-toggle {
             display: flex;
@@ -107,11 +107,11 @@
             border-radius: 20px;
         }
 
-        .lang-btn.active,
-        .lang-btn:hover {
-            background: var(--gradient-1);
-            color: var(--primary-dark);
-        }
+            .lang-btn.active,
+            .lang-btn:hover {
+                background: var(--gradient-1);
+                color: var(--primary-dark);
+            }
 
         .mobile-menu-btn {
             display: none;
@@ -125,8 +125,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23000" width="1200" height="800"/><circle cx="300" cy="200" r="100" fill="%23d4af37" opacity="0.1"/><circle cx="900" cy="600" r="150" fill="%2300ffff" opacity="0.1"/><rect x="0" y="350" width="1200" height="100" fill="%23d4af37" opacity="0.05"/></svg>') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23000" width="1200" height="800"/><circle cx="300" cy="200" r="100" fill="%23d4af37" opacity="0.1"/><circle cx="900" cy="600" r="150" fill="%2300ffff" opacity="0.1"/><rect x="0" y="350" width="1200" height="100" fill="%23d4af37" opacity="0.05"/></svg>') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -193,9 +192,9 @@
             padding-top: 100px;
         }
 
-        .page.active {
-            display: block;
-        }
+            .page.active {
+                display: block;
+            }
 
         .container {
             max-width: 1200px;
@@ -222,12 +221,12 @@
             border: 1px solid rgba(212, 175, 55, 0.1);
         }
 
-        .menu-section h3 {
-            color: var(--accent-gold);
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
+            .menu-section h3 {
+                color: var(--accent-gold);
+                font-size: 2rem;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
 
         .menu-grid {
             display: grid;
@@ -235,108 +234,108 @@
             gap: 2rem;
         }
 
-/* Menu Page */
-.menu-section {
-    margin-bottom: 4rem;
-    background: var(--secondary-dark);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(212, 175, 55, 0.1);
-}
+        /* Menu Page */
+        .menu-section {
+            margin-bottom: 4rem;
+            background: var(--secondary-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
 
-/* Mobile-first responsive padding */
-@media (max-width: 768px) {
-    .menu-section {
-        padding: 1rem;
-        margin-bottom: 2rem;
-    }
-}
+        /* Mobile-first responsive padding */
+        @media (max-width: 768px) {
+            .menu-section {
+                padding: 1rem;
+                margin-bottom: 2rem;
+            }
+        }
 
-.menu-section h3 {
-    color: var(--accent-gold);
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
+        .menu-section h3 {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
 
-@media (max-width: 768px) {
-    .menu-section h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
-}
+        @media (max-width: 768px) {
+            .menu-section h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+        }
 
-.menu-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Single column on mobile */
-    gap: 1rem;
-}
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column on mobile */
+            gap: 1rem;
+        }
 
-/* Tablet and desktop */
-@media (min-width: 769px) {
-    .menu-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-}
+        /* Tablet and desktop */
+        @media (min-width: 769px) {
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+        }
 
-.menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 1rem;
-    background: rgba(255,255,255,0.05);
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    gap: 1rem;
-}
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            gap: 1rem;
+        }
 
-/* Mobile menu item adjustments */
-@media (max-width: 768px) {
-    .menu-item {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-        padding: 0.75rem;
-    }
-    
-    .menu-item-content {
-        flex: 1;
-    }
-    
-    .menu-item-price {
-        align-self: flex-end;
-        margin-top: 0.5rem;
-    }
-}
+        /* Mobile menu item adjustments */
+        @media (max-width: 768px) {
+            .menu-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+                padding: 0.75rem;
+            }
 
-.menu-item:hover {
-    background: rgba(212, 175, 55, 0.1);
-    transform: translateX(10px);
-}
+            .menu-item-content {
+                flex: 1;
+            }
 
-/* Reduce hover transform on mobile for better touch experience */
-@media (max-width: 768px) {
-    .menu-item:hover {
-        transform: translateX(5px);
-    }
-}
+            .menu-item-price {
+                align-self: flex-end;
+                margin-top: 0.5rem;
+            }
+        }
 
-.menu-item-name {
-    font-weight: bold;
-}
+        .menu-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(10px);
+        }
 
-.menu-item-desc {
-    color: var(--text-gray);
-    font-size: 0.9rem;
-    margin-top: 0.2rem;
-}
+        /* Reduce hover transform on mobile for better touch experience */
+        @media (max-width: 768px) {
+            .menu-item:hover {
+                transform: translateX(5px);
+            }
+        }
 
-.menu-item-price {
-    color: var(--accent-gold);
-    font-weight: bold;
-    font-size: 1.1rem;
-}
+        .menu-item-name {
+            font-weight: bold;
+        }
+
+        .menu-item-desc {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+        }
+
+        .menu-item-price {
+            color: var(--accent-gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
 
         .shisha-flavors {
             display: grid;
@@ -353,60 +352,60 @@
             transition: all 0.3s ease;
         }
 
-        .flavor-item:hover {
-            background: rgba(0,255,255,0.2);
-            transform: scale(1.05);
-        }
+            .flavor-item:hover {
+                background: rgba(0,255,255,0.2);
+                transform: scale(1.05);
+            }
 
         /* Gallery */
-       .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
 
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  height: 200px;
-}
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 200px;
+        }
 
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
 
-.gallery-item span {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.6); /* dark transparent background */
-  color: #fff;
-  padding: 0.4rem;
-  text-align: center;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
+            .gallery-item span {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.6); /* dark transparent background */
+                color: #fff;
+                padding: 0.4rem;
+                text-align: center;
+                font-weight: bold;
+                font-size: 0.9rem;
+            }
 
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
-  }
-}
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+            }
+        }
 
-@media (max-width: 480px) {
-  .gallery-grid {
-    grid-template-columns: 1fr; /* 1 per row on phones */
-  }
-}
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr; /* 1 per row on phones */
+            }
+        }
 
-.gallery-item:hover span {
-  background: rgba(0, 0, 0, 0.7);
-}
+        .gallery-item:hover span {
+            background: rgba(0, 0, 0, 0.7);
+        }
 
 
         /* Reservation Form */
@@ -423,32 +422,32 @@
             margin-bottom: 2rem;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--accent-gold);
-            font-weight: bold;
-        }
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: var(--accent-gold);
+                font-weight: bold;
+            }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 10px;
-            color: var(--text-light);
-            font-size: 1rem;
-        }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                width: 100%;
+                padding: 1rem;
+                background: rgba(255,255,255,0.1);
+                border: 1px solid rgba(212, 175, 55, 0.3);
+                border-radius: 10px;
+                color: var(--text-light);
+                font-size: 1rem;
+            }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
+                .form-group input:focus,
+                .form-group select:focus,
+                .form-group textarea:focus {
+                    outline: none;
+                    border-color: var(--accent-gold);
+                    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+                }
 
         /* Contact */
         .contact-grid {
@@ -472,82 +471,17 @@
             margin-bottom: 1rem;
         }
 
-      .map-container {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-}
+        .map-container {
+            height: 300px;
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
 
-.map-section {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: stretch;
-  width: 100%;
-  max-width: 1000px;
-  margin: 2rem auto;
-  gap: 0;
-}
-
-.map-text-box,
-.map-box {
-  width: 48.5%;
-  height: 300px;
-  background: var(--secondary-dark);
-  border-radius: 15px;
-  border: 1px solid rgba(212, 175, 55, 0.1);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.map-heading {
-  color: var(--accent-gold);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.map-subtext {
-  color: #ccc;
-  font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-  .map-section {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .map-text-box,
-  .map-box {
-    width: 100%;
-  }
-}
-
-/* Animation on scroll */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .map-section {
-    flex-direction: column;
-  }
-
-  .map-box {
-    height: 250px;
-  }
-}
 
         /* Animations */
         @keyframes fadeInUp {
@@ -555,6 +489,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -579,9 +514,9 @@
                 gap: 1rem;
             }
 
-            .nav-menu.active {
-                display: flex;
-            }
+                .nav-menu.active {
+                    display: flex;
+                }
 
             .mobile-menu-btn {
                 display: block;
@@ -634,11 +569,16 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
-            /* Featured Drinks Section */
+       /* Featured Drinks Section */
             .featured-section {
               padding: 5rem 0;
               background: #000;
@@ -729,9 +669,9 @@
             transition: all 0.3s ease;
         }
 
-        .mini-gallery-item:hover {
-            transform: scale(1.05);
-        }
+            .mini-gallery-item:hover {
+                transform: scale(1.05);
+            }
 
         .gallery-placeholder {
             width: 100%;
@@ -749,25 +689,26 @@
             color: white;
         }
 
-        .gallery-overlay h4 {
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-            margin: 0;
-        }
+            .gallery-overlay h4 {
+                color: var(--accent-gold);
+                font-size: 1.2rem;
+                margin: 0;
+            }
+
         .gallery-quote {
-          display: block; /* Ensure it's treated as a block-level element */
-          width: 100%;
-          max-width: 800px;
-          margin: 3rem auto 0 auto; /* Top margin + center horizontally */
-          text-align: center;
-          font-size: 2rem;
-          font-weight: bold;
-          font-family: 'Georgia', serif;
-          line-height: 1.5;
-          background: linear-gradient(90deg, #d4af37, #ffffff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: fadeInUp 1.2s ease-out both;
+            display: block; /* Ensure it's treated as a block-level element */
+            width: 100%;
+            max-width: 800px;
+            margin: 3rem auto 0 auto; /* Top margin + center horizontally */
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+            line-height: 1.5;
+            background: linear-gradient(90deg, #d4af37, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1.2s ease-out both;
         }
         /* Footer */
         .footer {
@@ -796,9 +737,9 @@
             transition: color 0.3s ease;
         }
 
-        .footer-section a:hover {
-            color: var(--accent-gold);
-        }
+            .footer-section a:hover {
+                color: var(--accent-gold);
+            }
 
         .footer-bottom {
             text-align: center;
@@ -821,12 +762,11 @@
             transition: all 0.3s ease;
         }
 
-        .social-link:hover {
-            background: var(--accent-gold);
-            color: var(--primary-dark);
-            transform: translateY(-3px);
-        }
-        
+            .social-link:hover {
+                background: var(--accent-gold);
+                color: var(--primary-dark);
+                transform: translateY(-3px);
+            }
     </style>
 </head>
 
@@ -860,17 +800,16 @@
     <div id="home" class="page active">
         <section class="hero">
             <div class="hero-content">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDsu2v3zkJb-L3dbfQhPJfbw94ai-1SVU4lQ&s" alt="Garrison Bar Logo" style="display: block; margin: 0 auto 2rem auto; max-width: 180px; border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.25); background: #fff;">
+                <img src="https://i.imgur.com/QV0EZyS.png" alt="Garrison Bar Logo" style="display: block; margin: 0 auto 2rem auto; max-width: 180px; border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.25); background: transparent;">
                 <h1 data-en="THE GARRISON BAR" data-al="THE GARRISON BAR" data-mk="THE GARRISON BAR">THE GARRISON BAR</h1>
                 <p data-en="Experience the finest cocktails, premium shisha, and vibrant nightlife in the heart of Tetovo" data-al="Përjetoni koktelat më të mira, shisha premium dhe jetën e natës në zemër të Tetovës" data-mk="Доживејте ги најдобрите коктели, премиум наргиле и живиот ноќен живот во срцето на Тетово">Experience the finest cocktails, premium shisha, and vibrant nightlife in the heart of Tetovo</p>
                 <div class="cta-buttons">
                     <a href="#" class="btn btn-primary" onclick="showPage('menu')" data-en="View Menu" data-al="Shiko Menynë" data-mk="Погледни Мени">View Menu</a>
                     <a href="#" class="btn btn-secondary" onclick="showPage('reservation')" data-en="Make Reservation" data-al="Bëj Rezervim" data-mk="Направи Резервација">Make Reservation</a>
                 </div>
-            </div>
         </section>
 
-        <!-- Featured Drinks Section -->
+       <!-- Featured Drinks Section -->
            <section class="featured-section">
       <h2 class="section-title">Featured Drinks</h2>
       <div class="featured-drinks">
@@ -967,7 +906,7 @@
                         </div>
                         <div class="menu-item-price">80 MKD</div>
                     </div>
-                   
+
                     <div class="menu-item">
                         <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
                             <img src="https://es.jura.com/-/media/global/images/coffee-recipes/images-redesign-2020/cappuccino_2000x1400px.jpg?mw=536" alt="Machiato" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
@@ -978,8 +917,8 @@
                         </div>
                         <div class="menu-item-price">80 MKD</div>
                     </div>
-                          
-                          <div class="menu-item">
+
+                    <div class="menu-item">
                         <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
                             <img src="https://cafefabrique.com/cdn/shop/articles/Cappuccino.jpg" alt="Cappuccino" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
                             <div>
@@ -1001,7 +940,7 @@
                         <div class="menu-item-price">80 MKD</div>
                     </div>
 
-                    
+
                     <div class="menu-item">
                         <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
                             <img src="https://khansama.com.sg/wp-content/uploads/2024/07/Nescafe.webp" alt="Turkish Coffee" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
@@ -1027,533 +966,524 @@
             </div>
 
             <!-- Cold Drinks -->
-            
+
             <div class="menu-section fade-in">
                 <h3 data-en="Cold Drinks" data-al="Pije të Ftohta" data-mk="Ладни Пијалоци">Cold Drinks</h3>
                 <div class="menu-grid">
 
                     <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbWCQ_gAw_hIiWnpDVWMl9DtCnM98AhUI6opxQhauHsPSdVwa852xtpjF_g7PG35eCQwY&usqp=CAU" alt="Water" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Water" data-al="Ujë" data-mk="Вода">Water</div>
-                <div class="menu-item-desc" data-en="Water" data-al="Ujë" data-mk="Вода">Water</div>
-            </div>
-        </div>
-        <div class="menu-item-price">50 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmfwhmrpo3AjLYj8xRLOwW-21qEJwRjDqRUJwsmEKZC3ZvkiLo_bVRzr4Mv4QLa0weZ9s&usqp=CAU" alt="Sparkling Water" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Sparkling Water" data-al="Ujë me Gaz" data-mk="Газирана Вода">Sparkling Water</div>
-                <div class="menu-item-desc" data-en="Sparkling Water" data-al="Ujë me Gaz" data-mk="Газирана Вода">Sparkling Water</div>
-            </div>
-        </div>
-        <div class="menu-item-price">60 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Coca_Cola_Flasche_-_Original_Taste.jpg/250px-Coca_Cola_Flasche_-_Original_Taste.jpg" alt="Coca Cola" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Coca Cola" data-al="Coca Cola" data-mk="Кока Кола">Coca Cola</div>
-                <div class="menu-item-desc" data-en="Coca Cola" data-al="Coca Cola" data-mk="Кока Кола">Coca Cola</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://repotmarket.com/cdn/shop/products/colazerobotella-min_x630@2x.png?v=1631102931" alt="Coca Cola Zero" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Coca Cola Zero" data-al="Coca Cola Zero" data-mk="Кока Кола Зеро">Coca Cola Zero</div>
-                <div class="menu-item-desc" data-en="Coca Cola Zero" data-al="Coca Cola Zero" data-mk="Кока Кола Зеро">Coca Cola Zero</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://www.drinksupermarket.com/media/catalog/product/cache/8240349af4c6b2aac4dc703710c4a1d6/3/8/381717001_fanta-orange-330ml_temp.jpg" alt="Fanta Orange" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Fanta Orange" data-al="Fanta Portokalli" data-mk="Фанта Портокал">Fanta Orange</div>
-                <div class="menu-item-desc" data-en="Fanta Orange" data-al="Fanta Portokalli" data-mk="Фанта Портокал">Fanta Orange</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://londonliquorstore.com/cdn/shop/products/SCH125_BL1.jpg?v=1640326533" alt="Schweppes" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Schweppes" data-al="Schweppes" data-mk="Швепс">Schweppes</div>
-                <div class="menu-item-desc" data-en="Schweppes" data-al="Schweppes" data-mk="Швепс">Schweppes</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://m.media-amazon.com/images/I/51i+eYwNJAL._SL1500_.jpg" alt="Schweppes Tonic" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Schweppes Tonic" data-al="Schweppes Tonik" data-mk="Швепс Тоник">Schweppes Tonic</div>
-                <div class="menu-item-desc" data-en="Schweppes Tonic" data-al="Schweppes Tonik" data-mk="Швепс Тоник">Schweppes Tonic</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://gajba.mk/media/2022/07/42357544.png" alt="Schweppes Tangerine" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Schweppes Tangerine" data-al="Schweppes Mandarine" data-mk="Швепс Мандарина">Schweppes Tangerine</div>
-                <div class="menu-item-desc" data-en="Schweppes Tangerine" data-al="Schweppes Mandarine" data-mk="Швепс Мандарина">Schweppes Tangerine</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://delomall.com/wp-content/webpc-passthru.php?src=https://delomall.com/wp-content/uploads/2022/04/sp-1.jpg&nocache=1" alt="Sprite" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Sprite" data-al="Sprite" data-mk="Спрајт">Sprite</div>
-                <div class="menu-item-desc" data-en="Sprite" data-al="Sprite" data-mk="Спрајт">Sprite</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://i5.walmartimages.com/seo/Red-Bull-Energy-Drink-189mg-Caffeine-20-fl-oz-Can_beb7fd14-9609-412c-812d-50f0f5891bef.f7c3d96ccbafc845b0a3e34b828a51ed.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" alt="Red Bull" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Red Bull" data-al="Red Bull" data-mk="Ред Бул">Red Bull</div>
-                <div class="menu-item-desc" data-en="Red Bull" data-al="Red Bull" data-mk="Ред Бул">Red Bull</div>
-            </div>
-        </div>
-        <div class="menu-item-price">200 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://goldeneagle-ks.com/wp-content/uploads/2023/11/Golden-Eagle-250ml.png" alt="Golden Eagle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Golden Eagle" data-al="Golden Eagle" data-mk="Голден Игл">Golden Eagle</div>
-                <div class="menu-item-desc" data-en="Golden Eagle" data-al="Golden Eagle" data-mk="Голден Игл">Golden Eagle</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdnV1tuf3in3Nx5jxlqT37ODHzB4EpsNrEWw&s" alt="Leng Molle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Leng Molle" data-al="Lëng Molle" data-mk="Сок од Јаболко">Leng Molle</div>
-                <div class="menu-item-desc" data-en="Leng Molle" data-al="Lëng Molle" data-mk="Сок од Јаболко">Leng Molle</div>
-            </div>
-        </div>
-        <div class="menu-item-price">80 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://scontent.fskp4-2.fna.fbcdn.net/v/t39.30808-6/481998378_3963229760583011_9077771231537665698_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ihKnMDu_SS4Q7kNvwGQHdF6&_nc_oc=AdlM-1Wkz4oxIwicM9-uX_AdGBvs-BWmGir-RDMN7cJQId95VUz_k9KzubzkscyMkco&_nc_zt=23&_nc_ht=scontent.fskp4-2.fna&_nc_gid=PL-Y2B4yu8jkxfC1cytq2w&oh=00_AfLxYLh8npPIKdTgNQH9L9AxNIzNpx-KWRK9PYXX32DJlg&oe=683A7630" alt="Leng Pjeshke" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Peach" data-al="Lëng Pjeshke" data-mk="Сок од Праска">Peach</div>
-                <div class="menu-item-desc" data-en="Peach" data-al="Lëng Pjeshke" data-mk="Сок од Праска">Peach</div>
-            </div>
-        </div>
-        <div class="menu-item-price">80 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://balkanappetite.com/cdn/shop/files/IMG-3016_1080x.png?v=1721617844" alt="Ice Tea" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Ice Tea" data-al="Ice Tea" data-mk="Леден Чај">Ice Tea</div>
-                <div class="menu-item-desc" data-en="Ice Tea" data-al="Ice Tea" data-mk="Леден Чај">Ice Tea</div>
-            </div>
-        </div>
-        <div class="menu-item-price">80 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://wigmorewholesale.com/image/cache/wkseller/5637/Screenshot%202024-03-27%20105639-637x430.png" alt="Leng Dredhze" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Strawberry Juice" data-al="Lëng Dredhëz" data-mk="Сок од Јагода">Strawberry Juice</div>
-                <div class="menu-item-desc" data-en="Strawberry Juice" data-al="Lëng Dredhëz" data-mk="Сок од Јагода">Strawberry Juice</div>
-            </div>
-        </div>
-        <div class="menu-item-price">80 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://jaffachampion.com/wp-content/uploads/2022/03/cherry-scaled.jpg" alt="Leng Vishnje" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Sour Cherry" data-al="Lëng Vishnje" data-mk="Сок од Вишна">Sour Cherry</div>
-                <div class="menu-item-desc" data-en="Sour Cherry" data-al="Lëng Vishnje" data-mk="Сок од Вишна">Sour Cherry</div>
-            </div>
-        </div>
-        <div class="menu-item-price">80 MKD</div>
-    </div>
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbWCQ_gAw_hIiWnpDVWMl9DtCnM98AhUI6opxQhauHsPSdVwa852xtpjF_g7PG35eCQwY&usqp=CAU" alt="Water" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Water" data-al="Ujë" data-mk="Вода">Water</div>
+                                <div class="menu-item-desc" data-en="Water" data-al="Ujë" data-mk="Вода">Water</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">50 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmfwhmrpo3AjLYj8xRLOwW-21qEJwRjDqRUJwsmEKZC3ZvkiLo_bVRzr4Mv4QLa0weZ9s&usqp=CAU" alt="Sparkling Water" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Sparkling Water" data-al="Ujë me Gaz" data-mk="Газирана Вода">Sparkling Water</div>
+                                <div class="menu-item-desc" data-en="Sparkling Water" data-al="Ujë me Gaz" data-mk="Газирана Вода">Sparkling Water</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">60 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Coca_Cola_Flasche_-_Original_Taste.jpg/250px-Coca_Cola_Flasche_-_Original_Taste.jpg" alt="Coca Cola" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Coca Cola" data-al="Coca Cola" data-mk="Кока Кола">Coca Cola</div>
+                                <div class="menu-item-desc" data-en="Coca Cola" data-al="Coca Cola" data-mk="Кока Кола">Coca Cola</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://repotmarket.com/cdn/shop/products/colazerobotella-min_x630@2x.png?v=1631102931" alt="Coca Cola Zero" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Coca Cola Zero" data-al="Coca Cola Zero" data-mk="Кока Кола Зеро">Coca Cola Zero</div>
+                                <div class="menu-item-desc" data-en="Coca Cola Zero" data-al="Coca Cola Zero" data-mk="Кока Кола Зеро">Coca Cola Zero</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://www.drinksupermarket.com/media/catalog/product/cache/8240349af4c6b2aac4dc703710c4a1d6/3/8/381717001_fanta-orange-330ml_temp.jpg" alt="Fanta Orange" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Fanta Orange" data-al="Fanta Portokalli" data-mk="Фанта Портокал">Fanta Orange</div>
+                                <div class="menu-item-desc" data-en="Fanta Orange" data-al="Fanta Portokalli" data-mk="Фанта Портокал">Fanta Orange</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://londonliquorstore.com/cdn/shop/products/SCH125_BL1.jpg?v=1640326533" alt="Schweppes" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Schweppes" data-al="Schweppes" data-mk="Швепс">Schweppes</div>
+                                <div class="menu-item-desc" data-en="Schweppes" data-al="Schweppes" data-mk="Швепс">Schweppes</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://m.media-amazon.com/images/I/51i+eYwNJAL._SL1500_.jpg" alt="Schweppes Tonic" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Schweppes Tonic" data-al="Schweppes Tonik" data-mk="Швепс Тоник">Schweppes Tonic</div>
+                                <div class="menu-item-desc" data-en="Schweppes Tonic" data-al="Schweppes Tonik" data-mk="Швепс Тоник">Schweppes Tonic</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://gajba.mk/media/2022/07/42357544.png" alt="Schweppes Tangerine" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Schweppes Tangerine" data-al="Schweppes Mandarine" data-mk="Швепс Мандарина">Schweppes Tangerine</div>
+                                <div class="menu-item-desc" data-en="Schweppes Tangerine" data-al="Schweppes Mandarine" data-mk="Швепс Мандарина">Schweppes Tangerine</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://delomall.com/wp-content/webpc-passthru.php?src=https://delomall.com/wp-content/uploads/2022/04/sp-1.jpg&nocache=1" alt="Sprite" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Sprite" data-al="Sprite" data-mk="Спрајт">Sprite</div>
+                                <div class="menu-item-desc" data-en="Sprite" data-al="Sprite" data-mk="Спрајт">Sprite</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://i5.walmartimages.com/seo/Red-Bull-Energy-Drink-189mg-Caffeine-20-fl-oz-Can_beb7fd14-9609-412c-812d-50f0f5891bef.f7c3d96ccbafc845b0a3e34b828a51ed.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" alt="Red Bull" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Red Bull" data-al="Red Bull" data-mk="Ред Бул">Red Bull</div>
+                                <div class="menu-item-desc" data-en="Red Bull" data-al="Red Bull" data-mk="Ред Бул">Red Bull</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">200 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://goldeneagle-ks.com/wp-content/uploads/2023/11/Golden-Eagle-250ml.png" alt="Golden Eagle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Golden Eagle" data-al="Golden Eagle" data-mk="Голден Игл">Golden Eagle</div>
+                                <div class="menu-item-desc" data-en="Golden Eagle" data-al="Golden Eagle" data-mk="Голден Игл">Golden Eagle</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://img.freepik.com/premium-photo/plastic-cup-orange-juice-with-clear-lid-yellow-liquid-bottom_729592-1892.jpg" alt="Orange Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Orange Juice" data-al="Lëng Portokalli" data-mk="Сок од Портокал">Orange Juice</div>
+                                <div class="menu-item-desc" data-en="Orange Juice" data-al="Lëng Portokalli" data-mk="Сок од Портокал">Orange Juice</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://img.freepik.com/premium-photo/berry-smoothie-fruit-juice-straw-drink-wild-berries-cup-isolated-white_770123-2240.jpg?semt=ais_hybrid&w=740" alt="Red Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Red Juice" data-al="Lëng i Kuq" data-mk="Црвен Сок">Red Juice</div>
+                                <div class="menu-item-desc" data-en="Red Juice" data-al="Lëng i Kuq" data-mk="Црвен Сок">Red Juice</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://img.freepik.com/premium-photo/close-up-orange-juice-against-white-background_1048944-17588775.jpg?semt=ais_hybrid&w=740" alt="Wake Me Up Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Wake Me Up Juice" data-al="Wake Me Up Lëng" data-mk="Разбуди ме Сок">Wake Me Up Juice</div>
+                                <div class="menu-item-desc" data-en="Wake Me Up Juice" data-al="Wake Me Up Lëng" data-mk="Разбуди ме Сок">Wake Me Up Juice</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://www.shutterstock.com/image-photo/fresh-mango-ripe-organic-yellow-600nw-2153292643.jpg" alt="Garrison Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Garrison Juice" data-al="Lëng Garrison" data-mk="Гарисон Сок">Garrison Juice</div>
+                                <div class="menu-item-desc" data-en="Garrison Juice" data-al="Lëng Garrison" data-mk="Гарисон Сок">Garrison Juice</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">150 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdnV1tuf3in3Nx5jxlqT37ODHzB4EpsNrEWw&s" alt="Leng Molle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Leng Molle" data-al="Lëng Molle" data-mk="Сок од Јаболко">Leng Molle</div>
+                                <div class="menu-item-desc" data-en="Leng Molle" data-al="Lëng Molle" data-mk="Сок од Јаболко">Leng Molle</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">80 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://scontent.fskp4-2.fna.fbcdn.net/v/t39.30808-6/481998378_3963229760583011_9077771231537665698_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ihKnMDu_SS4Q7kNvwGQHdF6&_nc_oc=AdlM-1Wkz4oxIwicM9-uX_AdGBvs-BWmGir-RDMN7cJQId95VUz_k9KzubzkscyMkco&_nc_zt=23&_nc_ht=scontent.fskp4-2.fna&_nc_gid=PL-Y2B4yu8jkxfC1cytq2w&oh=00_AfLxYLh8npPIKdTgNQH9L9AxNIzNpx-KWRK9PYXX32DJlg&oe=683A7630" alt="Leng Pjeshke" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Peach" data-al="Lëng Pjeshke" data-mk="Сок од Праска">Peach</div>
+                                <div class="menu-item-desc" data-en="Peach" data-al="Lëng Pjeshke" data-mk="Сок од Праска">Peach</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">80 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://balkanappetite.com/cdn/shop/files/IMG-3016_1080x.png?v=1721617844" alt="Ice Tea" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Ice Tea" data-al="Ice Tea" data-mk="Леден Чај">Ice Tea</div>
+                                <div class="menu-item-desc" data-en="Ice Tea" data-al="Ice Tea" data-mk="Леден Чај">Ice Tea</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">80 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://wigmorewholesale.com/image/cache/wkseller/5637/Screenshot%202024-03-27%20105639-637x430.png" alt="Leng Dredhze" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Strawberry Juice" data-al="Lëng Dredhëz" data-mk="Сок од Јагода">Strawberry Juice</div>
+                                <div class="menu-item-desc" data-en="Strawberry Juice" data-al="Lëng Dredhëz" data-mk="Сок од Јагода">Strawberry Juice</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">80 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://jaffachampion.com/wp-content/uploads/2022/03/cherry-scaled.jpg" alt="Leng Vishnje" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Sour Cherry" data-al="Lëng Vishnje" data-mk="Сок од Вишна">Sour Cherry</div>
+                                <div class="menu-item-desc" data-en="Sour Cherry" data-al="Lëng Vishnje" data-mk="Сок од Вишна">Sour Cherry</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">80 MKD</div>
+                    </div>
 
                 </div>
             </div>
 
-        <!-- Fresh Juices -->
-        
-         <div class="menu-section fade-in">
-                <h3 data-en="Fresh Juices" data-al="Juice Natyral" data-mk="Ладни Пијалоци">Fresh Juice</h3>
+            <!-- Beers & Wines -->
+            <div class="menu-section fade-in">
+                <h3 data-en="Beers & Wines" data-al="Birra & Vera" data-mk="Пива и Вина">Beers & Wines</h3>
                 <div class="menu-grid">
-                    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://img.freepik.com/premium-photo/plastic-cup-orange-juice-with-clear-lid-yellow-liquid-bottom_729592-1892.jpg" alt="Orange Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Orange Juice" data-al="Lëng Portokalli" data-mk="Сок од Портокал">Orange Juice</div>
-                <div class="menu-item-desc" data-en="Orange Juice" data-al="Lëng Portokalli" data-mk="Сок од Портокал">Orange Juice</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://img.freepik.com/premium-photo/berry-smoothie-fruit-juice-straw-drink-wild-berries-cup-isolated-white_770123-2240.jpg?semt=ais_hybrid&w=740" alt="Red Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Red Juice" data-al="Lëng i Kuq" data-mk="Црвен Сок">Red Juice</div>
-                <div class="menu-item-desc" data-en="Red Juice" data-al="Lëng i Kuq" data-mk="Црвен Сок">Red Juice</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://img.freepik.com/premium-photo/close-up-orange-juice-against-white-background_1048944-17588775.jpg?semt=ais_hybrid&w=740" alt="Wake Me Up Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Wake Me Up Juice" data-al="Wake Me Up Lëng" data-mk="Разбуди ме Сок">Wake Me Up Juice</div>
-                <div class="menu-item-desc" data-en="Wake Me Up Juice" data-al="Wake Me Up Lëng" data-mk="Разбуди ме Сок">Wake Me Up Juice</div>
-            </div>
-        </div>
-        <div class="menu-item-price">100 MKD</div>
-    </div>
-    
-    <div class="menu-item">
-        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-            <img src="https://www.shutterstock.com/image-photo/fresh-mango-ripe-organic-yellow-600nw-2153292643.jpg" alt="Garrison Juice" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-            <div>
-                <div class="menu-item-name" data-en="Garrison Juice" data-al="Lëng Garrison" data-mk="Гарисон Сок">Garrison Juice</div>
-                <div class="menu-item-desc" data-en="Garrison Juice" data-al="Lëng Garrison" data-mk="Гарисон Сок">Garrison Juice</div>
-            </div>
-        </div>
-        <div class="menu-item-price">150 MKD</div>
-    </div>
-    
-    </div>
-    </div>
 
-        <!-- Beers & Wines -->
-<div class="menu-section fade-in">
-    <h3 data-en="Beers & Wines" data-al="Birra & Vera" data-mk="Пива и Вина">Beers & Wines</h3>
-    <div class="menu-grid">
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://gajba.mk/media/2022/07/53102164-1.png" alt="Skopsko" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Skopsko" data-al="Skopsko" data-mk="Скопско">Skopsko</div>
+                                <div class="menu-item-desc" data-en="Local Macedonian beer" data-al="Birrë vendase maqedonase" data-mk="Домашно македонско пиво">Local Macedonian beer</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
 
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://gajba.mk/media/2022/07/53102164-1.png" alt="Skopsko" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Skopsko" data-al="Skopsko" data-mk="Скопско">Skopsko</div>
-                    <div class="menu-item-desc" data-en="Local Macedonian beer" data-al="Birrë vendase maqedonase" data-mk="Домашно македонско пиво">Local Macedonian beer</div>
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://webshop.rotodinamic.hr/image/cache/cache/2001-3000/2173/main/647a-01753-0-3-1200x630.jpg" alt="Tuborg" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Tuborg" data-al="Tuborg" data-mk="Туборг">Tuborg</div>
+                                <div class="menu-item-desc" data-en="Danish lager beer" data-al="Birrë daneze" data-mk="Данско пиво">Danish lager beer</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://players.mk/wp-content/uploads/2021/09/heinkeken-makedonija.jpg" alt="Heineken" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Heineken" data-al="Heineken" data-mk="Хајнекен">Heineken</div>
+                                <div class="menu-item-desc" data-en="Premium Dutch beer" data-al="Birrë premium holandeze" data-mk="Премиум холандско пиво">Premium Dutch beer</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://produits.bienmanger.com/34491-0w470h470_Corona_Extra_Mexican_Blonde_Beer.jpg" alt="Heineken" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Corona" data-al="Korona" data-mk="Корона">Corona</div>
+                                <div class="menu-item-desc" data-en="Mexican Beer" data-al="Birrë Meksikane" data-mk="Мексично Светло Пиво">Mexican Beer</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">200 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://yushop.ch/wp-content/uploads/2021/09/2.-ZLATEN-DAB-0.33-1-300x300.jpg" alt="Zlaten Dab" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Zlaten Dab" data-al="Zlaten Dab" data-mk="Златен Даб">Zlaten Dab</div>
+                                <div class="menu-item-desc" data-en="Golden Macedonian beer" data-al="Birrë maqedonase e artë" data-mk="Златно македонско пиво">Golden Macedonian beer</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">100 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://gajba.mk/media/2022/07/5310008004845-3-1.jpg" alt="Alexandria Small" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Alexandria (Small)" data-al="Aleksandria (e Vogël)" data-mk="Александрија (мало)">Alexandria (Small)</div>
+                                <div class="menu-item-desc" data-en="Red or white wine glass" data-al="Gotë vere e kuqe ose e bardhë" data-mk="Чаша црвено или бело вино">Red or white wine glass</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">170 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://tikves.com.mk/wp-content/uploads/2019/06/Alexandria_White.jpg" alt="Alexandria Bottle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Alexandria (Bottle)" data-al="Aleksandria (Shishe)" data-mk="Александрија (шише)">Alexandria (Bottle)</div>
+                                <div class="menu-item-desc" data-en="Full bottle of Alexandria wine" data-al="Shishe vere Aleksandria" data-mk="Шише вино Александрија">Full bottle of Alexandria wine</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">700 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://fino-vino.ch/images/com_hikashop/upload/tga-za-jug-von-tikves-2dl.png" alt="T'ga za Jug Small" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="T'ga za Jug (Small)" data-al="T'ga për Jug (e Vogël)" data-mk="Т'га за Југ (мало)">T'ga za Jug (Small)</div>
+                                <div class="menu-item-desc" data-en="Glass of T'ga za Jug wine" data-al="Gotë verë T'ga për Jug" data-mk="Чаша Т'га за Југ вино">Glass of T'ga za Jug wine</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">200 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://tikves.com.mk/wp-content/uploads/2021/12/T_GA_new.jpg" alt="T'ga za Jug Bottle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="T'ga za Jug (Bottle)" data-al="T'ga për Jug (Shishe)" data-mk="Т'га за Југ (шише)">T'ga za Jug (Bottle)</div>
+                                <div class="menu-item-desc" data-en="Full bottle of T'ga za Jug wine" data-al="Shishe e plotë e verës T'ga për Jug" data-mk="Шише Т'га за Југ вино">Full bottle of T'ga za Jug wine</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">1000 MKD</div>
+                    </div>
+
                 </div>
             </div>
-            <div class="menu-item-price">100 MKD</div>
-        </div>
 
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://webshop.rotodinamic.hr/image/cache/cache/2001-3000/2173/main/647a-01753-0-3-1200x630.jpg" alt="Tuborg" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Tuborg" data-al="Tuborg" data-mk="Туборг">Tuborg</div>
-                    <div class="menu-item-desc" data-en="Danish lager beer" data-al="Birrë daneze" data-mk="Данско пиво">Danish lager beer</div>
+            <div class="menu-section fade-in">
+                <h3 data-en="Mocktails" data-al="Mocktails (Pa Alkool)" data-mk="Безалкохолни Коктели">Mocktails</h3>
+                <div class="menu-grid">
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://cocktailbart.de/wp-content/uploads/2024/06/Blue-Hawaii-Cocktail.jpg" alt="Blue Hawai" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Blue Hawai" data-al="Blue Hawai" data-mk="Блу Хаваи">Blue Hawai</div>
+                                <div class="menu-item-desc" data-en="Tropical juice blend with pineapple and blue syrup" data-al="Pije tropikale me ananas dhe shurup blu" data-mk="Тропски сок со ананас и син сируп">Tropical juice blend with pineapple and blue syrup</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">400 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://iheartumami.com/wp-content/uploads/2018/08/Watermelon-peach-mocktail-recipe.jpg" alt="Watermelon" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Watermelon" data-al="Shalqi" data-mk="Лубеница">Watermelon</div>
+                                <div class="menu-item-desc" data-en="Fresh watermelon juice with mint" data-al="Lëng shalqiri i freskët me mentë" data-mk="Свеж сок од лубеница со мента">Fresh watermelon juice with mint</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">380 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://imbibemagazine.com/wp-content/uploads/2018/03/seven-year-itch-vertical2-crdt-tk.jpg" alt="Strawberry" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Strawberry" data-al="Luleshtrydhe" data-mk="Јагода">Strawberry</div>
+                                <div class="menu-item-desc" data-en="Strawberry purée with citrus and ice" data-al="Pure luleshtrydheje me agrume dhe akull" data-mk="Јагодово пире со цитрус и мраз">Strawberry purée with citrus and ice</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">380 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://www.acouplecooks.com/wp-content/uploads/2022/10/Pina-Colada-056.jpg" alt="Pina Colada" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Pina Colada" data-al="Pina Colada" data-mk="Пина Колада">Pina Colada</div>
+                                <div class="menu-item-desc" data-en="Coconut cream with pineapple juice" data-al="Krem kokosi me lëng ananasi" data-mk="Кокосов крем со ананасов сок">Coconut cream with pineapple juice</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">420 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://images.cocktailwave.com/fruit-punch.png" alt="Fruit Punch" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Fruit Punch" data-al="Përzierje Frutash" data-mk="Овошен Пунч">Fruit Punch</div>
+                                <div class="menu-item-desc" data-en="Mixed tropical fruit juices" data-al="Lëngje të përziera frutash tropikale" data-mk="Мешани тропски овошни сокови">Mixed tropical fruit juices</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">350 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://www.cruzanrum.com/sites/default/files/styles/original/public/2021-11/CZ_Batch_7_CocktailCard_1000x1000_Mojito_Static%20%281%29.png.webp?itok=IRCdLXGt" alt="Mojito" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Mojito" data-al="Mojito" data-mk="Мохито">Mojito</div>
+                                <div class="menu-item-desc" data-en="Lime, mint, sugar and soda water" data-al="Gëlqere, mentë, sheqer dhe ujë sodik" data-mk="Лајм, мента, шеќер и сода вода">Lime, mint, sugar and soda water</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">370 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://images.surferseo.art/2c1a821e-ebd9-4940-8039-2bda2cb6459c.jpeg" alt="Cocktail Redbull" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Cocktail Redbull" data-al="Koktel Redbull" data-mk="Коктел Редбул">Cocktail Redbull</div>
+                                <div class="menu-item-desc" data-en="Redbull with citrus and ice" data-al="Redbull me agrume dhe akull" data-mk="Редбул со цитрус и мраз">Redbull with citrus and ice</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">450 MKD</div>
+                    </div>
+
                 </div>
             </div>
-            <div class="menu-item-price">100 MKD</div>
-        </div>
 
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://players.mk/wp-content/uploads/2021/09/heinkeken-makedonija.jpg" alt="Heineken" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Heineken" data-al="Heineken" data-mk="Хајнекен">Heineken</div>
-                    <div class="menu-item-desc" data-en="Premium Dutch beer" data-al="Birrë premium holandeze" data-mk="Премиум холандско пиво">Premium Dutch beer</div>
+            <div class="menu-section fade-in">
+                <h3 data-en="Cocktails" data-al="Koktele (Me Alkool)" data-mk="Коктели (Со Алкохол)">Cocktails</h3>
+                <div class="menu-grid">
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://www.acouplecooks.com/wp-content/uploads/2021/07/Malibu-Bay-Breeze-007s.jpg" alt="Malibu Bay Breeze" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Malibu Bay Breeze" data-al="Malibu Bay Breeze" data-mk="Малибу Беј Бриз">Malibu Bay Breeze</div>
+                                <div class="menu-item-desc" data-en="Malibu rum, cranberry juice, pineapple juice" data-al="Rum Malibu, lëng boronice, lëng ananasi" data-mk="Малибу рум, сок од брусница, ананасов сок">Malibu rum, cranberry juice, pineapple juice</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">450 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://barossadistilling.com/wp-content/uploads/2023/07/Gin-Daisy-Cocktail.png" alt="Gin Daisy" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Gin Daisy" data-al="Gin Daisy" data-mk="Џин Дејзи">Gin Daisy</div>
+                                <div class="menu-item-desc" data-en="Gin, lemon juice, grenadine, soda" data-al="Xhin, lëng limoni, grenadinë, sodë" data-mk="Џин, лимонов сок, гренадин, сода">Gin, lemon juice, grenadine, soda</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">380 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://images.immediate.co.uk/production/volatile/sites/30/2018/04/tequila-sunrise-18167a1.jpg" alt="Tequila Sunrise" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Tequila Sunrise" data-al="Tequila Sunrise" data-mk="Текила Санрајз">Tequila Sunrise</div>
+                                <div class="menu-item-desc" data-en="Tequila, orange juice, grenadine" data-al="Tekilë, lëng portokalli, grenadinë" data-mk="Текила, сок од портокал, гренадин">Tequila, orange juice, grenadine</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">420 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://cubavodka.com/wp-content/uploads/2017/12/drink-passion-sunrise-cuba-passion-360x490.png" alt="Mama Mia" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Mama Mia" data-al="Mama Mia" data-mk="Мама Миа">Mama Mia</div>
+                                <div class="menu-item-desc" data-en="Vodka, strawberry purée, lime, mint" data-al="Vodkë, pure luleshtrydheje, gëlqere, mentë" data-mk="Водка, јагодово пире, лајм, мента">Vodka, strawberry purée, lime, mint</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">350 MKD</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+                            <img src="https://3f4c2184e060ce99111b-f8c0985c8cb63a71df5cb7fd729edcab.ssl.cf2.rackcdn.com/media/16339/rainbowrumslushies.jpg" alt="Rainbow Paradise" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
+                            <div>
+                                <div class="menu-item-name" data-en="Rainbow Paradise" data-al="Parajsa me Ngjyra" data-mk="Раинбоу Парадајс">Rainbow Paradise</div>
+                                <div class="menu-item-desc" data-en="Rum, orange juice, blue curaçao, grenadine" data-al="Rum, lëng portokalli, curaçao blu, grenadinë" data-mk="Рум, портокалов сок, сино кирасо, гренадин">Rum, orange juice, blue curaçao, grenadine</div>
+                            </div>
+                        </div>
+                        <div class="menu-item-price">400 MKD</div>
+                    </div>
+
                 </div>
             </div>
-            <div class="menu-item-price">100 MKD</div>
-        </div>
 
-          <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://produits.bienmanger.com/34491-0w470h470_Corona_Extra_Mexican_Blonde_Beer.jpg" alt="Heineken" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Corona" data-al="Korona" data-mk="Корона">Corona</div>
-                    <div class="menu-item-desc" data-en="Mexican Beer" data-al="Birrë Meksikane" data-mk="Мексично Светло Пиво">Mexican Beer</div>
+            <div class="menu-section fade-in">
+                <h3 data-en="Alcoholic Drinks" data-al="Pije Alkoolike" data-mk="Алкохолни Пијалоци">Alcoholic Drinks</h3>
+                <div class="menu-grid">
+                    <div class="shisha-flavors">
+                        <!-- Vodka -->
+                        <div class="flavor-item" data-en="Vodka Absolut" data-al="Vodka Absolut" data-mk="Водка Абсолут">Vodka Absolut - 250 MKD</div>
+                        <div class="flavor-item" data-en="Vodka Smirnoff" data-al="Vodka Smirnoff" data-mk="Водка Смирноф">Vodka Smirnoff - 240 MKD</div>
+                        <div class="flavor-item" data-en="Vodka Belvedere" data-al="Vodka Belvedere" data-mk="Водка Белведере">Vodka Belvedere - 450 MKD</div>
+                        <div class="flavor-item" data-en="Vodka Grey Goose" data-al="Vodka Grey Goose" data-mk="Водка Греј Гус">Vodka Grey Goose - 480 MKD</div>
+
+                        <!-- Whiskey -->
+                        <div class="flavor-item" data-en="Jack Daniel's" data-al="Jack Daniel's" data-mk="Џек Даниелс">Jack Daniel's - 350 MKD</div>
+                        <div class="flavor-item" data-en="Jack Daniel's Honey" data-al="Jack Daniel's Mjaltë" data-mk="Џек Даниелс Мед">Jack Daniel's Honey - 360 MKD</div>
+                        <div class="flavor-item" data-en="Jack Daniel's Apple" data-al="Jack Daniel's Mollë" data-mk="Џек Даниелс Јаболко">Jack Daniel's Apple - 360 MKD</div>
+                        <div class="flavor-item" data-en="Jameson Irish Whiskey" data-al="Jameson Irish Whiskey" data-mk="Џејмсон Ириш Виски">Jameson Irish Whiskey - 340 MKD</div>
+                        <div class="flavor-item" data-en="Johnnie Walker Black Label" data-al="Johnnie Walker Black Label" data-mk="Џони Вокер Блек Лејбл">Johnnie Walker Black Label - 450 MKD</div>
+                        <div class="flavor-item" data-en="Johnnie Walker Red Label" data-al="Johnnie Walker Red Label" data-mk="Џони Вокер Ред Лејбл">Johnnie Walker Red Label - 330 MKD</div>
+                        <div class="flavor-item" data-en="Chivas Regal" data-al="Chivas Regal" data-mk="Чивас Регал">Chivas Regal - 460 MKD</div>
+                        <div class="flavor-item" data-en="Ballantine's" data-al="Ballantine's" data-mk="Балантајнс">Ballantine's - 320 MKD</div>
+
+                        <!-- Gin -->
+                        <div class="flavor-item" data-en="Bombay Sapphire Gin" data-al="Xhin Bombay Sapphire" data-mk="Џин Бомбај Сафир">Bombay Sapphire Gin - 370 MKD</div>
+                        <div class="flavor-item" data-en="Tanqueray Gin" data-al="Xhin Tanqueray" data-mk="Џин Танкереј">Tanqueray Gin - 390 MKD</div>
+                        <div class="flavor-item" data-en="Beefeater Gin" data-al="Xhin Beefeater" data-mk="Џин Бифитер">Beefeater Gin - 310 MKD</div>
+                        <div class="flavor-item" data-en="SAX Gin Classic" data-al="Xhin SAX Klasik" data-mk="Џин САКС Класик">SAX Gin Classic - 280 MKD</div>
+                        <div class="flavor-item" data-en="SAX Gin Pink" data-al="Xhin SAX Pink" data-mk="Џин САКС Пинк">SAX Gin Pink - 290 MKD</div>
+
+
+                        <!-- Other Spirits -->
+                        <div class="flavor-item" data-en="Hennessy" data-al="Hennessy" data-mk="Хенеси">Hennessy - 600 MKD</div>
+                        <div class="flavor-item" data-en="Tequila" data-al="Tekilë" data-mk="Текила">Tequila - 290 MKD</div>
+                        <div class="flavor-item" data-en="Badel" data-al="Badel" data-mk="Бадел">Badel - 250 MKD</div>
+                        <div class="flavor-item" data-en="Ouzo Plomari" data-al="Ouzo Plomari" data-mk="Узо Пломари">Ouzo Plomari - 270 MKD</div>
+                        <div class="flavor-item" data-en="Stock 84" data-al="Stock 84" data-mk="Сток 84">Stock 84 - 280 MKD</div>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item-price">200 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://yushop.ch/wp-content/uploads/2021/09/2.-ZLATEN-DAB-0.33-1-300x300.jpg" alt="Zlaten Dab" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Zlaten Dab" data-al="Zlaten Dab" data-mk="Златен Даб">Zlaten Dab</div>
-                    <div class="menu-item-desc" data-en="Golden Macedonian beer" data-al="Birrë maqedonase e artë" data-mk="Златно македонско пиво">Golden Macedonian beer</div>
-                </div>
-            </div>
-            <div class="menu-item-price">100 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://gajba.mk/media/2022/07/5310008004845-3-1.jpg" alt="Alexandria Small" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Alexandria (Small)" data-al="Aleksandria (e Vogël)" data-mk="Александрија (мало)">Alexandria (Small)</div>
-                    <div class="menu-item-desc" data-en="Red or white wine glass" data-al="Gotë vere e kuqe ose e bardhë" data-mk="Чаша црвено или бело вино">Red or white wine glass</div>
-                </div>
-            </div>
-            <div class="menu-item-price">170 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://tikves.com.mk/wp-content/uploads/2019/06/Alexandria_White.jpg" alt="Alexandria Bottle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Alexandria (Bottle)" data-al="Aleksandria (Shishe)" data-mk="Александрија (шише)">Alexandria (Bottle)</div>
-                    <div class="menu-item-desc" data-en="Full bottle of Alexandria wine" data-al="Shishe vere Aleksandria" data-mk="Шише вино Александрија">Full bottle of Alexandria wine</div>
-                </div>
-            </div>
-            <div class="menu-item-price">700 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://fino-vino.ch/images/com_hikashop/upload/tga-za-jug-von-tikves-2dl.png" alt="T'ga za Jug Small" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="T'ga za Jug (Small)" data-al="T'ga për Jug (e Vogël)" data-mk="Т'га за Југ (мало)">T'ga za Jug (Small)</div>
-                    <div class="menu-item-desc" data-en="Glass of T'ga za Jug wine" data-al="Gotë verë T'ga për Jug" data-mk="Чаша Т'га за Југ вино">Glass of T'ga za Jug wine</div>
-                </div>
-            </div>
-            <div class="menu-item-price">200 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://tikves.com.mk/wp-content/uploads/2021/12/T_GA_new.jpg" alt="T'ga za Jug Bottle" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="T'ga za Jug (Bottle)" data-al="T'ga për Jug (Shishe)" data-mk="Т'га за Југ (шише)">T'ga za Jug (Bottle)</div>
-                    <div class="menu-item-desc" data-en="Full bottle of T'ga za Jug wine" data-al="Shishe e plotë e verës T'ga për Jug" data-mk="Шише Т'га за Југ вино">Full bottle of T'ga za Jug wine</div>
-                </div>
-            </div>
-            <div class="menu-item-price">1000 MKD</div>
-        </div>
-
-    </div>
-</div>
-
-           <div class="menu-section fade-in">
-    <h3 data-en="Mocktails" data-al="Mocktails (Pa Alkool)" data-mk="Безалкохолни Коктели">Mocktails</h3>
-    <div class="menu-grid">
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://cocktailbart.de/wp-content/uploads/2024/06/Blue-Hawaii-Cocktail.jpg" alt="Blue Hawai" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Blue Hawai" data-al="Blue Hawai" data-mk="Блу Хаваи">Blue Hawai</div>
-                    <div class="menu-item-desc" data-en="Tropical juice blend with pineapple and blue syrup" data-al="Pije tropikale me ananas dhe shurup blu" data-mk="Тропски сок со ананас и син сируп">Tropical juice blend with pineapple and blue syrup</div>
-                </div>
-            </div>
-            <div class="menu-item-price">400 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://iheartumami.com/wp-content/uploads/2018/08/Watermelon-peach-mocktail-recipe.jpg" alt="Watermelon" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Watermelon" data-al="Shalqi" data-mk="Лубеница">Watermelon</div>
-                    <div class="menu-item-desc" data-en="Fresh watermelon juice with mint" data-al="Lëng shalqiri i freskët me mentë" data-mk="Свеж сок од лубеница со мента">Fresh watermelon juice with mint</div>
-                </div>
-            </div>
-            <div class="menu-item-price">380 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://imbibemagazine.com/wp-content/uploads/2018/03/seven-year-itch-vertical2-crdt-tk.jpg" alt="Strawberry" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Strawberry" data-al="Luleshtrydhe" data-mk="Јагода">Strawberry</div>
-                    <div class="menu-item-desc" data-en="Strawberry purée with citrus and ice" data-al="Pure luleshtrydheje me agrume dhe akull" data-mk="Јагодово пире со цитрус и мраз">Strawberry purée with citrus and ice</div>
-                </div>
-            </div>
-            <div class="menu-item-price">380 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://www.acouplecooks.com/wp-content/uploads/2022/10/Pina-Colada-056.jpg" alt="Pina Colada" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Pina Colada" data-al="Pina Colada" data-mk="Пина Колада">Pina Colada</div>
-                    <div class="menu-item-desc" data-en="Coconut cream with pineapple juice" data-al="Krem kokosi me lëng ananasi" data-mk="Кокосов крем со ананасов сок">Coconut cream with pineapple juice</div>
-                </div>
-            </div>
-            <div class="menu-item-price">420 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://images.cocktailwave.com/fruit-punch.png" alt="Fruit Punch" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Fruit Punch" data-al="Përzierje Frutash" data-mk="Овошен Пунч">Fruit Punch</div>
-                    <div class="menu-item-desc" data-en="Mixed tropical fruit juices" data-al="Lëngje të përziera frutash tropikale" data-mk="Мешани тропски овошни сокови">Mixed tropical fruit juices</div>
-                </div>
-            </div>
-            <div class="menu-item-price">350 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://www.cruzanrum.com/sites/default/files/styles/original/public/2021-11/CZ_Batch_7_CocktailCard_1000x1000_Mojito_Static%20%281%29.png.webp?itok=IRCdLXGt" alt="Mojito" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Mojito" data-al="Mojito" data-mk="Мохито">Mojito</div>
-                    <div class="menu-item-desc" data-en="Lime, mint, sugar and soda water" data-al="Gëlqere, mentë, sheqer dhe ujë sodik" data-mk="Лајм, мента, шеќер и сода вода">Lime, mint, sugar and soda water</div>
-                </div>
-            </div>
-            <div class="menu-item-price">370 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://images.surferseo.art/2c1a821e-ebd9-4940-8039-2bda2cb6459c.jpeg" alt="Cocktail Redbull" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Cocktail Redbull" data-al="Koktel Redbull" data-mk="Коктел Редбул">Cocktail Redbull</div>
-                    <div class="menu-item-desc" data-en="Redbull with citrus and ice" data-al="Redbull me agrume dhe akull" data-mk="Редбул со цитрус и мраз">Redbull with citrus and ice</div>
-                </div>
-            </div>
-            <div class="menu-item-price">450 MKD</div>
-        </div>
-
-    </div>
-</div>
-
-<div class="menu-section fade-in">
-    <h3 data-en="Cocktails" data-al="Koktele (Me Alkool)" data-mk="Коктели (Со Алкохол)">Cocktails</h3>
-    <div class="menu-grid">
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://www.acouplecooks.com/wp-content/uploads/2021/07/Malibu-Bay-Breeze-007s.jpg" alt="Malibu Bay Breeze" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Malibu Bay Breeze" data-al="Malibu Bay Breeze" data-mk="Малибу Беј Бриз">Malibu Bay Breeze</div>
-                    <div class="menu-item-desc" data-en="Malibu rum, cranberry juice, pineapple juice" data-al="Rum Malibu, lëng boronice, lëng ananasi" data-mk="Малибу рум, сок од брусница, ананасов сок">Malibu rum, cranberry juice, pineapple juice</div>
-                </div>
-            </div>
-            <div class="menu-item-price">450 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://barossadistilling.com/wp-content/uploads/2023/07/Gin-Daisy-Cocktail.png" alt="Gin Daisy" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Gin Daisy" data-al="Gin Daisy" data-mk="Џин Дејзи">Gin Daisy</div>
-                    <div class="menu-item-desc" data-en="Gin, lemon juice, grenadine, soda" data-al="Xhin, lëng limoni, grenadinë, sodë" data-mk="Џин, лимонов сок, гренадин, сода">Gin, lemon juice, grenadine, soda</div>
-                </div>
-            </div>
-            <div class="menu-item-price">380 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://images.immediate.co.uk/production/volatile/sites/30/2018/04/tequila-sunrise-18167a1.jpg" alt="Tequila Sunrise" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Tequila Sunrise" data-al="Tequila Sunrise" data-mk="Текила Санрајз">Tequila Sunrise</div>
-                    <div class="menu-item-desc" data-en="Tequila, orange juice, grenadine" data-al="Tekilë, lëng portokalli, grenadinë" data-mk="Текила, сок од портокал, гренадин">Tequila, orange juice, grenadine</div>
-                </div>
-            </div>
-            <div class="menu-item-price">420 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://cubavodka.com/wp-content/uploads/2017/12/drink-passion-sunrise-cuba-passion-360x490.png" alt="Mama Mia" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Mama Mia" data-al="Mama Mia" data-mk="Мама Миа">Mama Mia</div>
-                    <div class="menu-item-desc" data-en="Vodka, strawberry purée, lime, mint" data-al="Vodkë, pure luleshtrydheje, gëlqere, mentë" data-mk="Водка, јагодово пире, лајм, мента">Vodka, strawberry purée, lime, mint</div>
-                </div>
-            </div>
-            <div class="menu-item-price">350 MKD</div>
-        </div>
-
-        <div class="menu-item">
-            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-                <img src="https://3f4c2184e060ce99111b-f8c0985c8cb63a71df5cb7fd729edcab.ssl.cf2.rackcdn.com/media/16339/rainbowrumslushies.jpg" alt="Rainbow Paradise" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">
-                <div>
-                    <div class="menu-item-name" data-en="Rainbow Paradise" data-al="Parajsa me Ngjyra" data-mk="Раинбоу Парадајс">Rainbow Paradise</div>
-                    <div class="menu-item-desc" data-en="Rum, orange juice, blue curaçao, grenadine" data-al="Rum, lëng portokalli, curaçao blu, grenadinë" data-mk="Рум, портокалов сок, сино кирасо, гренадин">Rum, orange juice, blue curaçao, grenadine</div>
-                </div>
-            </div>
-            <div class="menu-item-price">400 MKD</div>
-        </div>
-
-    </div>
-</div>
-
-<div class="menu-section fade-in">
-    <h3 data-en="Alcoholic Drinks" data-al="Pije Alkoolike" data-mk="Алкохолни Пијалоци">Alcoholic Drinks</h3>
-    <div class="menu-grid">
-        <div class="shisha-flavors">
-            <!-- Vodka -->
-            <div class="flavor-item" data-en="Vodka Absolut" data-al="Vodka Absolut" data-mk="Водка Абсолут">Vodka Absolut - 250 MKD</div>
-            <div class="flavor-item" data-en="Vodka Smirnoff" data-al="Vodka Smirnoff" data-mk="Водка Смирноф">Vodka Smirnoff - 240 MKD</div>
-            <div class="flavor-item" data-en="Vodka Belvedere" data-al="Vodka Belvedere" data-mk="Водка Белведере">Vodka Belvedere - 450 MKD</div>
-            <div class="flavor-item" data-en="Vodka Grey Goose" data-al="Vodka Grey Goose" data-mk="Водка Греј Гус">Vodka Grey Goose - 480 MKD</div>
-
-            <!-- Whiskey -->
-            <div class="flavor-item" data-en="Jack Daniel's" data-al="Jack Daniel's" data-mk="Џек Даниелс">Jack Daniel's - 350 MKD</div>
-            <div class="flavor-item" data-en="Jack Daniel's Honey" data-al="Jack Daniel's Mjaltë" data-mk="Џек Даниелс Мед">Jack Daniel's Honey - 360 MKD</div>
-            <div class="flavor-item" data-en="Jack Daniel's Apple" data-al="Jack Daniel's Mollë" data-mk="Џек Даниелс Јаболко">Jack Daniel's Apple - 360 MKD</div>
-            <div class="flavor-item" data-en="Jameson Irish Whiskey" data-al="Jameson Irish Whiskey" data-mk="Џејмсон Ириш Виски">Jameson Irish Whiskey - 340 MKD</div>
-            <div class="flavor-item" data-en="Johnnie Walker Black Label" data-al="Johnnie Walker Black Label" data-mk="Џони Вокер Блек Лејбл">Johnnie Walker Black Label - 450 MKD</div>
-            <div class="flavor-item" data-en="Johnnie Walker Red Label" data-al="Johnnie Walker Red Label" data-mk="Џони Вокер Ред Лејбл">Johnnie Walker Red Label - 330 MKD</div>
-            <div class="flavor-item" data-en="Chivas Regal" data-al="Chivas Regal" data-mk="Чивас Регал">Chivas Regal - 460 MKD</div>
-            <div class="flavor-item" data-en="Ballantine's" data-al="Ballantine's" data-mk="Балантајнс">Ballantine's - 320 MKD</div>
-
-            <!-- Gin -->
-            <div class="flavor-item" data-en="Bombay Sapphire Gin" data-al="Xhin Bombay Sapphire" data-mk="Џин Бомбај Сафир">Bombay Sapphire Gin - 370 MKD</div>
-            <div class="flavor-item" data-en="Tanqueray Gin" data-al="Xhin Tanqueray" data-mk="Џин Танкереј">Tanqueray Gin - 390 MKD</div>
-            <div class="flavor-item" data-en="Beefeater Gin" data-al="Xhin Beefeater" data-mk="Џин Бифитер">Beefeater Gin - 310 MKD</div>
-            <div class="flavor-item" data-en="SAX Gin Classic" data-al="Xhin SAX Klasik" data-mk="Џин САКС Класик">SAX Gin Classic - 280 MKD</div>
-            <div class="flavor-item" data-en="SAX Gin Pink" data-al="Xhin SAX Pink" data-mk="Џин САКС Пинк">SAX Gin Pink - 290 MKD</div>
-
-
-            <!-- Other Spirits -->
-            <div class="flavor-item" data-en="Hennessy" data-al="Hennessy" data-mk="Хенеси">Hennessy - 600 MKD</div>
-            <div class="flavor-item" data-en="Tequila" data-al="Tekilë" data-mk="Текила">Tequila - 290 MKD</div>
-            <div class="flavor-item" data-en="Badel" data-al="Badel" data-mk="Бадел">Badel - 250 MKD</div>
-            <div class="flavor-item" data-en="Ouzo Plomari" data-al="Ouzo Plomari" data-mk="Узо Пломари">Ouzo Plomari - 270 MKD</div>
-            <div class="flavor-item" data-en="Stock 84" data-al="Stock 84" data-mk="Сток 84">Stock 84 - 280 MKD</div>
-        </div>
-    </div>
-</div>
 
             <div class="menu-section fade-in">
                 <h3 data-en="Premium Shisha Menu" data-al="Menyja Premium e Shishës" data-mk="Премиум Наргиле Мени">Premium Shisha Menu</h3>
@@ -1604,101 +1534,101 @@
     </div>
 
     <!-- Gallery Page -->
-<div id="gallery" class="page">
-    <div class="container">
-        <h2 class="page-title" data-en="Gallery" data-al="Galeria" data-mk="Галерија">Gallery</h2>
-        <div class="gallery-grid fade-in">
+    <div id="gallery" class="page">
+        <div class="container">
+            <h2 class="page-title" data-en="Gallery" data-al="Galeria" data-mk="Галерија">Gallery</h2>
+            <div class="gallery-grid fade-in">
 
-            <div class="gallery-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNP-QecKsxSVKjvksOL3V-OW0l8Szyo4Otng&s" alt="Bar Interior">
-                <span data-en="Bar Interior" data-al="Brendësia e Barit" data-mk="Ентериер на Барот">Bar Interior</span>
-            </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNP-QecKsxSVKjvksOL3V-OW0l8Szyo4Otng&s" alt="Bar Interior">
+                    <span data-en="Bar Interior" data-al="Brendësia e Barit" data-mk="Ентериер на Барот">Bar Interior</span>
+                </div>
 
-            <div class="gallery-item">
-                <img src="https://static.vecteezy.com/system/resources/previews/026/378/566/non_2x/various-cocktail-collection-with-varying-glassware-handmade-craft-cocktails-dalcoholic-beverages-on-the-bar-in-the-restaurant-behind-it-is-a-liquor-showcase-photo.jpg" alt="Cocktail Collection">
-                <span data-en="Cocktail Collection" data-al="Koleksioni i Kokteleve" data-mk="Колекција Коктели">Cocktail Collection</span>
-            </div>
-            
-            <div class="gallery-item">
-                <img src="https://nuvomagazine.com/wp-content/uploads/2019/11/assorted-wine-bottles-1283219.jpg" alt="Alcohol Collection">
-                <span data-en="Alcohol Collection" data-al="Koleksioni i Pijeve Alkoolike" data-mk="Колекција На Алкохолички Пијалоци">Alcohol Collection</span>
-            </div>
+                <div class="gallery-item">
+                    <img src="https://static.vecteezy.com/system/resources/previews/026/378/566/non_2x/various-cocktail-collection-with-varying-glassware-handmade-craft-cocktails-dalcoholic-beverages-on-the-bar-in-the-restaurant-behind-it-is-a-liquor-showcase-photo.jpg" alt="Cocktail Collection">
+                    <span data-en="Cocktail Collection" data-al="Koleksioni i Kokteleve" data-mk="Колекција Коктели">Cocktail Collection</span>
+                </div>
 
-            <div class="gallery-item">
-                <img src="https://img.freepik.com/premium-photo/hookah-shisha-with-glass-flask-metal-bowl-with-colored-smoke_118086-3035.jpg" alt="Shisha">
-                <span data-en="Shisha" data-al="Shisha" data-mk="Наргиле">Shisha</span>
-            </div>
-            
-            <div class="gallery-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlvbLO2HYb33-bCYG6smrHGSCMjtkyl638j4fXv5ymb9u3IU3F5C0LOBwrwE2on24INqg&usqp=CAU" alt="Night Events">
-                <span data-en="Night Events" data-al="Ngjarjet e Natës" data-mk="Ноќни Настани">Night Events</span>
-            </div>
-            
-            <div class="gallery-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7TW1UI3-OYJYsA1x1Oe9HBd071ekMqgyesL4EEW9TYEAa1HFXmFQcSpw-nmM5IvFcFZM&usqp=CAU" alt="Night Events">
-                <span data-en="Night Events" data-al="Ngjarjet e Natës" data-mk="Ноќни Настани">Night Events</span>
-            </div>
-            
-            <div class="gallery-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu1a1iDP6WGUoJY4rRXVsyIQdx0us60lSlu29ri7NDnSInYyAj4lGFnhUKw3vKqLsGA9g&usqp=CAU" alt="Night Events">
-                <span data-en="Night Events" data-al="Ngjarjet e Natës" data-mk="Ноќни Настани">Night Events</span>
-            </div>
-            
-            <div class="gallery-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdMcyLmqft3Hr-vOgA58x3OHVeRCQ59h-Bfe4WEK26Y3XyykPBctoOyGUjfZ4lerP00AU&usqp=CAU" alt="Night Events">
-                <span data-en="Night Events" data-al="Ngjarjet e Natës" data-mk="Ноќни Настани">Night Events</span>
-            </div>
+                <div class="gallery-item">
+                    <img src="https://nuvomagazine.com/wp-content/uploads/2019/11/assorted-wine-bottles-1283219.jpg" alt="Alcohol Collection">
+                    <span data-en="Alcohol Collection" data-al="Koleksioni i Pijeve Alkoolike" data-mk="Колекција На Алкохолички Пијалоци">Alcohol Collection</span>
+                </div>
 
+                <div class="gallery-item">
+                    <img src="https://img.freepik.com/premium-photo/hookah-shisha-with-glass-flask-metal-bowl-with-colored-smoke_118086-3035.jpg" alt="Shisha">
+                    <span data-en="Shisha" data-al="Shisha" data-mk="Наргиле">Shisha</span>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlvbLO2HYb33-bCYG6smrHGSCMjtkyl638j4fXv5ymb9u3IU3F5C0LOBwrwE2on24INqg&usqp=CAU" alt="Night Events">
+                    <span data-en="Night Events" data-al="Ngjarjet e Natës" data-mk="Ноќни Настани">Night Events</span>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7TW1UI3-OYJYsA1x1Oe9HBd071ekMqgyesL4EEW9TYEAa1HFXmFQcSpw-nmM5IvFcFZM&usqp=CAU" alt="Night Events">
+                    <span data-en="Night Events" data-al="Ngjarjet e Natës" data-mk="Ноќни Настани">Night Events</span>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu1a1iDP6WGUoJY4rRXVsyIQdx0us60lSlu29ri7NDnSInYyAj4lGFnhUKw3vKqLsGA9g&usqp=CAU" alt="Night Events">
+                    <span data-en="Night Events" data-al="Ngjarjet e Natës" data-mk="Ноќни Настани">Night Events</span>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdMcyLmqft3Hr-vOgA58x3OHVeRCQ59h-Bfe4WEK26Y3XyykPBctoOyGUjfZ4lerP00AU&usqp=CAU" alt="Night Events">
+                    <span data-en="Night Events" data-al="Ngjarjet e Natës" data-mk="Ноќни Настани">Night Events</span>
+                </div>
+
+            </div>
+            <p class="gallery-quote fade-in"
+               data-en="Where moments become memories."
+               data-al="Aty ku momentet bëhen kujtime."
+               data-mk="Каде што моментите стануваат спомени.">
+                Where moments become memories.
+            </p>
         </div>
-        <p class="gallery-quote fade-in"
-   data-en="Where moments become memories."
-   data-al="Aty ku momentet bëhen kujtime."
-   data-mk="Каде што моментите стануваат спомени.">
-   Where moments become memories.
-</p>
     </div>
-</div>
 
-  <!-- Reservation Page -->
-<div id="reservation" class="page">
-  <div class="container">
-    <h2 class="page-title" data-en="Make a Reservation" data-al="Bëj një Rezervim" data-mk="Направете Резервација">Make a Reservation</h2>
-    
-    <form id="reservation-form" class="reservation-form fade-in">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" required />
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required />
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <input id="phone" name="phone" type="tel" required />
-      </div>
-      <div class="form-group">
-        <label for="date">Date</label>
-        <input id="date" name="date" type="date" required />
-      </div>
-      <div class="form-group">
-        <label for="time">Time</label>
-        <input id="time" name="time" type="time" required />
-      </div>
-      <div class="form-group">
-        <label for="people">Number of People</label>
-        <input id="people" name="people" type="number" required />
-      </div>
-      <div class="form-group">
-        <label for="requests">Special Requests</label>
-        <textarea name="requests" id="requests" placeholder="Any special requests or occasions..."></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Reserve</button>
-    </form>
+    <!-- Reservation Page -->
+    <div id="reservation" class="page">
+        <div class="container">
+            <h2 class="page-title" data-en="Make a Reservation" data-al="Bëj një Rezervim" data-mk="Направете Резервација">Make a Reservation</h2>
 
-    <div id="form-response" style="margin-top: 1rem; display: none; text-align: center; font-weight: bold;"></div>
-  </div>
-</div>
+            <form id="reservation-form" class="reservation-form fade-in">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input id="phone" name="phone" type="tel" required />
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input id="date" name="date" type="date" required />
+                </div>
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input id="time" name="time" type="time" required />
+                </div>
+                <div class="form-group">
+                    <label for="people">Number of People</label>
+                    <input id="people" name="people" type="number" required />
+                </div>
+                <div class="form-group">
+                    <label for="requests">Special Requests</label>
+                    <textarea name="requests" id="requests" placeholder="Any special requests or occasions..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Reserve</button>
+            </form>
+
+            <div id="form-response" style="margin-top: 1rem; display: none; text-align: center; font-weight: bold;"></div>
+        </div>
+    </div>
 
 
     <!-- Contact Page -->
@@ -1743,32 +1673,14 @@
                 </div>
             </div>
 
-         <!-- Find Us Section -->
-<div class="map-section" data-aos="fade-up">
-  <div class="map-text-box">
-    <h3 class="map-heading" data-en="Find Us in Tetovo" data-al="Na Gjeni në Tetovë" data-mk="Најдете Не во Тетово">
-      Find Us in Tetovo
-    </h3>
-    <p class="map-subtext" data-en="Located in the heart of Tetovo's nightlife district"
-       data-al="E vendosur në zemër të qytetit të jetës së natës së Tetovës"
-       data-mk="Лоцирано во срцето на ноќниот живот во Тетово">
-      Located in the heart of Tetovo's nightlife district
-    </p>
-  </div>
-
-  <div class="map-box">
-    <iframe
-      src="https://www.google.com/maps?q=Garrison+Bar,+Tetovo&output=embed"
-      width="100%"
-      height="100%"
-      frameborder="0"
-      style="border:0; border-radius: 15px;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
-  </div>
-</div>
+            <div class="map-container">
+                <div style="text-align: center;">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 1rem;" data-en="Find Us in Tetovo" data-al="Na Gjeni në Tetovë" data-mk="Најдете Не во Тетово">Find Us in Tetovo</h3>
+                    <p data-en="Located in the heart of Tetovo's nightlife district" data-al="E vendosur në zemër të qytetit të jetës së natës së Tetovës" data-mk="Лоцирано во срцето на ноќниот живот во Тетово">Located in the heart of Tetovo's nightlife district</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1977,55 +1889,34 @@
             });
         });
     </script>
-<script>
-  document.getElementById("reservation-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const form = this;
-    const responseBox = document.getElementById("form-response");
-    const formData = new FormData(form);
+   <script>
+    document.getElementById("reservation-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const form = this;
+        const formData = new FormData(form);
 
-    fetch("https://formspree.io/f/mblovavk", {
-      method: "POST",
-      headers: { "Accept": "application/json" },
-      body: formData,
-    })
-    .then(response => {
-      if (response.ok) {
-        form.reset();
-        responseBox.style.display = "block";
-        responseBox.style.color = "limegreen";
-        responseBox.textContent = "✅ Reservation sent successfully!";
-      } else {
-        responseBox.style.display = "block";
-        responseBox.style.color = "red";
-        responseBox.textContent = "❌ Error sending reservation. Please try again.";
-      }
-    })
-    .catch(error => {
-      responseBox.style.display = "block";
-      responseBox.style.color = "red";
-      responseBox.textContent = "❌ Network error. Please try again later.";
+        fetch("https://formspree.io/f/mblovavk", {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: formData,
+        })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "thank-you.html"; // Change if needed
+                } else {
+                    const responseBox = document.getElementById("form-response");
+                    responseBox.style.display = "block";
+                    responseBox.style.color = "red";
+                    responseBox.textContent = "❌ Error sending reservation. Please try again.";
+                }
+            })
+            .catch(error => {
+                const responseBox = document.getElementById("form-response");
+                responseBox.style.display = "block";
+                responseBox.style.color = "red";
+                responseBox.textContent = "❌ Network error. Please try again later.";
+            });
     });
-  });
 </script>
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  document.querySelectorAll('.animate-on-scroll').forEach(el => {
-    observer.observe(el);
-  });
-</script>
-
-</body>
-</html>
 </body>
 </html>
