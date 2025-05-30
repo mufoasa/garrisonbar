@@ -123,68 +123,88 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23000" width="1200" height="800"/><circle cx="300" cy="200" r="100" fill="%23d4af37" opacity="0.1"/><circle cx="900" cy="600" r="150" fill="%2300ffff" opacity="0.1"/><rect x="0" y="350" width="1200" height="100" fill="%23d4af37" opacity="0.05"/></svg>') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
+    /* Hero Section */
+.hero {
+    height: 100vh;
+    margin-top: -10vh; /* Shift up on all screens */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23000" width="1200" height="800"/><circle cx="300" cy="200" r="100" fill="%23d4af37" opacity="0.1"/><circle cx="900" cy="600" r="150" fill="%2300ffff" opacity="0.1"/><rect x="0" y="350" width="1200" height="100" fill="%23d4af37" opacity="0.05"/></svg>')
+        center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
 
-        .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            margin-bottom: 1rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
-        }
+.hero-content h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin-bottom: 1rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 1s ease;
+}
 
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--text-gray);
-            animation: fadeInUp 1s ease 0.3s both;
-        }
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-gray);
+    animation: fadeInUp 1s ease 0.3s both;
+}
 
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease 0.6s both;
+}
 
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
 
-        .btn-primary {
-            background: var(--gradient-1);
-            color: var(--primary-dark);
-        }
+.btn-primary {
+    background: var(--gradient-1);
+    color: var(--primary-dark);
+}
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-light);
-            border: 2px solid var(--accent-gold);
-        }
+.btn-secondary {
+    background: transparent;
+    color: var(--text-light);
+    border: 2px solid var(--accent-gold);
+}
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-        }
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .hero {
+        margin-top: -8vh;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.6rem;
+    }
+}
+
 
         /* Pages */
         .page {
@@ -816,6 +836,16 @@
                 color: var(--primary-dark);
                 transform: translateY(-3px);
             }
+            @keyframes breathe {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
     </style>
 </head>
 <body>
@@ -825,7 +855,7 @@
 <!-- Navigation -->
 <nav class="navbar">
 <div class="nav-container">
-<div class="logo">THE GARRISON BAR</div>
+<div class="logo breathe" onclick="showPage('home')" style="cursor: pointer;">THE GARRISON BAR</div>
 <ul class="nav-menu" id="navMenu">
 <li><a data-al="Shtëpia" data-en="Home" data-mk="Дома" href="#" onclick="showPage('home')">Home</a></li>
 <li><a data-al="Menyja" data-en="Menu" data-mk="Мени" href="#" onclick="showPage('menu')">Menu</a></li>
