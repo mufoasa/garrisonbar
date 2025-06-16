@@ -64,8 +64,18 @@
 
         .nav-menu {
             display: flex;
+            flex-direction: column;
             list-style: none;
-            gap: 2rem;
+            gap: 1.2rem;
+               background: rgba(10, 10, 10, 0.5);
+               backdrop-filter: blur(5px);
+               position:fixed;
+               top:60px;
+               right: 1rem;
+               padding: 1rem 1.5rem;
+               border-radius: 8px;
+               box-shadow:0 4px 15px rgba(0, 0, 0, 0.3);
+               z-index: 9999;
         }
 
             .nav-menu a {
@@ -119,7 +129,7 @@
             display: none;
             background: none;
             border: none;
-            color: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9);
             font-size: 1.5rem;
             cursor: pointer;
         }
