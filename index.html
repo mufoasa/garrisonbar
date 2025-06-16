@@ -127,10 +127,9 @@
     /* Hero Section */
 .hero {
     height: 100vh;
-    margin-top: -10vh; /* Shift up on all screens */
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23000" width="1200" height="800"/><circle cx="300" cy="200" r="100" fill="%23d4af37" opacity="0.1"/><circle cx="900" cy="600" r="150" fill="%2300ffff" opacity="0.1"/><rect x="0" y="350" width="1200" height="100" fill="%23d4af37" opacity="0.05"/></svg>')
-        center/cover;
+    margin-top: -10vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('https://i.imgur.com/0ogjBEX.jpeg') center center / cover no-repeat !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,8 +192,16 @@
 /* Responsive adjustment */
 @media (max-width: 768px) {
     .hero {
-        margin-top: -8vh;
-    }
+    height: 100vh;
+    margin-top: -10vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('https://i.imgur.com/0ogjBEX.jpeg') center center / cover no-repeat !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
 
     .hero-content p {
         font-size: 1rem;
