@@ -1064,7 +1064,20 @@
 <div class="container">
 <h2 class="page-title" data-al="Menyja Jonë" data-en="Our Menu" data-mk="Нашето Мени">Our Menu</h2>
 <!-- Hot Drinks -->
-<div class="menu-section fade-in">
+
+<div style="text-align: center; margin-bottom: 2rem;">
+<button class="btn btn-secondary" onclick="filterMenu('hot')">Hot Drinks</button>
+<button class="btn btn-secondary" onclick="filterMenu('cold')">Cold Drinks</button>
+<button class="btn btn-secondary" onclick="filterMenu('natural')">Natural Juice</button>
+<button class="btn btn-secondary" onclick="filterMenu('beers')">Beers &amp; Wines</button>
+<button class="btn btn-secondary" onclick="filterMenu('mocktails')">Mocktails</button>
+<button class="btn btn-secondary" onclick="filterMenu('cocktails')">Cocktails</button>
+<button class="btn btn-secondary" onclick="filterMenu('others')">Others</button>
+<button class="btn btn-secondary" onclick="filterMenu('alcoholic')">Alcoholic Drinks</button>
+<button class="btn btn-secondary" onclick="filterMenu('shisha')">Premium Shisha</button>
+<button class="btn btn-secondary" onclick="filterMenu('all')">Show All</button>
+</div>
+<div class="menu-section fade-in menu-category-hot">
 <h3 data-al="Pije të Nxehta" data-en="Hot Drinks" data-mk="Топли Пијалоци">Hot Drinks</h3>
 <div class="menu-grid">
 <div class="menu-item">
@@ -1219,7 +1232,7 @@
 </div>
 </div>
 <!-- Cold Drinks -->
-<div class="menu-section fade-in">
+<div class="menu-section fade-in menu-category-cold">
 <h3 data-al="Pije të Ftohta" data-en="Cold Drinks" data-mk="Ладни Пијалоци">Cold Drinks</h3>
 <div class="menu-grid">
 <div class="menu-item">
@@ -1395,7 +1408,7 @@
 </div>
 </div>
 <!-- Fresh Juices -->
-<div class="menu-section fade-in">
+<div class="menu-section fade-in menu-category-natural">
 <h3 data-al="Juice Natyral" data-en="Natural Juice" data-mk="Природен Cок">Natural Juice</h3>
 <div class="menu-grid">
 <!-- Orange Juice -->
@@ -1500,7 +1513,7 @@
 </div>
 </div>
 <!-- Beers & Wines -->
-<div class="menu-section fade-in">
+<div class="menu-section fade-in menu-category-beers">
 <h3 data-al="Birra &amp; Vera" data-en="Beers &amp; Wines" data-mk="Пива и Вина">Beers &amp; Wines</h3>
 <div class="menu-grid">
 <div class="menu-item">
@@ -1675,7 +1688,7 @@
 </div>
 </div>
 </div>
-<div class="menu-section fade-in">
+<div class="menu-section fade-in menu-category-mocktails">
 <h3 data-al="Mocktails (Pa Alkool)" data-en="Mocktails" data-mk="Безалкохолни Коктели">Mocktails</h3>
 <div class="menu-grid">
 <div class="menu-item">
@@ -1760,7 +1773,7 @@
 </div>
 </div>
 </div>
-<div class="menu-section fade-in">
+<div class="menu-section fade-in menu-category-cocktails">
 <h3 data-al="Koktele (Me Alkool)" data-en="Cocktails" data-mk="Коктели (Со Алкохол)">Cocktails</h3>
 <div class="menu-grid">
 <div class="menu-item">
@@ -1845,7 +1858,7 @@
 </div>
 </div>
 </div>
-<div class="menu-section fade-in">
+<div class="menu-section fade-in menu-category-others">
 <h3 data-al="Të Tjera" data-en="Others" data-mk="Останато">Others</h3>
 <div class="menu-grid">
 <div class="menu-item">
@@ -1879,7 +1892,7 @@
 </div>
 </div>
 </div>
-<div class="menu-section fade-in">
+<div class="menu-section fade-in menu-category-alcoholic">
 <h3 data-al="Pije Alkoolike" data-en="Alcoholic Drinks" data-mk="Алкохолни Пијалоци">Alcoholic Drinks</h3>
 <div class="menu-grid">
 <div class="shisha-flavors">
@@ -1943,7 +1956,7 @@
 </div>
 </div>
 </div>
-<div class="menu-section fade-in">
+<div class="menu-section fade-in menu-category-shisha">
 <h3 data-al="Menyja Premium e Shishës" data-en="Premium Shisha Menu" data-mk="Премиум Наргиле Мени">Premium Shisha Menu</h3>
 <div class="menu-grid">
 <div class="menu-item">
@@ -2090,11 +2103,10 @@
 <h3 data-al="Rrjetet Sociale" data-en="Social Media" data-mk="Социјални Мрежи">Social Media</h3>
 <p>
   @thegarrisonbar.mk<br/>
-  <a href="https://www.facebook.com/thegarrisonbar.mk" target="_blank" rel="noopener noreferrer">Facebook</a> | 
-  <a href="https://www.instagram.com/thegarrisonbar.mk" target="_blank" rel="noopener noreferrer">Instagram</a> | 
-  <a href="https://www.tiktok.com/@thegarrissonbar" target="_blank" rel="noopener noreferrer">TikTok</a>
+<a href="https://www.facebook.com/thegarrisonbar.mk" rel="noopener noreferrer" target="_blank">Facebook</a> | 
+  <a href="https://www.instagram.com/thegarrisonbar.mk" rel="noopener noreferrer" target="_blank">Instagram</a> | 
+  <a href="https://www.tiktok.com/@thegarrissonbar" rel="noopener noreferrer" target="_blank">TikTok</a>
 </p>
-
 </div>
 <div class="contact-card">
 <div class="contact-icon">💳</div>
@@ -2339,5 +2351,18 @@
 <p>© 2025 The Garrison Bar. <span data-al="Të gjitha të drejtat e rezervuara." data-en="All rights reserved." data-mk="Сите права задржани.">All rights reserved.</span></p>
 </div>
 </div>
-</footer></body>
+</footer><script>
+function filterMenu(category) {
+  const allSections = document.querySelectorAll('.menu-section');
+  allSections.forEach(section => {
+    section.style.display = 'none';
+  });
+  if (category === 'all') {
+    allSections.forEach(section => section.style.display = 'block');
+  } else {
+    const selected = document.querySelectorAll(`.menu-category-${category}`);
+    selected.forEach(section => section.style.display = 'block');
+  }
+}
+</script></body>
 </html>
