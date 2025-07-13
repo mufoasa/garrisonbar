@@ -626,6 +626,21 @@
     color: var(--accent-gold);
     margin-bottom: 1rem;
 }
+.contact-card.flex-top-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;  /* Center text under the icon */
+  gap: 1rem;           /* Space between icon and text */
+}
+
+.contact-card.flex-top-icon .contact-icon {
+  font-size: 3rem;
+  color: var(--accent-gold);
+  margin: 0;
+}
+
+
 
 .map-container {
     height: 300px;
@@ -2024,16 +2039,16 @@
 </div>
 <div class="menu-item-price">300 MKD</div>
 </div>
-<div class="menu-item">
-<div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
-<img alt="Nuts" src="https://nouveauraw.com/wp-content/uploads/2015/05/brazil-nuts-on-a-wooden-table-800x517.jpg" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;"/>
-<div>
-<div class="menu-item-name" data-al="Nuts" data-en="Nuts" data-mk="Јаткасти плодови">Nuts</div>
-<div class="menu-item-desc" data-al="Përzierje arrash dhe bajamesh" data-en="Mixed nuts and almonds" data-mk="Мешавина од ореви и бадеми">Mixed nuts and almonds</div>
-</div>
-</div>
-<div class="menu-item-price">250 MKD</div>
-</div>
+    <div class="menu-item">
+      <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1;">
+        <img alt="Mini Pancakes" src="https://img.freepik.com/premium-photo/mini-pancakes-png-kids-breakfast-treat-chocolate-spread-strawberry-yogurt_53876-1011843.jpg?semt=ais_hybrid&w=740" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;" />
+        <div>
+          <div class="menu-item-name" data-al="Mini Pancakes" data-en="Mini Pancakes" data-mk="Мини Палачинки">Mini Pancakes</div>
+          <div class="menu-item-desc" data-al="Së shpejti" data-en="Coming soon" data-mk="Hаскоро">Coming soon</div>
+        </div>
+      </div>
+      <div class="menu-item-price">---</div>
+    </div>
 </div>
 </div>
 <div class="menu-section fade-in menu-category-alcoholic">
@@ -2101,7 +2116,7 @@
 </div>
 </div>
 <div class="menu-section fade-in menu-category-shisha">
-<h3 data-al="Menyja Premium e Shishës" data-en="Premium Shisha Menu" data-mk="Премиум Наргиле Мени">Premium Shisha Menu</h3>
+<h3 data-al="Menyja e Shishës" data-en="Shisha Menu" data-mk="Наргиле Мени">Shisha Menu</h3>
 <div class="menu-grid">
 <div class="menu-item">
 <div>
@@ -2122,14 +2137,16 @@
 <div class="shisha-flavors">
 <div class="flavor-item" data-al="Ice Cactus" data-en="Ice Cactus" data-mk="Ајс Кактус">Ice Cactus</div>
 <div class="flavor-item" data-al="Watermill Punch" data-en="Watermill Punch" data-mk="Вотермил Панч">Watermill Punch</div>
-<div class="flavor-item" data-al="Nameless Black Nana" data-en="Nameless Black Nana" data-mk="Неименуван Црн Нана">Nameless Black Nana</div>
 <div class="flavor-item" data-al="Cold Cherry" data-en="Cold Cherry" data-mk="Студена Цреша">Cold Cherry</div>
 <div class="flavor-item" data-al="Love66" data-en="Love66" data-mk="Лав66">Love66</div>
-<div class="flavor-item" data-al="Grape" data-en="Grape" data-mk="Грозје">Grape</div>
-<div class="flavor-item" data-al="Peach" data-en="Peach" data-mk="Праска">Peach</div>
+<div class="flavor-item" data-al="Rrush" data-en="Grape" data-mk="Грозје">Grape</div>
+<div class="flavor-item" data-al="Pjeshke" data-en="Peach" data-mk="Праска">Peach</div>
 <div class="flavor-item" data-al="Lemon" data-en="Lemon" data-mk="Лимон">Lemon</div>
 <div class="flavor-item" data-al="Cola" data-en="Cola" data-mk="Кола">Cola</div>
 <div class="flavor-item" data-al="Blueberry" data-en="Blueberry" data-mk="Боровница">Blueberry</div>
+<div class="flavor-item" data-al="Albanian Gangstaz" data-en="Albanian Gangstaz" data-mk="Албански Гангстаз">Albanian Gangstaz</div>
+<div class="flavor-item" data-al="Passion Fruit" data-en="Passion Fruit" data-mk="Пасион Фрут">Passion Fruit</div>
+<div class="flavor-item" data-al="Mentë/Absolute Zero" data-en="Mint/Absolute Zero" data-mk="Мента/Апсолут Зеро">Mint/Absolute Zero</div>
 </div>
 </div>
 </div>
@@ -2235,13 +2252,20 @@
 <h3 data-al="Email" data-en="Email" data-mk="Е-пошта">Email</h3>
 <p>thegarrisonbarmk@gmail.com<br/>reservations@garrisonbar.mk</p>
 </div>
-<div class="contact-card">
-<div class="contact-icon">🕒</div>
-<h3 data-al="Orari i Punës" data-en="Opening Hours" data-mk="Работно Време">Opening Hours</h3>
-<p data-al="          E Hënë - E Premte: 08:00 - 00:00                           E Shtunë: 10:00 - 00:00                         E Diel: 16:00 - 00:00" data-en="          Monday - Friday: 08:00 - 00:00                                Saturday: 10:00 - 00:00                         Sunday: 16:00 - 00:00" data-mk="        Понеделник - Петок: 08:00 - 00:00                        Сабота: 10:00 - 00:00                    Недела: 16:00 - 00:00">
-                        Monday - Friday: 08:00 - 00:00<br/>Saturday: 10:00 - 00:00<br/>Sunday: 16:00 - 00:00
-                    </p>
+<div class="contact-card flex-align">
+  <div class="contact-icon">🕒</div>
+  <div class="contact-text">
+    <h3 data-al="Orari i Punës" data-en="Opening Hours" data-mk="Работно Време">Opening Hours</h3>
+    <p data-al=" E Hënë - E Premte: 08:00 - 00:00 E Shtunë: 10:00 - 00:00  E Diel: 16:00 - 00:00" 
+       data-en=" Monday - Friday: 08:00 - 00:00 Saturday: 10:00 - 00:00 Sunday: 16:00 - 00:00" 
+       data-mk="Понеделник - Петок: 08:00 - 00:00   Сабота: 10:00 - 00:00 Недела: 16:00 - 00:00">
+      Monday - Friday: 08:00 - 00:00<br/>
+      Saturday: 10:00 - 00:00<br/>
+      Sunday: 16:00 - 00:00
+    </p>
+  </div>
 </div>
+
 <div class="contact-card">
 <div class="contact-icon">📱</div>
 <h3 data-al="Rrjetet Sociale" data-en="Social Media" data-mk="Социјални Мрежи">Social Media</h3>
