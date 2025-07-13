@@ -54,14 +54,58 @@
 }
 
 .logo.breathe {
+    position: relative; /* needed for ::before positioning */
     font-size: 1.8rem;
     font-weight: bold;
-    background: var(--gradient-1);
+    background: linear-gradient(90deg, #d4af37, #fff7b0, #d4af37);
+    background-size: 200%;
+    background-position: -100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     cursor: pointer;
+    animation: shine 2.5s linear infinite;
+    text-shadow: 0 0 3px rgba(212, 175, 55, 0.6);
+    overflow: hidden; /* contain the shine */
 }
+
+.logo.breathe::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%; /* start outside left */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    animation: shine-glint 2.5s linear infinite;
+    pointer-events: none; /* let clicks pass through */
+}
+
+@keyframes shine {
+    0% {
+        background-position: -100%;
+    }
+    100% {
+        background-position: 100%;
+    }
+}
+
+@keyframes shine-glint {
+    0% {
+        left: -75%;
+    }
+    100% {
+        left: 125%;
+    }
+}
+
+
 
 .nav-menu {
     display: flex;
@@ -271,6 +315,13 @@
     .btn {
         font-size: 0.9rem;
         padding: 0.8rem 1.6rem;
+    }
+}
+@media (max-width: 768px) {
+    .btn-primary {
+        font-size: 1.2rem;
+        padding: 1.2rem 2.4rem;
+        font-weight: bold; /* Make text bold */
     }
 }
 
@@ -746,7 +797,7 @@
     padding: 5rem 0;
     background: 
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* dark overlay */
-        url('https://i.imgur.com/zm3FA5T.jpeg') center/cover no-repeat;
+        url('https://i.imgur.com/kZbvtGl.jpeg') center/cover no-repeat;
     text-align: center;
 }
 
@@ -823,70 +874,98 @@
 }
 
 
-        /* Mini Gallery Section */
-        .mini-gallery-section {
-            padding: 5rem 0;
-            background: var(--primary-dark);
-        }
+       /* Mini Gallery Section */
+.mini-gallery-section {
+    padding: 5rem 0;
+    background-image: url('https://i.imgur.com/kZbvtGl.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    color: white; /* text color for readability */
+}
 
-        .mini-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+/* Overlay for better text contrast */
+.mini-gallery-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: -1;
+}
 
-        .mini-gallery-item {
-            aspect-ratio: 4/3;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+.mini-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
-            .mini-gallery-item:hover {
-                transform: scale(1.05);
-            }
+.mini-gallery-item {
+    aspect-ratio: 4/3;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-        .gallery-placeholder {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
+.mini-gallery-item:hover {
+    transform: scale(1.05);
+}
 
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            padding: 2rem;
-            color: white;
-        }
+.gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 
-            .gallery-overlay h4 {
-                color: var(--accent-gold);
-                font-size: 1.2rem;
-                margin: 0;
-            }
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    padding: 2rem;
+    color: white;
+}
 
-        .gallery-quote {
-            display: block; /* Ensure it's treated as a block-level element */
-            width: 100%;
-            max-width: 800px;
-            margin: 3rem auto 0 auto; /* Top margin + center horizontally */
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            font-family: 'Georgia', serif;
-            line-height: 1.5;
-            background: linear-gradient(90deg, #d4af37, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1.2s ease-out both;
-        }
+.gallery-overlay h4 {
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.gallery-quote {
+    display: block; /* Ensure it's treated as a block-level element */
+    width: 100%;
+    max-width: 800px;
+    margin: 3rem auto 0 auto; /* Top margin + center horizontally */
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    line-height: 1.5;
+    background: linear-gradient(90deg, #d4af37, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInUp 1.2s ease-out both;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
         /* Footer */
         .footer {
             background: var(--secondary-dark);
@@ -985,7 +1064,7 @@
 <div class="hero-content">
 <img alt="Garrison Bar Logo" src="https://i.imgur.com/QV0EZyS.png" style="display: block; margin: 0 auto 2rem auto; max-width: 180px; border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.25); background: transparent;"/>
 <h1 data-al="THE GARRISON BAR" data-en="THE GARRISON BAR" data-mk="THE GARRISON BAR">THE GARRISON BAR</h1>
-<p data-al="Përjetoni koktelat më të mira, shisha premium dhe jetën e natës në zemër të Tetovës" data-en="Experience the finest cocktails, premium shisha, and vibrant nightlife in the heart of Tetovo" data-mk="Доживејте ги најдобрите коктели, премиум наргиле и живиот ноќен живот во срцето на Тетово">Experience the finest cocktails, premium shisha, and vibrant nightlife in the heart of Tetovo</p>
+<p data-al="Ku nata shëndrit dhe argëtimi nuk ka fund — përjetoni më të mirën në Tetovë" data-en="Where the night shines and the fun never ends — experience the best in Tetovo" data-mk="Каде што ноќта сјае и забавата нема крај — доживејте го најдоброто во Тетово">Where the night shines and the fun never ends — experience the best in Tetovo</p>
 <div class="cta-buttons">
 <a class="btn btn-primary" data-al="Shiko Menynë" data-en="View Menu" data-mk="Погледни Мени" href="#" onclick="showPage('menu')">View Menu</a>
 <a class="btn btn-secondary" data-al="Bëj Rezervim" data-en="Make Reservation" data-mk="Направи Резервација" href="#" onclick="showPage('reservation')">Make Reservation</a>
@@ -1019,46 +1098,46 @@
   <span class="drink-price">350 MKD</span>
 </div>
 </div>
-</section><section class="mini-gallery-section">
+</section>
+
+<section class="mini-gallery-section">
 <div class="container">
 <h2 class="section-title" data-al="Atmosfera" data-en="Atmosphere" data-mk="Атмосфера">Atmosphere</h2>
 <div class="mini-gallery">
 <!-- Elegant Interior -->
 <div class="mini-gallery-item fade-in">
-<a href="https://i.imgur.com/BCN7ne2.jpeg" target="_blank">
 <div class="gallery-placeholder">
 <img alt="Elegant Interior" src="https://i.imgur.com/BCN7ne2.jpeg" style="width: 100%; height: 100%; object-fit: cover;"/>
 <div class="gallery-overlay">
 <h4 data-al="Brendësi Elegante" data-en="Elegant Interior" data-mk="Елегантен Ентериер">Elegant Interior</h4>
 </div>
 </div>
-</a>
+
 </div>
 <!-- Vibrant Nightlife -->
 <div class="mini-gallery-item fade-in">
-<a href="https://i.imgur.com/n8UAEC4.jpeg" target="_blank">
 <div class="gallery-placeholder">
 <img alt="Vibrant Nightlife" src="https://i.imgur.com/n8UAEC4.jpeg" style="width: 100%; height: 100%; object-fit: cover;"/>
 <div class="gallery-overlay">
 <h4 data-al="Stil bashkëkohor" data-en="Stylish Setting" data-mk="Современ амбиент">Stylish Setting</h4>
 </div>
 </div>
-</a>
+
 </div>
 <!-- Premium Shisha -->
 <div class="mini-gallery-item fade-in">
-<a href="https://i.imgur.com/aRy9BFI.jpeg" target="_blank">
 <div class="gallery-placeholder">
 <img alt="Premium Shisha" src="https://i.imgur.com/aRy9BFI.jpeg" style="width: 100%; height: 100%; object-fit: cover;"/>
 <div class="gallery-overlay">
 <h4 data-al="Ndriçim atmosferik" data-en="Mood Lighting" data-mk="Атмосферско осветлување">Mood Lighting</h4>
 </div>
 </div>
-</a>
+
 </div>
 </div>
 </div>
-</section></div>
+</section>
+</div>
 <!-- Mini Gallery Section -->
 <!-- Menu Page -->
 <div class="page" id="menu">
