@@ -22,6 +22,116 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico"/>
        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6980841051377216"
      crossorigin="anonymous"></script>
+     <!-- ===== GARRISON BAR LOADER ===== -->
+<style>
+:root {
+  --accent: #d4a574; /* Brand accent color */
+  --bg: #111; /* Background color */
+  --text: #fff; /* Main text color */
+  --muted: #aaa; /* Secondary text color */
+  --font-sans: 'Poppins', sans-serif;
+}
+
+.garrison-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+  color: var(--text);
+  z-index: 99999;
+  text-align: center;
+  gap: 20px;
+  font-family: var(--font-sans);
+}
+
+/* Logo Styling */
+.garrison-logo {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  animation: fadeSlide 0.8s forwards;
+}
+
+/* Loading text */
+.loading-text {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text);
+  animation: fadeSlide 0.8s forwards;
+}
+
+/* Loading Dots Animation */
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1.8rem;
+}
+
+.loading-dots span {
+  animation: jump 1s infinite;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: 0s; }
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes jump {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeSlide { to { opacity: 1; transform: translateY(0); } }
+
+/* Powered By Section */
+.powered-by {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 20px;
+}
+
+.powered-by img {
+  margin-top: 6px;
+  width: 120px;
+  object-fit: contain;
+}
+</style>
+
+<div class="garrison-loader">
+  <img class="garrison-logo" src="https://i.imgur.com/QV0EZyS.png" alt="The Garrison Bar Logo">
+  <div class="loading-text">Loading</div>
+  <div class="loading-dots">
+    <span>•</span><span>•</span><span>•</span>
+  </div>
+  <div class="powered-by">
+    Powered by WhiteLuckDigital
+    <img src="https://i.imgur.com/oHLl1gY.png" alt="WhiteLuckDigital Logo">
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => {
+  const loader = document.querySelector('.garrison-loader');
+
+  // Show loader immediately
+  loader.style.display = 'flex';
+
+  // Hide loader after 5 seconds
+  setTimeout(() => {
+    loader.style.transition = 'opacity 0.6s ease';
+    loader.style.opacity = 0;
+    setTimeout(() => loader.remove(), 600);
+  }, 3000);
+});
+</script>
+
 <style>
         * {
             margin: 0;
@@ -1066,9 +1176,7 @@
     </style>
 </head>
 <body>
-<div class="loading" id="loading">
-<div class="spinner"></div>
-</div>
+
 <!-- Navigation -->
 <nav class="navbar">
 <div class="nav-container">
@@ -2301,12 +2409,12 @@
   <div class="contact-icon">🕒</div>
   <div class="contact-text">
     <h3 data-al="Orari i Punës" data-en="Opening Hours" data-mk="Работно Време">Opening Hours</h3>
-    <p data-al=" E Hënë - E Premte: 10:00 - 03:00 E Shtunë: 10:00 - 03:00  E Diel: 16:00 - 03:00" 
-       data-en=" Monday - Friday: 10:00 - 03:00 Saturday: 10:00 - 03:00 Sunday: 16:00 - 03:00" 
-       data-mk="Понеделник - Петок: 10:00 - 03:00   Сабота: 10:00 - 03:00 Недела: 16:00 - 03:00">
-      Monday - Friday: 10:00 - 03:00<br/>
-      Saturday: 10:00 - 03:00<br/>
-      Sunday: 16:00 - 03:00
+    <p data-al=" E Hënë - E Premte: 08:00 - 00:00 E Shtunë: 10:00 - 00:00  E Diel: 16:00 - 00:00" 
+       data-en=" Monday - Friday: 08:00 - 00:00 Saturday: 10:00 - 00:00 Sunday: 16:00 - 00:00" 
+       data-mk="Понеделник - Петок: 08:00 - 00:00   Сабота: 10:00 - 00:00 Недела: 16:00 - 00:00">
+      Monday - Friday: 08:00 - 00:00<br/>
+      Saturday: 10:00 - 00:00<br/>
+      Sunday: 16:00 - 00:00
     </p>
   </div>
 </div>
@@ -2539,11 +2647,11 @@
 <div class="footer-section">
 <h4 data-al="Orari i Punës" data-en="Opening Hours" data-mk="Работно Време">Opening Hours</h4>
 <p data-al="E Hënë - E Premte" data-en="Monday - Friday" data-mk="Понеделник - Петок">Monday - Friday</p>
-<p>10:00 - 03:00</p>
+<p>08:00 - 00:00</p>
 <p data-al="E Shtunë" data-en="Saturday" data-mk="Сабота">Saturday</p>
-<p>10:00 - 03:00</p>
+<p>10:00 - 00:00</p>
 <p data-al="E Diel" data-en="Sunday" data-mk="Недела">Sunday</p>
-<p>16:00 - 03:00</p>
+<p>16:00 - 00:00</p>
 </div>
 <div class="footer-section">
 <h4 data-al="Lidhje të Shpejta" data-en="Quick Links" data-mk="Брзи Врски">Quick Links</h4>
@@ -2590,5 +2698,6 @@ function filterMenu(category) {
     selected.forEach(section => section.style.display = 'block');
   }
 }
-</script></body>
+</script>
+</body>
 </html>
