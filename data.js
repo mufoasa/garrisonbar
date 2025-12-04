@@ -1286,7 +1286,7 @@ const menuItems = [
         description: { en: "10 Mini Pancakes with Chocolate Topping", sq: "10 Mini Palaçinka me Shtresë Çokollate", mk: "10 Мини Палачинки со Чоколаден Прелив" },
         price: 220,
         category: "snacks",
-        image: "https://img.freepik.com/premium-photo/mini-pancakes-png-kids-breakfast-treat-chocolate-spread-strawberry-yogurt_53876-1011843.jpg?semt=ais_hybrid&w=740",
+        image: "https://images.deliveryhero.io/image/fd-my/LH/i40q-listing.jpg",
         featured: true
     },
     {
@@ -1294,8 +1294,9 @@ const menuItems = [
         description: { en: "10 Mini Pancakes with Fruit and Chocolate", sq: "10 Mini Pancakes me Fruta dhe Çokolladë", mk: "10 Мини Палачинки со Овошје и Чоколадо" },
         price: 290,
         category: "snacks",
-        image: "https://images.eatsmarter.de/sites/default/files/styles/1600x1200/public/erdbeer-pancakes-mit-heidelbeeren-und-himbeeren-680885.png",
+        image: "https://sweetminipancakes.com/wp-content/uploads/2024/10/poffertjes_squ_web-1-1-1024x1024.jpg",
         featured: false
     
     }
 ];
+
