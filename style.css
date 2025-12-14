@@ -42,6 +42,7 @@ body {
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
     padding: 0.3rem 0;
+    overflow: visible; /* prevents logo clipping */
 }
 
 .nav-container {
@@ -53,34 +54,19 @@ body {
     align-items: center;
 }
 
-.logo {
-    position: relative;
+/* ===== Logo ===== */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
 }
 
-.logo::before {
-    content: "";
-    position: absolute;
-    top: -14px;
-    left: -12px;
-    width: 28px;
-    height: 18px;
-    background: red;
-    border-radius: 4px 4px 0 0;
-    transform: rotate(-20deg);
+.logo-img {
+    height: 42px;
+    width: auto;
+    display: block;
 }
 
-.logo::after {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 6px;
-    width: 8px;
-    height: 8px;
-    background: white;
-    border-radius: 50%;
-}
-
-
+/* ===== Navigation Links ===== */
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -90,6 +76,7 @@ body {
 .nav-links a {
     color: var(--light-text);
     text-decoration: none;
+    font-size: 0.95rem;
     transition: var(--transition);
     position: relative;
 }
@@ -100,7 +87,7 @@ body {
 }
 
 .nav-links a::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -5px;
     left: 0;
@@ -139,6 +126,21 @@ body {
 .lang-btn.active {
     background: var(--copper);
     color: var(--primary-dark);
+}
+
+/* ===== Mobile Adjustments ===== */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 34px;
+    }
+
+    .nav-links {
+        gap: 1.2rem;
+    }
+
+    .language-switcher {
+        padding-left: 0.8rem;
+    }
 }
 
 /* ===== Hero Section ===== */
@@ -702,5 +704,6 @@ body {
         gap: 1rem;
     }
 }
+
 
 
