@@ -2,7 +2,7 @@
 const translations = {
     en: {
         barName: "The Garrison Bar",
-        barSubtitle: "Where Moments Become Memories",
+        barSubtitle: "Crafting Memories, One Drink At A Time!",
         viewMenu: "View Menu",
         aboutTitle: "Welcome to The Garrison Bar",
         aboutDesc: "Experience the finest selection of cocktails, wines, beers, and non-alcoholic beverages in an atmosphere of elegance and sophistication. Our carefully curated menu reflects our commitment to quality and excellence.",
@@ -24,7 +24,7 @@ const translations = {
     },
     sq: {
         barName: "The Garrison Bar",
-        barSubtitle: "Ku Momentet Bëhen Kujtime",
+        barSubtitle: "Crafting Memories, One Drink At A Time!",
         viewMenu: "Shiko Menynë",
         aboutTitle: "Mirësevini në The Garrison Bar",
         aboutDesc: "Përjetoni përzgjedhjen më të mirë të koktejeve, verërave, birrës dhe pijeve pa alkool në një atmosferë të elegancës dhe sofistikimit. Menyja jonë e kujdesshme pasqyron angazhimin tonë ndaj cilësisë dhe përsosmërisë.",
@@ -46,7 +46,7 @@ const translations = {
     },
     mk: {
         barName: "The Garrison Bar",
-        barSubtitle: "Каде Моментите Стануваат Успомени",
+        barSubtitle: "Crafting Memories, One Drink At A Time!",
         viewMenu: "Погледнете Мени",
         aboutTitle: "Добредојдовте во The Garrison Bar",
         aboutDesc: "Искусете ја најфината селекција на коктели, вина, пива и безалкохолни пијалоци во атмосфера на елеганција и софистицираност. Нашето внимателно одредено мени го одразува нашето посветување на квалитет и совршенство.",
@@ -1299,4 +1299,5 @@ const menuItems = [
     
     }
 ];
+
 
