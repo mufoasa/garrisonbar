@@ -54,11 +54,32 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--gold);
-    letter-spacing: 2px;
+    position: relative;
 }
+
+.logo::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: -12px;
+    width: 28px;
+    height: 18px;
+    background: red;
+    border-radius: 4px 4px 0 0;
+    transform: rotate(-20deg);
+}
+
+.logo::after {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
 
 .nav-links {
     display: flex;
@@ -681,4 +702,5 @@ body {
         gap: 1rem;
     }
 }
+
 
