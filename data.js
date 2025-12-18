@@ -651,6 +651,22 @@ const menuItems = [
         featured: false
     },
     {
+    name: { 
+        en: "Sex on the Jungle", 
+        sq: "Sex on the Jungle", 
+        mk: "Секс во Џунгла" 
+    },
+    description: { 
+        en: "Vodka, peach liqueur, pineapple juice, cranberry juice", 
+        sq: "Vodkë, liker pjeshke, lëng ananasi, lëng boronice", 
+        mk: "Вотка, ликер од праска, сок од ананас, сок од брусница" 
+    },
+    price: 350,
+    category: "cocktails",
+    image: "https://i.imgur.com/1Qf3llS.jpeg",
+    featured: false
+},
+    {
         name: { en: "Gin Daisy", sq: "Gin Daisy", mk: "Џин Дејзи" },
         description: { en: "Gin, lemon juice, grenadine, soda", sq: "Xhin, lëng limoni, grenadinë, sodë", mk: "Џин, лимонов сок, гренадин, сода" },
         price: 350,
@@ -1299,5 +1315,6 @@ const menuItems = [
     
     }
 ];
+
 
 
