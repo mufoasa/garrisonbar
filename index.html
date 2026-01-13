@@ -62,11 +62,16 @@
     <div class="hero-overlay"></div>
 
     <!-- Hero Content -->
-    <div class="hero-content">
-        <h1 class="hero-title" data-i18n="barName">The Garrison Bar</h1>
-        <p class="hero-subtitle" data-i18n="barSubtitle">Crafting Memories, One Drink At A Time!</p>
+<div class="hero-content">
+    <h1 class="hero-title" data-i18n="barName">The Garrison Bar</h1>
+    <p class="hero-subtitle" data-i18n="barSubtitle">Crafting Memories, One Drink At A Time!</p>
+    
+    <div class="hero-buttons">
         <a href="menu.html" class="cta-button" data-i18n="viewMenu">View Menu</a>
+        <a href="#booking" class="cta-button booking-btn" data-i18n="bookNow">Book Now</a>
     </div>
+</div>
+
 </section>
 
 
@@ -115,6 +120,52 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- Booking Section -->
+<section id="booking" class="booking">
+  <div class="booking-container">
+    <div class="booking-info">
+      <h2 data-i18n="bookingTitle">Book Your Table</h2>
+      <p data-i18n="bookingDesc">
+        Reserve your spot and we’ll confirm your booking via WhatsApp.
+      </p>
+    </div>
+
+    <form id="bookingForm" class="booking-form">
+      <div class="form-group">
+        <label for="name" data-i18n="formName">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone" data-i18n="formPhone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+389 70 123 456" required>
+      </div>
+
+      <div class="form-group">
+        <label for="date" data-i18n="formDate">Date</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="time" data-i18n="formTime">Time</label>
+        <input type="time" id="time" name="time" required>
+      </div>
+
+      <div class="form-group">
+        <label for="people" data-i18n="formPeople">Number of People</label>
+        <input type="number" id="people" name="people" min="1" placeholder="1" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message" data-i18n="formMessage">Message (optional)</label>
+        <textarea id="message" name="message" placeholder="Any special requests?"></textarea>
+      </div>
+
+      <button type="submit" class="cta-button" data-i18n="submitBooking">Book Now!</button>
+    </form>
   </div>
 </section>
 
@@ -173,13 +224,33 @@
 
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <script>
+  const bookingForm = document.getElementById("bookingForm");
+
+  bookingForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const people = document.getElementById("people").value;
+    const message = document.getElementById("message").value;
+
+    const text = `Hello The Garrison Bar! I'd like to book a table.
+Name: ${name}
+Phone: ${phone}
+Date: ${date}
+Time: ${time}
+People: ${people}
+Message: ${message}`;
+
+    // Your WhatsApp number here (in international format without +)
+    const whatsappNumber = "38976633625"; 
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+    window.open(whatsappURL, "_blank");
+  });
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
