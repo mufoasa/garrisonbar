@@ -26,6 +26,16 @@ const translations = {
         barName: "The Garrison Bar",
         barSubtitle: "Crafting Memories, One Drink At A Time!",
         viewMenu: "Shiko Menynë",
+        bookNow: "Rezervo Tani",
+        bookingTitle: "Rezervo Tavolinën",
+bookingDesc: "Rezervo vendin tuaj dhe ne do të konfirmojmë rezervimin përmes WhatsApp.",
+formName: "Emri",
+formPhone: "Numri i Telefonit",
+formDate: "Data",
+formTime: "Ora",
+formPeople: "Numri i Personave",
+formMessage: "Mesazh (opsional)",
+submitBooking: "Rezervo përmes WhatsApp",
         aboutTitle: "Mirësevini në The Garrison Bar",
         aboutDesc: "Përjetoni përzgjedhjen më të mirë të koktejeve, verërave, birrës dhe pijeve pa alkool në një atmosferë të elegancës dhe sofistikimit. Menyja jonë e kujdesshme pasqyron angazhimin tonë ndaj cilësisë dhe përsosmërisë.",
         ourMenu: "Menyja Jonë",
@@ -48,6 +58,16 @@ const translations = {
         barName: "The Garrison Bar",
         barSubtitle: "Crafting Memories, One Drink At A Time!",
         viewMenu: "Погледнете Мени",
+        bookNow: "Резервирај сега",
+        bookingTitle: "Резервирајте маса",
+bookingDesc: "Резервирајте го вашето место и ние ќе ја потврдиме резервацијата преку WhatsApp.",
+formName: "Име",
+formPhone: "Телефонски број",
+formDate: "Датум",
+formTime: "Време",
+formPeople: "Број на луѓе",
+formMessage: "Порака (опционално)",
+submitBooking: "Резервирај преку WhatsApp",
         aboutTitle: "Добредојдовте во The Garrison Bar",
         aboutDesc: "Искусете ја најфината селекција на коктели, вина, пива и безалкохолни пијалоци во атмосфера на елеганција и софистицираност. Нашето внимателно одредено мени го одразува нашето посветување на квалитет и совршенство.",
         ourMenu: "Наша Мени",
@@ -1315,6 +1335,5 @@ const menuItems = [
     
     }
 ];
-
 
 
