@@ -76,7 +76,7 @@ const menuItems = [
         description: { en: "Rich Italian coffee", sq: "Kafe e pasur italiane", mk: "Богато италијанско кафе" },
         price: 60,
         category: "hot-drinks",
-        image: "https://www.sugacoffee.id/wp-content/uploads/2024/04/17.-Espresso-Pengertian-Jenis-Proses-dan-Teknik-Penyeduhannya-Suga-Coffee-1.jpg",
+        image: "https://orderin.am/uploads/products/1742/product-1742-2024-01-04-10-41-060.jpg",
         featured: false
     },
     {
@@ -1299,3 +1299,4 @@ const menuItems = [
     
     }
 ];
+
