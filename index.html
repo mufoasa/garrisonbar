@@ -3,42 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6980841051377216"
-        crossorigin="anonymous"></script>
-
-    <!-- SEO Meta Tags -->
     <title>The Garrison Bar - Where Moments Become Memories</title>
-    <meta name="description" content="The Garrison Bar in Tetovo offers signature cocktails, premium shisha, and vibrant nightlife. Discover the best lounge experience in Tetovo.">
-    <meta name="keywords" content="The Garrison Bar, Bar Tetovo, Cafe Tetovo, Lounge Tetovo, Cocktails Tetovo, Shisha Tetovo, Nightlife Tetovo">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="The Garrison Bar">
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="The Garrison Bar - Tetovo">
-    <meta property="og:description" content="Where the night shines and the fun never ends — experience the best in Tetovo.">
-    <meta property="og:url" content="http://www.thegarrisonbar.mk">
-    <meta property="og:image" content="https://i.imgur.com/QV0EZyS.png">
-    <meta property="og:type" content="website">
-
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+</head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo-wrapper">
-    <img
-        src="https://i.imgur.com/si4mZAr.png"
-        alt="The Garrison Bar"
-        class="logo-img"
-    >
-</div>
-
+            <div class="logo">The Garrison Bar</div>
             <div class="nav-links">
                 <a href="index.html" class="active">Home</a>
                 <a href="menu.html">Menu</a>
@@ -51,29 +25,18 @@
         </div>
     </nav>
 
-  <!-- Hero Section -->
-<section id="home" class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-        <source src="herogarrison.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-    </video>
-
-    <!-- Overlay -->
-    <div class="hero-overlay"></div>
-
-    <!-- Hero Content -->
-<div class="hero-content">
-    <h1 class="hero-title" data-i18n="barName">The Garrison Bar</h1>
-    <p class="hero-subtitle" data-i18n="barSubtitle">Crafting Memories, One Drink At A Time!</p>
-    
-    <div class="hero-buttons">
-        <a href="menu.html" class="cta-button" data-i18n="viewMenu">View Menu</a>
-        <a href="#booking" class="cta-button booking-btn" data-i18n="bookNow">Book Now</a>
-    </div>
-</div>
-
-</section>
-
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="https://videos.pexels.com/video-files/3373028/3373028-sd_640_360_25fps.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title" data-i18n="barName">The Garrison Bar</h1>
+            <p class="hero-subtitle" data-i18n="barSubtitle">Where Moments Become Memories</p>
+            <a href="menu.html" class="cta-button" data-i18n="viewMenu">View Menu</a>
+        </div>
+    </section>
 
     <!-- Intro Section -->
     <section class="intro">
@@ -105,13 +68,13 @@
         <div class="featured-info">
           <h3>Colored Macchiato</h3>
           <p>Layered pink latte with a heart design</p>
-          <div class="featured-price">200 ден</div>
+          <div class="featured-price">300 ден</div>
         </div>
       </div>
 
       <!-- Mini Pancakes -->
       <div class="featured-card">
-        <img src="https://images.deliveryhero.io/image/fd-my/LH/i40q-listing.jpg" alt="Mini Pancakes">
+        <img src="https://img.freepik.com/premium-photo/mini-pancakes-png-kids-breakfast-treat-chocolate-spread-strawberry-yogurt_53876-1011843.jpg?w=740" alt="Mini Pancakes">
         <div class="featured-info">
           <h3>Mini Pancakes</h3>
           <p>10 Mini Pancakes with Chocolate Topping</p>
@@ -120,52 +83,6 @@
       </div>
 
     </div>
-  </div>
-</section>
-
-<!-- Booking Section -->
-<section id="booking" class="booking">
-  <div class="booking-container">
-    <div class="booking-info">
-      <h2 data-i18n="bookingTitle">Book Your Table</h2>
-      <p data-i18n="bookingDesc">
-        Reserve your spot and we’ll confirm your booking via WhatsApp.
-      </p>
-    </div>
-
-    <form id="bookingForm" class="booking-form">
-      <div class="form-group">
-        <label for="name" data-i18n="formName">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your Name" required>
-      </div>
-
-      <div class="form-group">
-        <label for="phone" data-i18n="formPhone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="+389 70 123 456" required>
-      </div>
-
-      <div class="form-group">
-        <label for="date" data-i18n="formDate">Date</label>
-        <input type="date" id="date" name="date" required>
-      </div>
-
-      <div class="form-group">
-        <label for="time" data-i18n="formTime">Time</label>
-        <input type="time" id="time" name="time" required>
-      </div>
-
-      <div class="form-group">
-        <label for="people" data-i18n="formPeople">Number of People</label>
-        <input type="number" id="people" name="people" min="1" placeholder="1" required>
-      </div>
-
-      <div class="form-group">
-        <label for="message" data-i18n="formMessage">Message (optional)</label>
-        <textarea id="message" name="message" placeholder="Any special requests?"></textarea>
-      </div>
-
-      <button type="submit" class="cta-button" data-i18n="submitBooking">Book Now!</button>
-    </form>
   </div>
 </section>
 
@@ -224,33 +141,5 @@
 
     <script src="data.js"></script>
     <script src="script.js"></script>
-    <script>
-  const bookingForm = document.getElementById("bookingForm");
-
-  bookingForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const date = document.getElementById("date").value;
-    const time = document.getElementById("time").value;
-    const people = document.getElementById("people").value;
-    const message = document.getElementById("message").value;
-
-    const text = `Hello The Garrison Bar! I'd like to book a table.
-Name: ${name}
-Phone: ${phone}
-Date: ${date}
-Time: ${time}
-People: ${people}
-Message: ${message}`;
-
-    // Your WhatsApp number here (in international format without +)
-    const whatsappNumber = "38976633625"; 
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-
-    window.open(whatsappURL, "_blank");
-  });
-</script>
 </body>
 </html>
