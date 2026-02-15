@@ -1163,7 +1163,7 @@ const menuItems = [
     description: { en: "Ouzo Plomari", sq: "Ouzo Plomari", mk: "Ouzo Plomari" },
     price: 120,
     category: "alcoholic",
-    image: "https://unboxgreece.com/wp-content/uploads/2024/04/Plwmari08-1.jpg",
+    image: "https://vinomarket.mk/wp-content/uploads/2021/04/Ouzo_Plomari_Ouzo_Plomari_1l_600x600@2x.jpg",
     featured: false
 },
 {
@@ -1299,4 +1299,5 @@ const menuItems = [
     
     }
 ];
+
 
