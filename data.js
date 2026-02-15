@@ -2,7 +2,7 @@
 const translations = {
     en: {
         barName: "The Garrison Bar",
-        barSubtitle: "Crafting Memories, One Drink At A Time!",
+        barSubtitle: "Where Moments Become Memories",
         viewMenu: "View Menu",
         aboutTitle: "Welcome to The Garrison Bar",
         aboutDesc: "Experience the finest selection of cocktails, wines, beers, and non-alcoholic beverages in an atmosphere of elegance and sophistication. Our carefully curated menu reflects our commitment to quality and excellence.",
@@ -24,18 +24,8 @@ const translations = {
     },
     sq: {
         barName: "The Garrison Bar",
-        barSubtitle: "Crafting Memories, One Drink At A Time!",
+        barSubtitle: "Ku Momentet Bëhen Kujtime",
         viewMenu: "Shiko Menynë",
-        bookNow: "Rezervo Tani",
-        bookingTitle: "Rezervo Tavolinën",
-bookingDesc: "Rezervo vendin tuaj dhe ne do të konfirmojmë rezervimin përmes WhatsApp.",
-formName: "Emri",
-formPhone: "Numri i Telefonit",
-formDate: "Data",
-formTime: "Ora",
-formPeople: "Numri i Personave",
-formMessage: "Mesazh (opsional)",
-submitBooking: "Rezervo përmes WhatsApp",
         aboutTitle: "Mirësevini në The Garrison Bar",
         aboutDesc: "Përjetoni përzgjedhjen më të mirë të koktejeve, verërave, birrës dhe pijeve pa alkool në një atmosferë të elegancës dhe sofistikimit. Menyja jonë e kujdesshme pasqyron angazhimin tonë ndaj cilësisë dhe përsosmërisë.",
         ourMenu: "Menyja Jonë",
@@ -56,18 +46,8 @@ submitBooking: "Rezervo përmes WhatsApp",
     },
     mk: {
         barName: "The Garrison Bar",
-        barSubtitle: "Crafting Memories, One Drink At A Time!",
+        barSubtitle: "Каде Моментите Стануваат Успомени",
         viewMenu: "Погледнете Мени",
-        bookNow: "Резервирај сега",
-        bookingTitle: "Резервирајте маса",
-bookingDesc: "Резервирајте го вашето место и ние ќе ја потврдиме резервацијата преку WhatsApp.",
-formName: "Име",
-formPhone: "Телефонски број",
-formDate: "Датум",
-formTime: "Време",
-formPeople: "Број на луѓе",
-formMessage: "Порака (опционално)",
-submitBooking: "Резервирај преку WhatsApp",
         aboutTitle: "Добредојдовте во The Garrison Bar",
         aboutDesc: "Искусете ја најфината селекција на коктели, вина, пива и безалкохолни пијалоци во атмосфера на елеганција и софистицираност. Нашето внимателно одредено мени го одразува нашето посветување на квалитет и совршенство.",
         ourMenu: "Наша Мени",
@@ -670,22 +650,6 @@ const menuItems = [
         image: "https://i.imgur.com/h8tmdLl.png",
         featured: false
     },
-    {
-    name: { 
-        en: "Sex on the Jungle", 
-        sq: "Sex on the Jungle", 
-        mk: "Секс во Џунгла" 
-    },
-    description: { 
-        en: "Vodka, peach liqueur, pineapple juice, cranberry juice", 
-        sq: "Vodkë, liker pjeshke, lëng ananasi, lëng boronice", 
-        mk: "Вотка, ликер од праска, сок од ананас, сок од брусница" 
-    },
-    price: 350,
-    category: "cocktails",
-    image: "https://i.imgur.com/1Qf3llS.jpeg",
-    featured: false
-},
     {
         name: { en: "Gin Daisy", sq: "Gin Daisy", mk: "Џин Дејзи" },
         description: { en: "Gin, lemon juice, grenadine, soda", sq: "Xhin, lëng limoni, grenadinë, sodë", mk: "Џин, лимонов сок, гренадин, сода" },
@@ -1322,7 +1286,7 @@ const menuItems = [
         description: { en: "10 Mini Pancakes with Chocolate Topping", sq: "10 Mini Palaçinka me Shtresë Çokollate", mk: "10 Мини Палачинки со Чоколаден Прелив" },
         price: 220,
         category: "snacks",
-        image: "https://images.deliveryhero.io/image/fd-my/LH/i40q-listing.jpg",
+        image: "https://img.freepik.com/premium-photo/mini-pancakes-png-kids-breakfast-treat-chocolate-spread-strawberry-yogurt_53876-1011843.jpg?semt=ais_hybrid&w=740",
         featured: true
     },
     {
@@ -1330,10 +1294,8 @@ const menuItems = [
         description: { en: "10 Mini Pancakes with Fruit and Chocolate", sq: "10 Mini Pancakes me Fruta dhe Çokolladë", mk: "10 Мини Палачинки со Овошје и Чоколадо" },
         price: 290,
         category: "snacks",
-        image: "https://sweetminipancakes.com/wp-content/uploads/2024/10/poffertjes_squ_web-1-1-1024x1024.jpg",
+        image: "https://images.eatsmarter.de/sites/default/files/styles/1600x1200/public/erdbeer-pancakes-mit-heidelbeeren-und-himbeeren-680885.png",
         featured: false
     
     }
 ];
-
-
