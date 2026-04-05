@@ -1,117 +1,1508 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - The Garrison Bar</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Menu — The Garrison Bar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
+<style>
+/* =============================================
+   CSS VARIABLES & RESET
+   ============================================= */
+:root {
+  --black:       #0a0a0a;
+  --charcoal:    #111111;
+  --charcoal-2:  #1a1a1a;
+  --charcoal-3:  #242424;
+  --gold:        #c9a84c;
+  --gold-light:  #e0c06e;
+  --gold-dim:    rgba(201,168,76,0.12);
+  --gold-border: rgba(201,168,76,0.28);
+  --cream:       #f5efe6;
+  --text-main:   #e8e0d5;
+  --text-muted:  #8a8070;
+  --text-dim:    #5a5248;
+  --font-serif:  'Cormorant Garamond', Georgia, serif;
+  --font-sans:   'Jost', sans-serif;
+  --ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition:  0.4s var(--ease);
+  --glow:        0 0 40px rgba(201,168,76,0.18);
+  --nav-h:       80px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
+}
+img { max-width: 100%; display: block; }
+a  { text-decoration: none; color: inherit; }
+button { cursor: none; border: none; background: none; font-family: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* =============================================
+   CUSTOM CURSOR
+   ============================================= */
+#cursor {
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .3s, height .3s, opacity .3s;
+  mix-blend-mode: screen;
+}
+#cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(201,168,76,.45);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: width .3s, height .3s;
+}
+body.cursor-hover #cursor      { width: 20px; height: 20px; opacity: .6; }
+body.cursor-hover #cursor-ring { width: 54px; height: 54px; border-color: var(--gold); }
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 200;
+  padding: 0 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(10,10,10,.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--gold-border);
+}
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  letter-spacing: .2em;
+  color: var(--gold);
+  font-weight: 300;
+}
+.nav-logo em { font-style: italic; }
+.nav-back {
+  display: flex; align-items: center; gap: .6rem;
+  font-size: .68rem; letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition);
+  cursor: none;
+}
+.nav-back svg { width: 16px; height: 16px; transition: transform var(--transition); }
+.nav-back:hover { color: var(--gold); }
+.nav-back:hover svg { transform: translateX(-4px); }
+.nav-right {
+  display: flex; align-items: center; gap: 2rem;
+}
+.nav-lang {
+  display: flex; gap: .5rem;
+}
+.lang-btn {
+  font-family: var(--font-sans);
+  font-size: .63rem; letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: .22rem .5rem;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+  cursor: none;
+}
+.lang-btn.active, .lang-btn:hover { color: var(--gold); border-color: var(--gold-border); }
+
+/* hamburger */
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  width: 26px; cursor: none;
+}
+.nav-hamburger span { display: block; height: 1px; background: var(--gold); transition: all .3s; }
+
+/* mobile nav overlay */
+.nav-mobile {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(10,10,10,.97);
+  backdrop-filter: blur(28px);
+  z-index: 199;
+  flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity .4s;
+}
+.nav-mobile.open { display: flex; opacity: 1; pointer-events: all; }
+.nav-mobile a {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem,5vw,2.8rem);
+  font-weight: 300; letter-spacing: .1em;
+  color: var(--text-muted); transition: color .3s;
+}
+.nav-mobile a:hover { color: var(--gold); }
+
+/* =============================================
+   HERO BANNER
+   ============================================= */
+#menu-hero {
+  position: relative;
+  height: 42vh; min-height: 320px;
+  margin-top: var(--nav-h);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+}
+.menu-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(10,10,10,.45) 0%, rgba(10,10,10,.85) 100%),
+    url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1920&q=80&auto=format&fit=crop')
+    center/cover no-repeat;
+  animation: heroZoom 7s var(--ease) forwards;
+}
+@keyframes heroZoom { to { transform: scale(1.04); } }
+
+.menu-hero-content { position: relative; z-index: 2; }
+.menu-hero-eyebrow {
+  font-size: .62rem; letter-spacing: .4em;
+  text-transform: uppercase; color: var(--gold);
+  display: block; margin-bottom: .9rem;
+  animation: fadeUp .7s ease .3s both;
+}
+.menu-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 7vw, 5.5rem);
+  font-weight: 300; line-height: 1;
+  letter-spacing: .08em; color: var(--cream);
+  animation: fadeUp .7s ease .55s both;
+}
+.menu-hero-title em { font-style: italic; color: var(--gold); }
+.menu-hero-line {
+  width: 0; height: 1px; margin: 1.2rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: expandLine .9s ease .9s forwards;
+}
+@keyframes expandLine { to { width: 160px; } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:none; } }
+
+/* =============================================
+   MAIN LAYOUT
+   ============================================= */
+#menu-page {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 4rem 3rem 8rem;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* =============================================
+   SIDEBAR — category nav
+   ============================================= */
+.menu-sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+}
+.sidebar-title {
+  font-size: .58rem; letter-spacing: .35em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1.5rem;
+  padding-bottom: .8rem;
+  border-bottom: 1px solid var(--gold-border);
+}
+.sidebar-nav { display: flex; flex-direction: column; gap: .25rem; }
+.sidebar-btn {
+  display: flex; align-items: center; gap: .9rem;
+  padding: .75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: .72rem; letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-left: 2px solid transparent;
+  transition: all var(--transition);
+  cursor: none; text-align: left;
+}
+.sidebar-btn .sb-icon { font-size: 1.05rem; opacity: .6; transition: opacity .3s; }
+.sidebar-btn:hover  {
+  color: var(--text-muted);
+  border-left-color: rgba(201,168,76,.3);
+  background: var(--gold-dim);
+  padding-left: 1.3rem;
+}
+.sidebar-btn.active {
+  color: var(--gold);
+  border-left-color: var(--gold);
+  background: var(--gold-dim);
+}
+.sidebar-btn.active .sb-icon { opacity: 1; }
+.sidebar-count {
+  margin-left: auto;
+  font-size: .58rem; color: var(--text-dim);
+  background: var(--charcoal-3);
+  padding: .1rem .4rem;
+  border-radius: 99px;
+  min-width: 20px; text-align: center;
+}
+.sidebar-btn.active .sidebar-count { background: rgba(201,168,76,.2); color: var(--gold); }
+
+/* =============================================
+   CONTENT AREA
+   ============================================= */
+.menu-content {}
+
+/* Category section header */
+.cat-section { margin-bottom: 5rem; }
+.cat-section-header {
+  display: flex; align-items: center; gap: 1.4rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--charcoal-3);
+  position: relative;
+}
+.cat-section-header::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0;
+  width: 60px; height: 1px;
+  background: var(--gold);
+}
+.cat-icon-large {
+  width: 50px; height: 50px; flex-shrink: 0;
+  border: 1px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 1.3rem;
+}
+.cat-section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300; color: var(--cream);
+  line-height: 1;
+}
+.cat-section-title em { font-style: italic; color: var(--gold); }
+.cat-item-count {
+  margin-left: auto; flex-shrink: 0;
+  font-size: .6rem; letter-spacing: .25em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+
+/* Cards grid */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+
+/* Card */
+.menu-card {
+  background: var(--charcoal-2);
+  border: 1px solid var(--charcoal-3);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  position: relative;
+}
+.menu-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  border: 1px solid var(--gold-border);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--transition);
+}
+.menu-card:hover { transform: translateY(-5px); box-shadow: var(--glow); }
+.menu-card:hover::after { opacity: 1; }
+
+.menu-card-img-wrap { overflow: hidden; height: 190px; }
+.menu-card-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(.75) saturate(.65);
+  transition: transform .65s var(--ease), filter .4s;
+}
+.menu-card:hover .menu-card-img { transform: scale(1.07); filter: brightness(.88) saturate(.9); }
+
+/* "no image" placeholder */
+.menu-card-placeholder {
+  width: 100%; height: 190px;
+  background: var(--charcoal-3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem; color: var(--text-dim);
+}
+
+.menu-card-body { padding: 1.3rem 1.4rem 1.5rem; }
+.menu-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem; font-weight: 400;
+  color: var(--cream); margin-bottom: .35rem;
+}
+.menu-card-desc {
+  font-size: .74rem; color: var(--text-dim);
+  line-height: 1.6; margin-bottom: 1rem;
+}
+.menu-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--charcoal-3);
+  padding-top: .85rem;
+}
+.menu-card-price {
+  font-family: var(--font-serif);
+  font-size: 1.1rem; color: var(--gold); font-weight: 400;
+}
+.menu-card-tag {
+  font-size: .58rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--text-dim);
+  border: 1px solid var(--charcoal-3);
+  padding: .18rem .5rem;
+}
+
+/* =============================================
+   SCROLL REVEAL
+   ============================================= */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  padding: 2.5rem 4rem;
+  border-top: 1px solid var(--charcoal-3);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: var(--font-serif); font-size: 1.05rem; letter-spacing: .15em; color: var(--gold); }
+.footer-logo em { font-style: italic; }
+.footer-copy { font-size: .62rem; letter-spacing: .1em; color: var(--text-dim); }
+.footer-back {
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--text-dim); transition: color var(--transition);
+}
+.footer-back:hover { color: var(--gold); }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  #menu-page { grid-template-columns: 200px 1fr; gap: 2.5rem; padding: 3rem 2rem 6rem; }
+}
+@media (max-width: 768px) {
+  #navbar { padding: 0 1.5rem; }
+  .nav-right { gap: 1rem; }
+  .nav-lang { display: none; }
+  .nav-hamburger { display: flex; }
+
+  #menu-page { grid-template-columns: 1fr; padding: 2rem 1.2rem 5rem; gap: 0; }
+  .menu-sidebar { position: static; margin-bottom: 2.5rem; }
+  .sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: .5rem; }
+  .sidebar-btn {
+    border-left: none; border-bottom: 2px solid transparent;
+    padding: .5rem .9rem; font-size: .62rem;
+  }
+  .sidebar-btn:hover  { border-left: none; border-bottom-color: rgba(201,168,76,.3); padding-left: .9rem; }
+  .sidebar-btn.active { border-left: none; border-bottom-color: var(--gold); }
+  .sidebar-count { display: none; }
+  .menu-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+}
+@media (max-width: 480px) {
+  .menu-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
-  <!-- Navigation -->
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="logo">The Garrison Bar</a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="menu.html" class="active">Menu</a>
-            <div class="language-switcher">
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="sq">SQ</button>
-                <button class="lang-btn" data-lang="mk">MK</button>
-            </div>
-        </div>
-    </div>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- MOBILE NAV -->
+<nav class="nav-mobile" id="mobileNav">
+  <a href="index.html" onclick="closeMobileMenu()">
+    <span data-al="Kreu" data-mk="Почетна" data-en="Home">Kreu</span>
+  </a>
+  <a href="index.html#about" onclick="closeMobileMenu()">
+    <span data-al="Rreth Nesh" data-mk="За Нас" data-en="About">Rreth Nesh</span>
+  </a>
+  <a href="index.html#gallery" onclick="closeMobileMenu()">
+    <span data-al="Galeria" data-mk="Галерија" data-en="Gallery">Galeria</span>
+  </a>
+  <a href="index.html#contact" onclick="closeMobileMenu()">
+    <span data-al="Kontakti" data-mk="Контакт" data-en="Contact">Kontakti</span>
+  </a>
 </nav>
 
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    <span data-al="Kthehu" data-mk="Назад" data-en="Back">Kthehu</span>
+  </a>
 
-    <!-- Menu Section -->
-    <section class="menu-section">
-        <div class="menu-container">
-            <h1 data-i18n="ourMenu">Our Menu</h1>
-            
-            <!-- Filter Buttons -->
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all" data-i18n="allItems">All Items</button>
-                <button class="filter-btn" data-filter="hot-drinks" data-i18n="hotDrinks">Hot Drinks</button>
-                <button class="filter-btn" data-filter="cold-drinks" data-i18n="coldDrinks">Cold Drinks</button>
-                <button class="filter-btn" data-filter="natural-juice" data-i18n="naturalJuice">Natural Juice</button>
-                <button class="filter-btn" data-filter="beers-wines" data-i18n="beersWines">Beers & Wines</button>
-                <button class="filter-btn" data-filter="cocktails" data-i18n="cocktails">Cocktails</button>
-                <button class="filter-btn" data-filter="mocktails" data-i18n="mocktails">Mocktails</button>
-                <button class="filter-btn" data-filter="alcoholic" data-i18n="alcoholicDrinks">Alcoholic</button>
-                <button class="filter-btn" data-filter="food" data-i18n="food">Food</button>
-                <button class="filter-btn" data-filter="snacks" data-i18n="snacks">Snacks</button>
-            </div>
+  <div class="nav-logo">The Garrison <em>Bar</em></div>
 
-            <!-- Menu Grid -->
-            <div class="menu-grid" id="menuGrid"></div>
-        </div>
-    </section>
-
-    <!-- Modal -->
-    <div class="modal" id="detailModal">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="modal-body" id="modalBody"></div>
-        </div>
+  <div class="nav-right">
+    <div class="nav-lang">
+      <button class="lang-btn active" onclick="setLang('al')">AL</button>
+      <button class="lang-btn" onclick="setLang('mk')">MK</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>The Garrison Bar</h3>
-                <p data-i18n="footerDesc">Crafting memories, one drink at a time.</p>
-            </div>
-            <div class="footer-section">
-                <h3 data-i18n="followUs">Follow Us</h3>
-<div class="social-links">
-    <a href="https://www.facebook.com/thegarrisonbar.mk" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.instagram.com/thegarrisonbar.mk" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.tiktok.com/@thegarrisonbar.mk" target="_blank">
-        <i class="fab fa-tiktok"></i>
-    </a>
+<!-- HERO BANNER -->
+<section id="menu-hero">
+  <div class="menu-hero-bg"></div>
+  <div class="menu-hero-content">
+    <span class="menu-hero-eyebrow" data-al="The Garrison Bar — Tetovë" data-mk="The Garrison Bar — Тетово" data-en="The Garrison Bar — Tetovo">The Garrison Bar — Tetovë</span>
+    <h1 class="menu-hero-title" data-al="Menuja <em>Jonë</em>" data-mk="Нашето <em>Мени</em>" data-en="Our <em>Menu</em>">Menuja <em>Jonë</em></h1>
+    <div class="menu-hero-line"></div>
+  </div>
+</section>
+
+<!-- MAIN MENU PAGE -->
+<div id="menu-page">
+
+  <!-- SIDEBAR -->
+  <aside class="menu-sidebar">
+    <div class="sidebar-title" data-al="Kategoritë" data-mk="Категории" data-en="Categories">Kategoritë</div>
+    <nav class="sidebar-nav" id="sidebarNav">
+      <!-- rendered by JS -->
+    </nav>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="menu-content" id="menuContent">
+    <!-- rendered by JS -->
+  </main>
+
 </div>
 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The Garrison <em>Bar</em></div>
+  <div class="footer-copy" data-al="© 2026 The Garrison Bar. Të gjitha të drejtat e rezervuara." data-mk="© 2026 The Garrison Bar. Сите права задржани." data-en="© 2026 The Garrison Bar. All rights reserved.">© 2026 The Garrison Bar. Të gjitha të drejtat e rezervuara.</div>
+  <a href="index.html" class="footer-back" data-al="← Kthehu në Kryefaqe" data-mk="← Назад на Почетна" data-en="← Back to Home">← Kthehu në Kryefaqe</a>
+</footer>
 
-            </div>
-            <div class="footer-section">
-                <h3 data-i18n="contact">Contact</h3>
-                <p>📍 Dervish Cara, Tetovë</p>
-                <p>📞 +389 76 633 625</p>
-                <p>📧 thegarrisonbarmk@gmail.com</p>
-            </div>
+<!-- =============================================
+     JAVASCRIPT
+     ============================================= -->
+<script>
+'use strict';
+
+/* ─── CURSOR ─── */
+const cursor     = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursor-ring');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top  = mouseY + 'px';
+});
+(function loop() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  cursorRing.style.left = ringX + 'px';
+  cursorRing.style.top  = ringY + 'px';
+  requestAnimationFrame(loop);
+})();
+
+function addHover(el) {
+  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+}
+
+/* ─── MOBILE NAV ─── */
+let mobileOpen = false;
+function toggleMobileMenu() {
+  mobileOpen = !mobileOpen;
+  document.getElementById('mobileNav').classList.toggle('open', mobileOpen);
+  const spans = document.querySelectorAll('.nav-hamburger span');
+  if (mobileOpen) {
+    spans[0].style.transform = 'translateY(6px) rotate(45deg)';
+    spans[1].style.opacity   = '0';
+    spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+  } else {
+    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  }
+}
+function closeMobileMenu() {
+  mobileOpen = false;
+  document.getElementById('mobileNav').classList.remove('open');
+  document.querySelectorAll('.nav-hamburger span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+}
+
+/* ─── LANGUAGE ─── */
+let currentLang = 'al';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'al' ? 'sq' : lang;
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang)
+  );
+  document.querySelectorAll('[data-al]').forEach(el => {
+    const v = el.getAttribute('data-' + lang);
+    if (v !== null) el.innerHTML = v;
+  });
+  renderAll();
+}
+
+/* ═══════════════════════════════════════════════
+   CATEGORIES — icon + trilingual label
+════════════════════════════════════════════════ */
+const categories = [
+  { id: 'Koktele',        icon: '🍸', label: { al: 'Koktele',          mk: 'Коктели',       en: 'Cocktails'    } },
+  { id: 'Mocktale',       icon: '🧃', label: { al: 'Mocktale',         mk: 'Моктели',       en: 'Mocktails'    } },
+  { id: 'Uiski',          icon: '🥃', label: { al: 'Uiski',            mk: 'Виски',          en: 'Whiskey'      } },
+  { id: 'Verë',           icon: '🍷', label: { al: 'Verë',             mk: 'Вино',           en: 'Wine'         } },
+  { id: 'Birrë',          icon: '🍺', label: { al: 'Birrë',            mk: 'Пиво',           en: 'Beer'         } },
+  { id: 'Kafe',           icon: '☕', label: { al: 'Kafe',             mk: 'Кафе',           en: 'Coffee'       } },
+  { id: 'Pije Freskuese', icon: '🥤', label: { al: 'Pije Freskuese',   mk: 'Освежувачки',   en: 'Soft Drinks'  } },
+  { id: 'Lëngje Frutash', icon: '🍹', label: { al: 'Lëngje Frutash',  mk: 'Свежи Сокови',  en: 'Fresh Juices' } },
+  { id: 'Të Tjera',       icon: '✨', label: { al: 'Të Tjera',         mk: 'Останато',      en: 'Others'       } },
+];
+
+/* ═══════════════════════════════════════════════
+   FULL MENU DATA
+════════════════════════════════════════════════ */
+const menuData = [
+
+ {
+  category: 'Koktele',
+  name: { en: "Malibu Bay Breeze", al: "Malibu Bay Breeze", mk: "Малибу Беј Бриз" },
+  desc: { en: "Malibu rum, cranberry juice, pineapple juice", al: "Rum Malibu, lëng boronice, lëng ananasi", mk: "Малибу рум, сок од брусница, ананасов сок" },
+  price: '350 MKD',
+  img: "https://i.imgur.com/h8tmdLl.png"
+},
+{
+  category: 'Koktele',
+  name: { en: "Gin Daisy", al: "Gin Daisy", mk: "Џин Дејзи" },
+  desc: { en: "Gin, lemon juice, grenadine, soda", al: "Xhin, lëng limoni, grenadinë, sodë", mk: "Џин, лимонов сок, гренадин, сода" },
+  price: '350 MKD',
+  img: "https://i.imgur.com/XGDWpTb.png"
+},
+{
+  category: 'Koktele',
+  name: { en: "Tequila Sunrise", al: "Tequila Sunrise", mk: "Текила Санрајз" },
+  desc: { en: "Tequila, orange juice, grenadine", al: "Tekilë, lëng portokalli, grenadinë", mk: "Текила, сок од портокал, гренадин" },
+  price: '350 MKD',
+  img: "https://i.imgur.com/UlfsOUz.png"
+},
+{
+  category: 'Koktele',
+  name: { en: "Mama Mia", al: "Mama Mia", mk: "Мама Миа" },
+  desc: { en: "Vodka, strawberry purée, lime, mint", al: "Vodkë, pure luleshtrydheje, limë, mentë", mk: "Водка, јагодово пире, лајм, мента" },
+  price: '450 MKD',
+  img: "https://i.imgur.com/Uu8sQbI.png"
+},
+{
+  category: 'Koktele',
+  name: { en: "Rainbow Paradise", al: "Rainbow Paradise", mk: "Раинбоу Парадајс" },
+  desc: { en: "Rum, orange juice, blue curaçao, grenadine", al: "Rum, lëng portokalli, curaçao blu, grenadinë", mk: "Рум, портокалов сок, сино кирасо, гренадин" },
+  price: '350 MKD',
+  img: "https://i.imgur.com/m7h140v.png"
+},
+{
+  category: 'Koktele',
+  name: { en: "Cuba Libre", al: "Cuba Libre", mk: "Куба Либре" },
+  desc: { en: "Rum, Coca-Cola, lime", al: "Rum, Coca-Cola, limë", mk: "Рум, Кока-Кола, лајм" },
+  price: '350 MKD',
+  img: "https://i.imgur.com/v9Wli4S.png",
+  featured: true
+},
+{
+  category: 'Koktele',
+  name: { en: "Woo Woo", al: "Woo Woo", mk: "Ву Ву" },
+  desc: { en: "Vodka, peach schnapps, cranberry juice", al: "Vodkë, liker pjeshke, lëng boronice", mk: "Водка, праска ликер, сок од брусница" },
+  price: '350 MKD',
+  img: "https://i.imgur.com/OJUY3QF.png"
+},
+{
+  category: 'Koktele',
+  name: { en: "Red Explosion", al: "Red Explosion", mk: "Црвена Експлозија" },
+  desc: { en: "Vodka, blackberry juice, grenadine", al: "Vodkë, lëng manaferre, grenadinë", mk: "Водка, сок од капина, гренадин" },
+  price: '350 MKD',
+  img: "https://i.imgur.com/MEpQVQH.png"
+},
+  /* ── MOCKTAILS ── */
+  {
+  category: 'Mocktale',
+  name: { en: "Blue Lagoon", al: "Blue Lagoon", mk: "Блу Лагун" },
+  desc: { en: "Refreshing mix of blue curaçao, lemon soda, ice", al: "Pije freskuese me blue curaçao dhe limonadë", mk: "Освежителна мешавина со сино кирасо и лимонада" },
+  price: '250 MKD',
+  img: "https://i.imgur.com/6Uv80LG.png"
+},
+{
+  category: 'Mocktale',
+  name: { en: "Blue Hawai", al: "Blue Hawai", mk: "Блу Хаваи" },
+  desc: { en: "Tropical juice with pineapple and blue syrup", al: "Pije tropikale me ananas dhe shurup blu", mk: "Тропски сок со ананас и син сируп" },
+  price: '190 MKD',
+  img: "https://i.imgur.com/0MQ2yNO.png"
+},
+{
+  category: 'Mocktale',
+  name: { en: "Watermelon", al: "Watermelon", mk: "Лубеница" },
+  desc: { en: "Fresh watermelon with mint", al: "Lëng shalqiri me mentë", mk: "Свеж сок од лубеница со мента" },
+  price: '200 MKD',
+  img: "https://i.imgur.com/7gms7Yz.png"
+},
+{
+  category: 'Mocktale',
+  name: { en: "Strawberry", al: "Strawberry", mk: "Јагода" },
+  desc: { en: "Strawberry purée with citrus", al: "Pure luleshtrydheje me agrume", mk: "Јагодово пире со цитрус" },
+  price: '200 MKD',
+  img: "https://i.imgur.com/JeniSMV.png"
+},
+{
+  category: 'Mocktale',
+  name: { en: "Pina Colada", al: "Pina Colada", mk: "Пина Колада" },
+  desc: { en: "Coconut cream with pineapple", al: "Kokos dhe ananas", mk: "Кокосов крем со ананас" },
+  price: '200 MKD',
+  img: "https://i.imgur.com/NcJxULS.png"
+},
+{
+  category: 'Mocktale',
+  name: { en: "Fruit Punch", al: "Fruit Punch", mk: "Овошен Пунч" },
+  desc: { en: "Mixed tropical fruits", al: "Fruta tropikale të përziera", mk: "Мешани тропски овошја" },
+  price: '210 MKD',
+  img: "https://i.imgur.com/GQyL0cy.png"
+},
+{
+  category: 'Mocktale',
+  name: { en: "Mojito", al: "Mojito", mk: "Мохито" },
+  desc: { en: "Lime, mint, sugar, soda", al: "Limë, mentë, sheqer, sodë", mk: "Лајм, мента, шеќер и сода" },
+  price: '190 MKD',
+  img: "https://www.cruzanrum.com/sites/default/files/styles/original/public/2021-11/CZ_Batch_7_CocktailCard_1000x1000_Mojito_Static%20%281%29.png.webp?itok=IRCdLXGt"
+},
+{
+  category: 'Mocktale',
+  name: { en: "Cocktail Redbull", al: "Koktel Redbull", mk: "Коктел Редбул" },
+  desc: { en: "Redbull with citrus and ice", al: "Redbull me agrume dhe akull", mk: "Редбул со цитрус и мраз" },
+  price: '400 MKD',
+  img: "https://i.imgur.com/suPvKS7.png"
+},
+{
+  category: 'Mocktale',
+  name: { en: "Candy Crush", al: "Candy Crush", mk: "Кенди Краш" },
+  desc: { en: "Sweet fruity mix", al: "Pije e ëmbël me fruta", mk: "Слатка овошна мешавина" },
+  price: '230 MKD',
+  img: "https://i.imgur.com/uHjUQkP.png"
+},
+{
+  category: 'Mocktale',
+  name: { en: "Cola Mojito", al: "Cola Mojito", mk: "Кола Мохито" },
+  desc: { en: "Mojito flavor with cola", al: "Mojito me kola", mk: "Мохито со кола" },
+  price: '220 MKD',
+  img: "https://i.imgur.com/caFTikA.png"
+},
+
+  /* ── WHISKEY ── */
+/* ── UISKI ── */
+{
+  category: 'Uiski',
+  name: { al: "Jack Daniel's", mk: "Jack Daniel's", en: "Jack Daniel's" },
+  desc: { 
+    al: 'Uiski amerikan klasik me nota vanilje dhe karameli',
+    mk: 'Класичен американски виски со ноти на ванила и карамела',
+    en: 'Classic American whiskey with vanilla and caramel notes'
+  },
+  price: '210 MKD',
+  img: 'https://www.oaks.delivery/wp-content/uploads/Jack-Daniels-Honey-Whiskey-1-1600x900-1-1200x675-cropped.webp'
+},
+{
+  category: 'Uiski',
+  name: { al: "Jack Daniel's Honey", mk: "Jack Daniel's Honey", en: "Jack Daniel's Honey" },
+  desc: { 
+    al: 'Uiski me mjaltë, i butë dhe aromatik',
+    mk: 'Виски со мед, мек и ароматичен',
+    en: 'Honey whiskey, smooth and aromatic'
+  },
+  price: '200 MKD',
+  img: 'https://www.oaks.delivery/wp-content/uploads/jd-honey.jpg'
+},
+{
+  category: 'Uiski',
+  name: { al: "Jack Daniel's Single Barrel", mk: "Jack Daniel's Single Barrel", en: "Jack Daniel's Single Barrel" },
+  desc: { 
+    al: 'Single barrel premium, shije intensive',
+    mk: 'Премиум single barrel со интензивен вкус',
+    en: 'Premium single barrel with intense flavor'
+  },
+  price: '260 MKD',
+  img: 'https://www.whisky.de/shop/out/pictures/generated/product/5/2200_2200_75/image_JACKDSIBA_5.jpg'
+},
+{
+  category: 'Uiski',
+  name: { al: "Jameson", mk: "Jameson", en: "Jameson Irish Whiskey" },
+  desc: { 
+    al: 'Uiski irlandez i butë dhe i balancuar',
+    mk: 'Мек и балансиран ирски виски',
+    en: 'Smooth and balanced Irish whiskey'
+  },
+  price: '170 MKD',
+  img: 'https://vinomarket.mk/wp-content/uploads/2021/03/PRMiniProduct_Page_2_Image_0015.jpg'
+},
+{
+  category: 'Uiski',
+  name: { al: "Johnnie Walker Red", mk: "Johnnie Walker Red", en: "Johnnie Walker Red Label" },
+  desc: { 
+    al: 'Blend i njohur me shije të fortë',
+    mk: 'Познат бленд со силен вкус',
+    en: 'Famous blend with bold flavor'
+  },
+  price: '170 MKD',
+  img: 'https://gemak.mk/wp-content/uploads/2020/03/jw-red-700ml-300x300.jpg'
+},
+{
+  category: 'Uiski',
+  name: { al: "Johnnie Walker Black", mk: "Johnnie Walker Black", en: "Johnnie Walker Black Label" },
+  desc: { 
+    al: 'Uiski 12 vjet i maturuar, i pasur',
+    mk: '12 годишен зрел виски со богат вкус',
+    en: '12-year aged whiskey, rich flavor'
+  },
+  price: '210 MKD',
+  img: 'https://media.liquormax.com/eq4rxnkvcouvc1anfqqhe/088110011406.jpg'
+},
+{
+  category: 'Uiski',
+  name: { al: "Johnnie Walker Gold", mk: "Johnnie Walker Gold", en: "Johnnie Walker Gold Label" },
+  desc: { 
+    al: 'Premium blend me nota të ëmbla',
+    mk: 'Премиум бленд со благи ноти',
+    en: 'Premium blend with sweet notes'
+  },
+  price: '300 MKD',
+  img: 'https://vinomarket.mk/wp-content/uploads/2021/03/10-2.jpg'
+},
+{
+  category: 'Uiski',
+  name: { al: "Chivas Regal", mk: "Chivas Regal", en: "Chivas Regal" },
+  desc: { 
+    al: 'Blend skocez premium, shumë i butë',
+    mk: 'Премиум шкотски бленд, многу мек',
+    en: 'Premium Scotch blend, very smooth'
+  },
+  price: '300 MKD',
+  img: 'https://cdn2.hubspot.net/hubfs/632486/Screenshot%202020-02-25%20at%2011.41.43.png'
+},
+{
+  category: 'Uiski',
+  name: { al: "Cardhu", mk: "Cardhu", en: "Cardhu" },
+  desc: { 
+    al: 'Single malt skocez me shije të butë',
+    mk: 'Сингл малт шкотски со мек вкус',
+    en: 'Single malt Scotch with smooth taste'
+  },
+  price: '300 MKD',
+  img: 'https://m.media-amazon.com/images/I/71KC8-kZTPL.jpg'
+},
+{
+  category: 'Uiski',
+  name: { al: "Dimple", mk: "Dimple", en: "Dimple" },
+  desc: { 
+    al: 'Blend klasik me aromë të pasur',
+    mk: 'Класичен бленд со богата арома',
+    en: 'Classic blend with rich aroma'
+  },
+  price: '250 MKD',
+  img: 'https://themaltgallery.com/cdn/shop/products/dimple12.jpg'
+},
+{
+  category: 'Uiski',
+  name: { al: "J&B", mk: "J&B", en: "J&B" },
+  desc: { 
+    al: 'Blend i lehtë për konsum të përditshëm',
+    mk: 'Лесен бленд за секојдневно пиење',
+    en: 'Light blend for everyday drinking'
+  },
+  price: '170 MKD',
+  img: 'https://vinomarket.mk/wp-content/uploads/2021/03/%D0%88B-1L.jpg'
+},
+{
+  category: 'Uiski',
+  name: { al: "Ballantine's", mk: "Ballantine's", en: "Ballantine's" },
+  desc: { 
+    al: 'Blend skocez i balancuar',
+    mk: 'Балансирaн шкотски бленд',
+    en: 'Balanced Scotch blend'
+  },
+  price: '170 MKD',
+  img: 'https://www.pernod-ricard.com/sites/default/files/styles/brand_tile_3_in_row_desktop_958x1048_/public/2025-02/ballantines_fy25_b7.jpg.jpg'
+},
+{
+  category: 'Uiski',
+  name: { al: "Jim Beam", mk: "Jim Beam", en: "Jim Beam" },
+  desc: { 
+    al: 'Bourbon amerikan klasik',
+    mk: 'Класичен американски бурбон',
+    en: 'Classic American bourbon'
+  },
+  price: '170 MKD',
+  img: 'https://etimg.etb2bimg.com/photo/85004055.cms'
+},
+{
+  category: 'Uiski',
+  name: { al: "Bushmills", mk: "Bushmills", en: "Bushmills" },
+  desc: { 
+    al: 'Uiski irlandez me shije të lehtë',
+    mk: 'Ирски виски со лесен вкус',
+    en: 'Irish whiskey with light flavor'
+  },
+  price: '140 MKD',
+  img: 'https://bushmills.com/cdn/shop/files/bushmills-whiskey-12Y-lifestyle-1.png'
+},
+
+  /* ── WINE ── */
+  {
+  category: 'Verë',
+  name: { en: "Alexandria (Small)", al: "Aleksandria (e Vogël)", mk: "Александрија (мало)" },
+  desc: { en: "Red or white wine glass", al: "Gotë vere e kuqe ose e bardhë", mk: "Чаша црвено или бело вино" },
+  price: '200 MKD',
+  img: "https://dani-distribution.com/wp-content/uploads/2025/05/Tikves-Alexandria-Belo-0.187-vere-mini.jpg"
+},
+{
+  category: 'Verë',
+  name: { en: "Alexandria (Bottle)", al: "Aleksandria (Shishe)", mk: "Александрија (шише)" },
+  desc: { en: "Full bottle of Alexandria wine", al: "Shishe vere Aleksandria", mk: "Шише вино Александрија" },
+  price: '1000 MKD',
+  img: "https://tikves.com.mk/wp-content/uploads/2019/06/Alexandria_White.jpg"
+},
+{
+  category: 'Verë',
+  name: { en: "T'ga za Jug (Small)", al: "T'ga për Jug (e Vogël)", mk: "Т'га за Југ (мало)" },
+  desc: { en: "Glass of T'ga za Jug wine", al: "Gotë verë T'ga për Jug", mk: "Чаша Т'га за Југ вино" },
+  price: '160 MKD',
+  img: "https://fino-vino.ch/images/com_hikashop/upload/tga-za-jug-von-tikves-2dl.png"
+},
+{
+  category: 'Verë',
+  name: { en: "T'ga za Jug (Bottle)", al: "T'ga për Jug (Shishe)", mk: "Т'га за Југ (шише)" },
+  desc: { en: "Full bottle of T'ga za Jug wine", al: "Shishe e plotë e verës T'ga për Jug", mk: "Шише Т'га за Југ вино" },
+  price: '800 MKD',
+  img: "https://tikves.com.mk/wp-content/uploads/2021/12/T_GA_new.jpg"
+},
+{
+  category: 'Verë',
+  name: { en: "Merlot", al: "Merlot", mk: "Мерло" },
+  desc: { en: "Bottle of Merlot wine", al: "Shishe verë Merlot", mk: "Шише вино Мерло" },
+  price: '1000 MKD',
+  img: "https://cdn.shopify.com/s/files/1/0871/2640/9530/files/jcell_merlot_1x1-1670442033875.png?v=1715281810"
+},
+{
+  category: 'Verë',
+  name: { en: "Cabernet Sauvignon", al: "Cabernet Sauvignon", mk: "Каберне Совињон" },
+  desc: { en: "Bottle of Cabernet Sauvignon wine", al: "Shishe verë Cabernet Sauvignon", mk: "Шише вино Каберне Совињон" },
+  price: '1000 MKD',
+  img: "https://www.compagniesdrift.com/wp-content/uploads/2021/08/cab-sa-2023-product.jpg"
+},
+{
+  category: 'Verë',
+  name: { en: "Temjanika", al: "Temjanika", mk: "Темјаника" },
+  desc: { en: "Bottle of Temjanika wine", al: "Shishe verë Temjanika", mk: "Шише вино Темјаника" },
+  price: '3000 MKD',
+  img: "https://tikves.com.mk/wp-content/uploads/2025/03/Temjanika-White-Wine.png"
+},
+{
+  category: 'Verë',
+  name: { en: "Chardonnay", al: "Chardonnay", mk: "Шардоне" },
+  desc: { en: "Bottle of Chardonnay wine", al: "Shishe verë Chardonnay", mk: "Шише вино Шардоне" },
+  price: '1000 MKD',
+  img: "https://tikves.com.mk/wp-content/uploads/2025/03/Chardonney-White-Wine.png"
+},
+{
+  category: 'Verë',
+  name: { en: "Barovo White", al: "Barovo e Bardhë", mk: "Барово Бело" },
+  desc: { en: "Bottle of Barovo white wine", al: "Shishe vere Barovo e bardhë", mk: "Шише Барово бело вино" },
+  price: '2500 MKD',
+  img: "https://tikves.com.mk/wp-content/uploads/2019/06/Barovo_White-1.jpg"
+},
+{
+  category: 'Verë',
+  name: { en: "Barovo Red", al: "Barovo e Kuqe", mk: "Барово Црвено" },
+  desc: { en: "Bottle of Barovo red wine", al: "Shishe vere Barovo e kuqe", mk: "Шише Барово црвено вино" },
+  price: '2500 MKD',
+  img: "https://wine.mk/wp-content/uploads/2017/11/Barovo-red-png.png"
+},
+{
+  category: 'Verë',
+  name: { en: "Bela Voda White", al: "Bela Voda e Bardhë", mk: "Бела Вода Бело" },
+  desc: { en: "Bottle of Bela Voda white wine", al: "Shishe vere Bela Voda e bardhë", mk: "Шише Бела Вода бело вино" },
+  price: '2500 MKD',
+  img: "https://wine.mk/wp-content/uploads/2017/11/Bela-voda-White-png.png"
+},
+{
+  category: 'Verë',
+  name: { en: "Bela Voda Red", al: "Bela Voda e Kuqe", mk: "Бела Вода Црвено" },
+  desc: { en: "Bottle of Bela Voda red wine", al: "Shishe vere Bela Voda e kuqe", mk: "Шише Бела Вода црвено вино" },
+  price: '2500 MKD',
+  img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyHO0ESR5gzBJck27ecWmjiEb-dDGoqpUSyg&s"
+},
+
+  /* ── BEER ── */
+  {
+  category: 'Birrë',
+  name: { en: "Skopsko", al: "Skopsko", mk: "Скопско" },
+  desc: { en: "Local Macedonian beer", al: "Birrë vendase maqedonase", mk: "Домашно македонско пиво" },
+  price: '130 MKD',
+  img: "https://static.wixstatic.com/media/b53f62_91953786aafa47f6b89810548481512e~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg"
+},
+{
+  category: 'Birrë',
+  name: { en: "Tuborg", al: "Tuborg", mk: "Туборг" },
+  desc: { en: "Danish lager beer", al: "Birrë daneze", mk: "Данско пиво" },
+  price: '150 MKD',
+  img: "https://webshop.rotodinamic.hr/image/cache/cache/2001-3000/2173/main/647a-01753-0-3-1200x630.jpg"
+},
+{
+  category: 'Birrë',
+  name: { en: "Heineken", al: "Heineken", mk: "Хајнекен" },
+  desc: { en: "Premium Dutch beer", al: "Birrë premium holandeze", mk: "Премиум холандско пиво" },
+  price: '160 MKD',
+  img: "https://players.mk/wp-content/uploads/2021/09/heinkeken-makedonija.jpg"
+},
+{
+  category: 'Birrë',
+  name: { en: "Corona", al: "Korona", mk: "Корона" },
+  desc: { en: "Mexican Beer", al: "Birrë Meksikane", mk: "Мексично Светло Пиво" },
+  price: '200 MKD',
+  img: "https://produits.bienmanger.com/34491-0w470h470_Corona_Extra_Mexican_Blonde_Beer.jpg"
+},
+{
+  category: 'Birrë',
+  name: { en: "Zlaten Dab", al: "Zlaten Dab", mk: "Златен Даб" },
+  desc: { en: "Golden Macedonian beer", al: "Birrë maqedonase e artë", mk: "Златно македонско пиво" },
+  price: '130 MKD',
+  img: "https://zlatendab.mk/wp-content/uploads/2024/05/zlatendab-portfolio-shishe-i-chasha.png"
+},
+
+  /* ── COFFEE ── */
+  {
+  category: 'Kafe',
+  name: { en: "Espresso", al: "Espresso", mk: "Еспресо" },
+  desc: { en: "Rich Italian coffee", al: "Kafe e pasur italiane", mk: "Богато италијанско кафе" },
+  price: '60 MKD',
+  img: "https://orderin.am/uploads/products/1742/product-1742-2024-01-04-10-41-060.jpg"
+},
+{
+  category: 'Kafe',
+  name: { en: "Macchiato", al: "Makiato", mk: "Макиато" },
+  desc: { en: "Espresso with milk", al: "Espresso me qumesht", mk: "Еспресо со млеко" },
+  price: '60 MKD',
+  img: "https://i.imgur.com/bPiYoYX.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Strawberry Macchiato", al: "Makiato Dredhze", mk: "Макиато" },
+  desc: { en: "Strawberry macchiato", al: "Makiato Dredhze", mk: "Еспресо со млеко" },
+  price: '200 MKD',
+  img: "https://thumbs.dreamstime.com/b/pink-latte-heart-cookies-fresh-strawberries-background-385306274.jpg"
+},
+{
+  category: 'Kafe',
+  name: { en: "Large Macchiato", al: "Makiato e madhe", mk: "Голем макиато" },
+  desc: { en: "Espresso with more milk", al: "Espresso me më shumë qumësht", mk: "Еспресо со повеќе млеко" },
+  price: '100 MKD',
+  img: "https://i.imgur.com/KyOjRdZ.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Large Cappuccino", al: "Kapucino e madhe", mk: "Голем капучино" },
+  desc: { en: "Large cappuccino", al: "Kapucino i madh", mk: "Голем капучино" },
+  price: '100 MKD',
+  img: "https://i.imgur.com/q58v56I.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Ice Caffe", al: "Kafe e ftohtë", mk: "Ладно кафе" },
+  desc: { en: "Cold espresso with ice", al: "Espresso e ftohtë me akull", mk: "Ладно еспресо со мраз" },
+  price: '80 MKD',
+  img: "https://i.imgur.com/kfQinb3.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Latte Macchiato", al: "Latte makiato", mk: "Лате макиато" },
+  desc: { en: "Espresso with lots of milk", al: "Espresso me shumë qumësht", mk: "Еспресо со многу млеко" },
+  price: '70 MKD',
+  img: "https://i.imgur.com/UvoNuZH.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Nescafe", al: "Neskafe", mk: "Нескафе" },
+  desc: { en: "Instant coffee", al: "Kafe instant", mk: "Инстант кафе" },
+  price: '90 MKD',
+  img: "https://i.imgur.com/3NeFk1h.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Nescafe Ice", al: "Neskafe e ftohtë", mk: "Ладно Нескафе" },
+  desc: { en: "Instant coffee with ice", al: "Neskafe me akull", mk: "Нескафе со мраз" },
+  price: '100 MKD',
+  img: "https://i.imgur.com/UxqaWSH.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "American Coffee", al: "Kafe amerikane", mk: "Американско кафе" },
+  desc: { en: "Diluted espresso", al: "Kafe e holluar", mk: "Разредено еспресо" },
+  price: '80 MKD',
+  img: "https://i.imgur.com/4PeR22r.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Frappe", al: "Frape", mk: "Фрапе" },
+  desc: { en: "Shaken instant coffee with ice", al: "Kafe e rrahur me akull", mk: "Нескафе со пена и мраз" },
+  price: '110 MKD',
+  img: "https://i.imgur.com/8aLv7Rv.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Nesquik", al: "Nesquik", mk: "Несквик" },
+  desc: { en: "Chocolate milk drink", al: "Qumësht me çokollatë", mk: "Млеко со чоколадо" },
+  price: '90 MKD',
+  img: "https://i.imgur.com/9V73T4A.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Cappuccino", al: "Cappuccino", mk: "Капучино" },
+  desc: { en: "Espresso with steamed milk foam", al: "Espresso me shkumë qumështi", mk: "Еспресо со млечна пена" },
+  price: '60 MKD',
+  img: "https://i.imgur.com/q58v56I.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Tea", al: "Caj", mk: "Чај" },
+  desc: { en: "Tea", al: "Caj", mk: "Чај" },
+  price: '70 MKD',
+  img: "https://i.imgur.com/n881xWQ.png"
+},
+{
+  category: 'Kafe',
+  name: { en: "Hot Chocolate", al: "Çokollatë e Nxehtë", mk: "Топла Чоколада" },
+  desc: { en: "Premium chocolate", al: "Çokollatë premium", mk: "Премиум белгиска чоколада" },
+  price: '110 MKD',
+  img: "https://i.imgur.com/GmgFGlx.png"
+},
+
+  {
+  category: 'Pije Freskuese',
+  name: { en: "Water", al: "Ujë", mk: "Вода" },
+  desc: { en: "Water", al: "Ujë", mk: "Вода" },
+  price: '60 MKD',
+  img: "https://i.imgur.com/nEWkuCS.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Sparkling Water", al: "Ujë me Gaz", mk: "Газирана Вода" },
+  desc: { en: "Sparkling Water", al: "Ujë me Gaz", mk: "Газирана Вода" },
+  price: '70 MKD',
+  img: "https://i.imgur.com/FWOx4HA.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Coca Cola", al: "Coca Cola", mk: "Кока Кола" },
+  desc: { en: "Coca Cola", al: "Coca Cola", mk: "Кока Кола" },
+  price: '90 MKD',
+  img: "https://i.imgur.com/WyHQhgz.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Coca Cola Zero", al: "Coca Cola Zero", mk: "Кока Кола Зеро" },
+  desc: { en: "Coca Cola Zero", al: "Coca Cola Zero", mk: "Кока Кола Зеро" },
+  price: '90 MKD',
+  img: "https://i.imgur.com/ZGVd5WV.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Fanta Orange", al: "Fanta Portokalli", mk: "Фанта Портокал" },
+  desc: { en: "Fanta Orange", al: "Fanta Portokalli", mk: "Фанта Портокал" },
+  price: '90 MKD',
+  img: "https://i.imgur.com/qHsQNKm.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Schweppes", al: "Schweppes", mk: "Швепс" },
+  desc: { en: "Schweppes", al: "Schweppes", mk: "Швепс" },
+  price: '90 MKD',
+  img: "https://i.imgur.com/yzGbBvR.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Schweppes Tonic", al: "Schweppes Tonik", mk: "Швепс Тоник" },
+  desc: { en: "Schweppes Tonic", al: "Schweppes Tonik", mk: "Швепс Тоник" },
+  price: '90 MKD',
+  img: "https://i.imgur.com/Ump7oge.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Schweppes Tangerine", al: "Schweppes Mandarine", mk: "Швепс Мандарина" },
+  desc: { en: "Schweppes Tangerine", al: "Schweppes Mandarine", mk: "Швепс Мандарина" },
+  price: '90 MKD',
+  img: "https://ba.coca-colahellenic.com/content/dam/cch/ba/images/our-24-7-portfolio/schweppes/schweppes-tangerine.jpg"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Sprite", al: "Sprite", mk: "Спрајт" },
+  desc: { en: "Sprite", al: "Sprite", mk: "Спрајт" },
+  price: '90 MKD',
+  img: "https://i.imgur.com/YZD07n1.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Red Bull", al: "Red Bull", mk: "Ред Бул" },
+  desc: { en: "Red Bull", al: "Red Bull", mk: "Ред Бул" },
+  price: '200 MKD',
+  img: "https://i.imgur.com/hJMmBTg.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Red Bull Orange", al: "Red Bull Orange", mk: "Ред Бул Орењ" },
+  desc: { en: "Red Bull Orange", al: "Red Bull Orange", mk: "Ред Бул Орењ" },
+  price: '200 MKD',
+  img: "https://www.onestop.co.uk/wp-content/uploads/f04bb26c-f3e9-45d0-a2f4-757c4d4695a6.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Red Bull White Peach", al: "Red Bull White Peach", mk: "Ред Бул Бела Праска" },
+  desc: { en: "Red Bull White Peach", al: "Red Bull White Peach", mk: "Ред Бул Бела Праска" },
+  price: '200 MKD',
+  img: "https://www.redbull.com/energydrink/v1/resources/storyblok/images/f/287059/528x1348/2e3f4eff5e/ca_ph_250ml_the-peach-edition_country_rgb_do243398_cold_closed_front_com_full.png/m/"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Red Bull Red", al: "Red Bull Red", mk: "Ред Бул Црвен" },
+  desc: { en: "Red Bull Red", al: "Red Bull Red", mk: "Ред Бул Црвен" },
+  price: '200 MKD',
+  img: "https://www.redbull.com/energydrink/v1/resources/storyblok/images/f/287059/870x2200/7d77a8f904/us_wm_250ml_ac_the-red-edition_country_rgb__cold_closed_front_com_25.png/m/1000x0"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Red Bull Sugarfree", al: "Red Bull Sugarfree", mk: "Ред Бул Без Шеќер" },
+  desc: { en: "Red Bull Sugarfree", al: "Red Bull Sugarfree", mk: "Ред Бул Без Шеќер" },
+  price: '200 MKD',
+  img: "https://i0.wp.com/aperitivo.mk/wp-content/uploads/2017/12/red_bull_energy_drink_sugarfree_25cl_23561.webp?fit=1000%2C1000&ssl=1"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Golden Eagle", al: "Golden Eagle", mk: "Голден Игл" },
+  desc: { en: "Golden Eagle", al: "Golden Eagle", mk: "Голден Игл" },
+  price: '110 MKD',
+  img: "https://i.imgur.com/Ye38i76.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Apple Juice", al: "Lëng Molle", mk: "Сок од Јаболко" },
+  desc: { en: "Apple Juice", al: "Lëng Molle", mk: "Сок од Јаболко" },
+  price: '100 MKD',
+  img: "https://i.imgur.com/6FgAtMo.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Peach Juice", al: "Lëng Pjeshke", mk: "Сок од Праска" },
+  desc: { en: "Peach Juice", al: "Lëng Pjeshke", mk: "Сок од Праска" },
+  price: '100 MKD',
+  img: "https://i.imgur.com/eChfrZN.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Ice Tea", al: "Ice Tea", mk: "Леден Чај" },
+  desc: { en: "Ice Tea", al: "Ice Tea", mk: "Леден Чај" },
+  price: '100 MKD',
+  img: "https://i.imgur.com/fwVg5H5.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Strawberry Juice", al: "Lëng Dredhëz", mk: "Сок од Јагода" },
+  desc: { en: "Strawberry Juice", al: "Lëng Dredhëz", mk: "Сок од Јагода" },
+  price: '100 MKD',
+  img: "https://i.imgur.com/fe7QHfO.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Sour Cherry Juice", al: "Lëng Vishnje", mk: "Сок од Вишна" },
+  desc: { en: "Sour Cherry Juice", al: "Lëng Vishnje", mk: "Сок од Вишна" },
+  price: '100 MKD',
+  img: "https://i.imgur.com/pL0fAuq.png"
+},
+{
+  category: 'Pije Freskuese',
+  name: { en: "Pineapple Juice", al: "Lëng Ananasi", mk: "Сок од Ananas" },
+  desc: { en: "Pineapple Juice", al: "Lëng Ananasi", mk: "Сок од Ananas" },
+  price: '100 MKD',
+  img: "https://i.imgur.com/cVoPHFN.png"
+},
+{
+  category: 'Lëngje Frutash',
+  name: { en: "Orange Juice", al: "Lëng Portokalli", mk: "Сок од Портокал" },
+  desc: { en: "Orange Juice", al: "Lëng Portokalli", mk: "Сок од Портокал" },
+  price: '130 MKD',
+  img: "https://i.imgur.com/gGL9tYV.png"
+},
+{
+  category: 'Lëngje Frutash',
+  name: { en: "Red Juice", al: "Lëng i Kuq", mk: "Црвен Сок" },
+  desc: { en: "Apple, banana, raspberry", al: "Mollë, banane, aronija", mk: "Јаболко, банана, аронија" },
+  price: '150 MKD',
+  img: "https://i.imgur.com/yFinNmf.png"
+},
+{
+  category: 'Lëngje Frutash',
+  name: { en: "Wake Me Up Juice", al: "Wake Me Up Lëng", mk: "Разбуди ме Сок" },
+  desc: { en: "Orange, lemon", al: "Portokall, limon", mk: "Портокал, лимон" },
+  price: '130 MKD',
+  img: "https://i.imgur.com/Qdj4MIp.png"
+},
+{
+  category: 'Lëngje Frutash',
+  name: { en: "Garrison Juice", al: "Lëng Garrison", mk: "Гарисон Сок" },
+  desc: { en: "Banana, orange", al: "Banane, portokall", mk: "Банана, портокал" },
+  price: '140 MKD',
+  img: "https://i.imgur.com/x8wn6TN.png"
+},
+{
+  category: 'Lëngje Frutash',
+  name: { en: "Dr Juice", al: "Dr Juice", mk: "Др Џус" },
+  desc: { en: "Lemon, apple, orange", al: "Limon, mollë, portokall", mk: "Лимон, јаболко, портокал" },
+  price: '140 MKD',
+  img: "https://i.imgur.com/v2SYOzP.png"
+},
+{
+  category: 'Lëngje Frutash',
+  name: { en: "ABC Juice", al: "Lëng ABC", mk: "АБЦ Сок" },
+  desc: { en: "Carrot, ginger, orange", al: "Karotë, xhenxhefil, portokall", mk: "Морков, ѓумбир, портокал" },
+  price: '140 MKD',
+  img: "https://i.imgur.com/OqEhTBO.png"
+},
+{
+  category: 'Lëngje Frutash',
+  name: { en: "Green Life", al: "Green Life", mk: "Зелен Живот" },
+  desc: { en: "Apple, kiwi, spinach", al: "Mollë, kivi, spinaq", mk: "Јаболко, киви, спанаќ" },
+  price: '140 MKD',
+  img: "https://i.imgur.com/FuouCw9.png"
+},
+{
+  category: 'Lëngje Frutash',
+  name: { en: "Popeye Juice", al: "Lëng Popeye", mk: "Попај Сок" },
+  desc: { en: "Apple, pineapple, spinach", al: "Mollë, ananas, spinaq", mk: "Јаболко, ананас, спанаќ" },
+  price: '150 MKD',
+  img: "https://i.imgur.com/xe4trP5.png"
+},
+{
+  category: 'Lëngje Frutash',
+  name: { en: "Ginger Shot", al: "Ginger Shot", mk: "Ѓумбир Шот" },
+  desc: { en: "Energizing ginger drink", al: "Pije energjike me xhenxhefil", mk: "Енергетски пијалок со ѓумбир" },
+  price: '70 MKD',
+  img: "https://i.imgur.com/efFIAwU.png"
+},
+  /* ── OTHERS ── */
+  /* ── Të Tjera ── */
+{
+  category: 'Të Tjera',
+  name: { al: 'Nachos', mk: 'Начос', en: 'Nachos' },
+  desc: { 
+    al: 'Me djathë dhe salsa',
+    mk: 'Со сирење и салса',
+    en: 'With cheese and salsa'
+  },
+  price: '250 MKD',
+  img: 'https://i.imgur.com/8TNuer1.jpeg'
+},
+{
+  category: 'Të Tjera',
+  name: { al: 'Sallatë Frutash', mk: 'Овошна салата', en: 'Fruit Salad' },
+  desc: { 
+    al: 'Përzierje frutash të freskëta',
+    mk: 'Мешано свежо овошје',
+    en: 'Mixed fresh fruits'
+  },
+  price: '300 MKD',
+  img: 'https://i.imgur.com/PK5aARA.jpeg'
+},
+{
+  category: 'Të Tjera',
+  name: { al: 'Mini Pancakes', mk: 'Мини Палачинки', en: 'Mini Pancakes' },
+  desc: { 
+    al: '10 mini pallaçinka me çokollatë',
+    mk: '10 мини палачинки со чоколадо',
+    en: '10 mini pancakes with chocolate topping'
+  },
+  price: '220 MKD',
+  img: 'https://img.freepik.com/premium-photo/mini-pancakes-png-kids-breakfast-treat-chocolate-spread-strawberry-yogurt_53876-1011843.jpg?semt=ais_hybrid&w=740',
+  featured: true
+},
+{
+  category: 'Të Tjera',
+  name: { al: 'Fruit Pancakes', mk: 'Овошни палачинки', en: 'Fruit Pancakes' },
+  desc: { 
+    al: 'Mini pallaçinka me fruta dhe çokollatë',
+    mk: 'Мини палачинки со овошје и чоколадо',
+    en: 'Mini pancakes with fruits and chocolate'
+  },
+  price: '290 MKD',
+  img: 'https://images.eatsmarter.de/sites/default/files/styles/1600x1200/public/erdbeer-pancakes-mit-heidelbeeren-und-himbeeren-680885.png'
+},
+
+/* ── OTHERS ── */
+{
+  category: 'Të Tjera',
+  name: { al: 'Hookah / Nargile', mk: 'Наргиле', en: 'Hookah / Shisha' },
+  desc: { 
+    al: 'Nargile premium me shije të ndryshme — fruta, menta, freski',
+    mk: 'Премиум наргиле со вкусови — овошје, нане, свежина',
+    en: 'Premium hookah with various flavors — fruit, mint, freshness'
+  },
+  price: '500 MKD',
+  img: 'https://www.amyusa.com/cdn/shop/files/thumbnail_2.png?v=1771788758&width=500'
+},
+
+];
+
+/* ═══════════════════════════════════════════════
+   RENDER SIDEBAR
+════════════════════════════════════════════════ */
+function renderSidebar() {
+  const nav = document.getElementById('sidebarNav');
+  nav.innerHTML = categories.map((cat, i) => {
+    const count = menuData.filter(d => d.category === cat.id).length;
+    return `
+      <button class="sidebar-btn" data-cat="${cat.id}" onclick="scrollToSection('${cat.id}')">
+        <span class="sb-icon">${cat.icon}</span>
+        <span class="sb-label">${cat.label[currentLang]}</span>
+        <span class="sidebar-count">${count}</span>
+      </button>`;
+  }).join('');
+  nav.querySelectorAll('.sidebar-btn').forEach(addHover);
+}
+
+/* ═══════════════════════════════════════════════
+   RENDER MENU CONTENT
+════════════════════════════════════════════════ */
+function renderContent() {
+  const content = document.getElementById('menuContent');
+  content.innerHTML = categories.map(cat => {
+    const items = menuData.filter(d => d.category === cat.id);
+    if (!items.length) return '';
+    return `
+      <section class="cat-section reveal" id="cat-${cat.id.replace(/\s/g,'-')}">
+        <div class="cat-section-header">
+          <div class="cat-icon-large">${cat.icon}</div>
+          <div>
+            <h2 class="cat-section-title">${cat.label[currentLang]}</h2>
+          </div>
+          <div class="cat-item-count">${items.length} ${currentLang === 'al' ? 'artikuj' : currentLang === 'mk' ? 'артикли' : 'items'}</div>
         </div>
-    <div class="footer-bottom">
-    <p>
-        &copy; 2025 
-        <span style="color: #E6B800; font-weight: bold; text-decoration: none;">
-            The Garrison Bar
-        </span>. 
-        <span data-al="Të gjitha të drejtat e rezervuara." 
-              data-en="All rights reserved." 
-              data-mk="Сите права задржани.">
-            All rights reserved.
-        </span>
-        <br>
-        Powered by 
-        <a href="https://instagram.com/whiteluckdigital" target="_blank" 
-           style="color: #E6B800; font-weight: bold; text-decoration: none;">
-            WhiteLuckDigital
-        </a>
-    </p>
-</div>
+        <div class="menu-grid">
+          ${items.map(item => buildCard(item)).join('')}
+        </div>
+      </section>`;
+  }).join('');
 
-    </footer>
+  // attach cursor hover + observe reveals
+  content.querySelectorAll('.menu-card').forEach(addHover);
+  observeReveals();
+}
 
+function buildCard(item) {
+  const imgHtml = item.img
+    ? `<div class="menu-card-img-wrap"><img class="menu-card-img" src="${item.img}" alt="${item.name[currentLang]}" loading="lazy" /></div>`
+    : `<div class="menu-card-placeholder">${categories.find(c=>c.id===item.category)?.icon || '🍸'}</div>`;
 
-    <script src="data.js"></script>
-    <script src="script.js"></script>
+  const catObj = categories.find(c => c.id === item.category);
+  const catLabel = catObj ? catObj.label[currentLang] : item.category;
+
+  return `
+    <div class="menu-card">
+      ${imgHtml}
+      <div class="menu-card-body">
+        <div class="menu-card-name">${item.name[currentLang]}</div>
+        <div class="menu-card-desc">${item.desc[currentLang]}</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">${item.price}</div>
+          <div class="menu-card-tag">${catLabel}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   SCROLL TO SECTION
+════════════════════════════════════════════════ */
+function scrollToSection(catId) {
+  const el = document.getElementById('cat-' + catId.replace(/\s/g, '-'));
+  if (!el) return;
+  const offset = el.getBoundingClientRect().top + window.scrollY - (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) + 24);
+  window.scrollTo({ top: offset, behavior: 'smooth' });
+}
+
+/* ═══════════════════════════════════════════════
+   ACTIVE SIDEBAR ON SCROLL
+════════════════════════════════════════════════ */
+function updateActiveSidebar() {
+  const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) + 40;
+  let current = categories[0].id;
+
+  categories.forEach(cat => {
+    const el = document.getElementById('cat-' + cat.id.replace(/\s/g, '-'));
+    if (!el) return;
+    if (el.getBoundingClientRect().top <= navH + 20) current = cat.id;
+  });
+
+  document.querySelectorAll('.sidebar-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cat === current);
+  });
+}
+window.addEventListener('scroll', updateActiveSidebar, { passive: true });
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════════════════ */
+function observeReveals() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+/* ═══════════════════════════════════════════════
+   FULL RENDER
+════════════════════════════════════════════════ */
+function renderAll() {
+  renderSidebar();
+  renderContent();
+}
+
+/* ═══════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  renderAll();
+  // attach hover to static elements
+  document.querySelectorAll('a, button').forEach(addHover);
+});
+</script>
 </body>
 </html>
