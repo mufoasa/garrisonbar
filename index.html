@@ -1,161 +1,1494 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Garrison Bar - Where Moments Become Memories</title>
-    <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Garrison Bar — Tetovo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
+<style>
+/* =============================================
+   CSS VARIABLES & RESET
+   ============================================= */
+:root {
+  --black: #0a0a0a;
+  --charcoal: #111111;
+  --charcoal-2: #1a1a1a;
+  --charcoal-3: #242424;
+  --gold: #c9a84c;
+  --gold-light: #e0c06e;
+  --gold-dim: rgba(201,168,76,0.15);
+  --gold-border: rgba(201,168,76,0.3);
+  --whiskey: #7b4f2e;
+  --cream: #f5efe6;
+  --text-main: #e8e0d5;
+  --text-muted: #8a8070;
+  --text-dim: #5a5248;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Jost', sans-serif;
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --glow: 0 0 40px rgba(201,168,76,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--black);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: none; border: none; background: none; font-family: inherit; }
+ul { list-style: none; }
+
+/* =============================================
+   CUSTOM CURSOR
+   ============================================= */
+#cursor {
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
+  mix-blend-mode: screen;
+}
+#cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(201,168,76,0.5);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
+}
+body.cursor-hover #cursor { width: 20px; height: 20px; opacity: 0.6; }
+body.cursor-hover #cursor-ring { width: 56px; height: 56px; border-color: var(--gold); }
+
+/* =============================================
+   LOADER
+   ============================================= */
+#loader {
+  position: fixed; inset: 0;
+  background: var(--black);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 9000;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#loader.hidden { opacity: 0; visibility: hidden; }
+
+.loader-logo {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  opacity: 0;
+  animation: loaderFadeIn 0.8s ease 0.3s forwards;
+}
+.loader-line {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin-top: 1.5rem;
+  animation: loaderLine 1.2s ease 0.6s forwards;
+}
+.loader-sub {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 1rem;
+  opacity: 0;
+  animation: loaderFadeIn 0.8s ease 1s forwards;
+}
+
+@keyframes loaderFadeIn { to { opacity: 1; } }
+@keyframes loaderLine { to { width: 200px; } }
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.5rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s;
+}
+#navbar.scrolled {
+  background: rgba(10,10,10,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 4rem;
+  border-bottom: 1px solid var(--gold-border);
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  font-weight: 300;
+}
+.nav-logo span { font-style: italic; }
+
+.nav-links {
+  display: flex; gap: 2.5rem; align-items: center;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width var(--transition);
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-lang {
+  display: flex; gap: 0.6rem;
+}
+.lang-btn {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 0.25rem 0.5rem;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+  cursor: none;
+}
+.lang-btn.active, .lang-btn:hover {
+  color: var(--gold);
+  border-color: var(--gold-border);
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column; gap: 5px;
+  width: 26px; cursor: none;
+}
+.nav-hamburger span {
+  display: block; height: 1px;
+  background: var(--gold);
+  transition: all 0.3s;
+}
+
+/* Mobile nav */
+.nav-mobile {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(10,10,10,0.97);
+  backdrop-filter: blur(30px);
+  z-index: 99;
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 2.5rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s;
+}
+.nav-mobile.open { display: flex; opacity: 1; pointer-events: all; }
+.nav-mobile a {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+.nav-mobile a:hover { color: var(--gold); }
+
+/* =============================================
+   HERO
+   ============================================= */
+#hero {
+  position: relative;
+  height: 100vh; min-height: 700px;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,1) 100%),
+    url('https://i.imgur.com/OGBMi1X.jpeg') center/cover no-repeat;
+  transform: scale(1.05);
+  animation: heroZoom 8s ease-out forwards;
+}
+@keyframes heroZoom { to { transform: scale(1); } }
+
+.hero-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 1.2rem;
+}
+
+.hero-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+.hero-divider {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: expandLine 1s ease 1.2s forwards;
+}
+@keyframes expandLine { to { width: 180px; } }
+
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-muted);
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1.4s forwards;
+}
+
+.hero-ctas {
+  display: flex; gap: 1.2rem; margin-top: 1rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1.7s forwards;
+  flex-wrap: wrap; justify-content: center;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  background: var(--gold);
+  color: var(--black);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  cursor: none;
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  box-shadow: 0 0 30px rgba(201,168,76,0.4);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  cursor: none;
+}
+.btn-outline:hover {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  box-shadow: 0 0 30px rgba(201,168,76,0.15);
+  transform: translateY(-2px);
+}
+
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 2.2s forwards;
+}
+.hero-scroll span {
+  font-size: 0.6rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 1.5s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================================
+   SECTIONS GENERAL
+   ============================================= */
+section { position: relative; }
+
+.section-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.section-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--cream);
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+.gold-line {
+  width: 60px; height: 1px;
+  background: var(--gold);
+  margin: 1.5rem 0;
+  transition: width 0.6s ease;
+}
+.reveal-item.visible .gold-line { width: 60px; }
+
+/* Scroll reveal */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =============================================
+   ABOUT
+   ============================================= */
+#about {
+  padding: 10rem 0;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.about-image-wrap {
+  position: relative;
+}
+.about-image-wrap::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem; left: -1.5rem;
+  right: 1.5rem; bottom: 1.5rem;
+  border: 1px solid var(--gold-border);
+  z-index: 0;
+  transition: all 0.4s;
+}
+.about-image-wrap:hover::before {
+  top: -2rem; left: -2rem;
+}
+.about-image {
+  width: 100%; height: 560px;
+  object-fit: cover;
+  position: relative; z-index: 1;
+  filter: brightness(0.85) saturate(0.8);
+  transition: filter 0.4s;
+}
+.about-image-wrap:hover .about-image {
+  filter: brightness(0.9) saturate(0.9);
+}
+
+.about-text { display: flex; flex-direction: column; }
+.about-desc {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.about-desc strong { color: var(--text-main); font-weight: 400; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--gold-border);
+}
+.stat-num {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 0.4rem;
+}
+
+/* =============================================
+   MENU
+   ============================================= */
+#menu {
+  padding: 10rem 0;
+  background: var(--charcoal);
+}
+.menu-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.menu-header .gold-line {
+  margin: 1.5rem auto;
+}
+
+.menu-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+.filter-btn {
+  padding: 0.6rem 1.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--charcoal-3);
+  background: var(--charcoal-2);
+  transition: all var(--transition);
+  cursor: none;
+}
+.filter-btn:hover, .filter-btn.active {
+  color: var(--gold);
+  border-color: var(--gold-border);
+  background: var(--gold-dim);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  transition: opacity 0.3s ease;
+}
+.menu-grid.fading { opacity: 0; }
+
+.menu-card {
+  background: var(--charcoal-2);
+  border: 1px solid var(--charcoal-3);
+  overflow: hidden;
+  transition: all var(--transition);
+  position: relative;
+}
+.menu-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  border: 1px solid var(--gold-border);
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+.menu-card:hover { transform: translateY(-4px); box-shadow: var(--glow); }
+.menu-card:hover::after { opacity: 1; }
+
+.menu-card-img {
+  width: 100%; height: 200px;
+  object-fit: cover;
+  filter: brightness(0.75) saturate(0.7);
+  transition: transform 0.6s ease, filter 0.4s;
+}
+.menu-card:hover .menu-card-img {
+  transform: scale(1.06);
+  filter: brightness(0.85) saturate(0.9);
+}
+
+.menu-card-body {
+  padding: 1.4rem 1.4rem 1.6rem;
+}
+.menu-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+}
+.menu-card-desc {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.menu-card-footer {
+  display: flex;
+  align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--charcoal-3);
+  padding-top: 0.9rem;
+}
+.menu-card-price {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-weight: 400;
+}
+.menu-card-cat {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--charcoal-3);
+  padding: 0.2rem 0.5rem;
+}
+
+/* =============================================
+   GALLERY
+   ============================================= */
+#gallery {
+  padding: 10rem 0;
+}
+.gallery-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.gallery-header .gold-line { margin: 1.5rem auto; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 0.8rem;
+}
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+  cursor: none;
+}
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(4) { grid-column: span 2; }
+.gallery-item:nth-child(6) { grid-column: span 2; }
+
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7) saturate(0.6);
+  transition: transform 0.7s ease, filter 0.4s;
+  min-height: 200px;
+}
+.gallery-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.85) saturate(0.85);
+}
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: rgba(201,168,76,0.05);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-overlay svg { width: 32px; height: 32px; fill: var(--gold); }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+/* Lightbox */
+#lightbox {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 8000;
+  display: none;
+  align-items: center; justify-content: center;
+  backdrop-filter: blur(8px);
+}
+#lightbox.open { display: flex; }
+#lightbox img {
+  max-width: 90vw; max-height: 90vh;
+  object-fit: contain;
+  border: 1px solid var(--gold-border);
+  box-shadow: 0 0 80px rgba(201,168,76,0.1);
+}
+#lightbox-close {
+  position: absolute; top: 2rem; right: 2.5rem;
+  font-size: 1.5rem; color: var(--gold);
+  cursor: none; font-family: var(--font-serif);
+  transition: color 0.3s;
+}
+#lightbox-close:hover { color: var(--gold-light); }
+
+/* =============================================
+   EXPERIENCE / WHY US
+   ============================================= */
+#experience {
+  padding: 10rem 0;
+  background: var(--charcoal);
+  overflow: hidden;
+}
+.exp-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.exp-header .gold-line { margin: 1.5rem auto; }
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.exp-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid var(--charcoal-3);
+  background: var(--charcoal-2);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.exp-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width var(--transition);
+}
+.exp-card:hover { border-color: var(--gold-border); box-shadow: var(--glow); }
+.exp-card:hover::before { width: 60%; }
+
+.exp-icon {
+  width: 56px; height: 56px;
+  margin: 0 auto 1.5rem;
+  border: 1px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold);
+}
+.exp-icon svg { width: 24px; height: 24px; }
+
+.exp-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+.exp-desc {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* =============================================
+   CONTACT
+   ============================================= */
+#contact {
+  padding: 10rem 0;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 6rem;
+  align-items: start;
+}
+.contact-info { display: flex; flex-direction: column; gap: 2.5rem; }
+
+.contact-item {}
+.contact-item-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.contact-item-value {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--text-main);
+  font-weight: 300;
+}
+.contact-item-value a:hover { color: var(--gold); }
+
+.contact-social {
+  display: flex; gap: 1rem; margin-top: 1rem;
+}
+.social-link {
+  width: 42px; height: 42px;
+  border: 1px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold);
+  transition: all var(--transition);
+  cursor: none;
+}
+.social-link:hover {
+  background: var(--gold-dim);
+  box-shadow: 0 0 20px rgba(201,168,76,0.2);
+}
+.social-link svg { width: 18px; height: 18px; }
+
+.map-container {
+  width: 100%; height: 420px;
+  border: 1px solid var(--gold-border);
+  overflow: hidden;
+  filter: grayscale(0.6) contrast(1.1);
+  transition: filter 0.4s;
+}
+.map-container:hover { filter: grayscale(0.3) contrast(1); }
+.map-container iframe { width: 100%; height: 100%; border: 0; }
+
+/* =============================================
+   MENU TEASER (homepage)
+   ============================================= */
+#menu { padding: 10rem 0; background: var(--charcoal); }
+
+.menu-teaser {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.menu-teaser-left { display: flex; flex-direction: column; gap: .1rem; }
+.menu-teaser-desc {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: var(--text-muted);
+  line-height: 1.9;
+  margin: 1rem 0 2rem;
+}
+.menu-teaser-cats {
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin-bottom: 2.2rem;
+}
+.teaser-cat-pill {
+  font-size: .62rem; letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--charcoal-3);
+  padding: .3rem .75rem;
+  background: var(--charcoal-2);
+  cursor: none;
+  transition: all var(--transition);
+}
+.teaser-cat-pill:hover { color: var(--gold); border-color: var(--gold-border); background: var(--gold-dim); }
+.menu-teaser-btn { align-self: flex-start; }
+
+/* right image collage */
+.menu-teaser-right { display: flex; flex-direction: column; gap: 1.2rem; }
+.menu-teaser-imgs { display: grid; grid-template-columns: 1.3fr 1fr; gap: .8rem; }
+.teaser-img-main { overflow: hidden; }
+.teaser-img-main img {
+  width: 100%; height: 360px; object-fit: cover;
+  filter: brightness(.75) saturate(.65);
+  transition: transform .65s var(--transition), filter .4s;
+}
+.teaser-img-main:hover img { transform: scale(1.05); filter: brightness(.88) saturate(.9); }
+.teaser-img-secondary { display: flex; flex-direction: column; gap: .8rem; }
+.teaser-img-secondary img {
+  width: 100%; height: 172px; object-fit: cover;
+  filter: brightness(.7) saturate(.6);
+  transition: transform .65s var(--ease), filter .4s;
+}
+.teaser-img-secondary img:hover { transform: scale(1.04); filter: brightness(.88) saturate(.9); }
+
+.menu-teaser-count {
+  display: flex; gap: 2rem;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--gold-border);
+  background: var(--gold-dim);
+}
+.teaser-stat { display: flex; flex-direction: column; gap: .2rem; }
+.teaser-num {
+  font-family: var(--font-serif);
+  font-size: 2rem; font-weight: 300; color: var(--gold); line-height: 1;
+}
+.teaser-lbl {
+  font-size: .6rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+
+@media (max-width: 768px) {
+  .menu-teaser { grid-template-columns: 1fr; gap: 3rem; }
+  .menu-teaser-imgs { grid-template-columns: 1fr 1fr; }
+  .teaser-img-main img { height: 220px; }
+  .teaser-img-secondary img { height: 106px; }
+}
+@media (max-width: 480px) {
+  .menu-teaser-imgs { grid-template-columns: 1fr; }
+  .teaser-img-secondary { flex-direction: row; }
+  .teaser-img-secondary img { height: 130px; }
+}
+
+/* ─── remove old menu-specific CSS no longer needed ─── */
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  padding: 3rem 4rem;
+  border-top: 1px solid var(--charcoal-3);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+.footer-copy {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+}
+.footer-links {
+  display: flex; gap: 2rem;
+}
+.footer-links a {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .exp-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(6) { grid-column: span 1; }
+}
+
+@media (max-width: 768px) {
+  #navbar { padding: 1.2rem 1.5rem; }
+  #navbar.scrolled { padding: 0.8rem 1.5rem; }
+  .nav-links, .nav-lang { display: none; }
+  .nav-hamburger { display: flex; }
+  .section-inner { padding: 0 1.5rem; }
+
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-image { height: 300px; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+  .exp-grid { grid-template-columns: repeat(2, 1fr); }
+  .menu-grid { grid-template-columns: 1fr; }
+
+  footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { justify-content: center; flex-wrap: wrap; }
+}
+
+@media (max-width: 480px) {
+  .exp-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .about-stats { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Gold particles canvas */
+#particles {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.35;
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">The Garrison Bar</div>
-            <div class="nav-links">
-                <a href="index.html" class="active">Home</a>
-                <a href="menu.html">Menu</a>
-                <div class="language-switcher">
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="sq">SQ</button>
-                    <button class="lang-btn" data-lang="mk">MK</button>
-                </div>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-    <video class="hero-video" autoplay muted loop>
-        <source src="https://videos.pexels.com/video-files/3373028/3373028-sd_640_360_25fps.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1 class="hero-title" data-i18n="barName">The Garrison Bar</h1>
-        <p class="hero-subtitle" data-i18n="barSubtitle">Where Moments Become Memories</p>
-        
-        <div class="hero-buttons" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <a href="menu.html" class="cta-button" data-i18n="viewMenu">View Menu</a>
-            
-            <a href="https://omg10.com/4/10646892" 
-               class="cta-button" 
-               target="_blank"
-               style="background-color: #d4af37; color: #000; border: none;">
-               Happy HOUR Menu
-            </a>
-        </div>
-        
-        <p style="font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 10px;"></p>
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">The Garrison <span>Bar</span></div>
+  <div class="loader-line"></div>
+  <div class="loader-sub">Tetovo, North Macedonia</div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" aria-modal="true" role="dialog">
+  <span id="lightbox-close" onclick="closeLightbox()">✕</span>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<!-- MOBILE NAV -->
+<nav class="nav-mobile" id="mobileNav">
+  <a href="#about" onclick="closeMenu()">
+    <span data-al="Rreth Nesh" data-mk="За Нас" data-en="About">Rreth Nesh</span>
+  </a>
+  <a href="menu.html" onclick="closeMenu()">
+    <span data-al="Menuja" data-mk="Мени" data-en="Menu">Menuja</span>
+  </a>
+  <a href="#gallery" onclick="closeMenu()">
+    <span data-al="Galeria" data-mk="Галерија" data-en="Gallery">Galeria</span>
+  </a>
+  <a href="#experience" onclick="closeMenu()">
+    <span data-al="Eksperienca" data-mk="Искуство" data-en="Experience">Eksperienca</span>
+  </a>
+  <a href="#contact" onclick="closeMenu()">
+    <span data-al="Kontakti" data-mk="Контакт" data-en="Contact">Kontakti</span>
+  </a>
+</nav>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">The Garrison <span>Bar</span></div>
+  <ul class="nav-links">
+    <li><a href="#about"><span data-al="Rreth Nesh" data-mk="За Нас" data-en="About">Rreth Nesh</span></a></li>
+    <li><a href="menu.html"><span data-al="Menuja" data-mk="Мени" data-en="Menu">Menuja</span></a></li>
+    <li><a href="#gallery"><span data-al="Galeria" data-mk="Галерија" data-en="Gallery">Galeria</span></a></li>
+    <li><a href="#experience"><span data-al="Eksperienca" data-mk="Искуство" data-en="Experience">Eksperienca</span></a></li>
+    <li><a href="#contact"><span data-al="Kontakti" data-mk="Контакт" data-en="Contact">Kontakti</span></a></li>
+  </ul>
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('al')">AL</button>
+    <button class="lang-btn" onclick="setLang('mk')">MK</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="particles"></canvas>
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-al="Tetovë, Maqedonia e Veriut" data-mk="Тетово, Северна Македонија" data-en="Tetovo, North Macedonia">Tetovë, Maqedonia e Veriut</p>
+    <h1 class="hero-title">The Garrison <em>Bar</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle" data-al="Ku Netët Bëhen Eksperienca" data-mk="Каде Ноќите Стануваат Искуства" data-en="Where Nights Become Experiences">Ku Netët Bëhen Eksperienca</p>
+    <div class="hero-ctas">
+      <a href="menu.html" class="btn-primary">
+        <span data-al="Shiko Menunë" data-mk="Погледни Мени" data-en="View Menu">Shiko Menunë</span>
+      </a>
+      <a href="#contact" class="btn-outline">
+        <span data-al="Rezervo Tavolinë" data-mk="Резервирај Маса" data-en="Reserve Table">Rezervo Tavolinë</span>
+      </a>
     </div>
+  </div>
+  <div class="hero-scroll">
+    <span data-al="Zbrit" data-mk="Скролај" data-en="Scroll">Zbrit</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
-    <!-- Intro Section -->
-    <section class="intro">
-        <div class="intro-container">
-            <h2 data-i18n="aboutTitle">Welcome to The Garrison Bar</h2>
-            <p data-i18n="aboutDesc">Experience the finest selection of cocktails, wines, beers, and non-alcoholic beverages in an atmosphere of elegance and sophistication. Our carefully curated menu reflects our commitment to quality and excellence.</p>
-        </div>
-    </section>
-
-<!-- Featured Drinks -->
-<section class="featured">
-  <div class="featured-container">
-    <h2 data-i18n="featuredTitle">Featured Drinks</h2>
-    <div class="featured-grid">
-
-      <!-- Blue Lagoon -->
-      <div class="featured-card">
-        <img src="https://i.imgur.com/6Uv80LG.png" alt="Blue Lagoon">
-        <div class="featured-info">
-          <h3>Blue Lagoon</h3>
-          <p>Refreshing cocktail with lemon and gin</p>
-          <div class="featured-price">250 ден</div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal-item">
+        <img class="about-image"
+          src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=900&q=80&auto=format&fit=crop"
+          alt="Garrison Bar Interior"
+        />
+      </div>
+      <div class="about-text reveal-item">
+        <span class="section-label" data-al="Rreth Nesh" data-mk="За Нас" data-en="About Us">Rreth Nesh</span>
+        <h2 class="section-title" data-al="Një Botë <em>Ndryshe</em>" data-mk="Еден Свет <em>Различно</em>" data-en="A World <em>Apart</em>">Një Botë <em>Ndryshe</em></h2>
+        <div class="gold-line"></div>
+        <p class="about-desc" data-al="Në zemër të Tetovës, <strong>The Garrison Bar</strong> është destinacioni ku sofistikimi takohet me atmosferën e natës. Çdo gotë e shërbyer është një vepër arti, çdo moment — një kujtim i paharrueshëm." data-mk="Во срцето на Тетово, <strong>The Garrison Bar</strong> е дестинацијата каде префинетоста се среќава со ноќната атмосфера. Секоја сервирана чаша е уметничко дело, секој момент — незаборавна спомена." data-en="In the heart of Tetovo, <strong>The Garrison Bar</strong> is the destination where sophistication meets the nightlife atmosphere. Every glass served is a work of art, every moment — an unforgettable memory.">
+          Në zemër të Tetovës, <strong>The Garrison Bar</strong> është destinacioni ku sofistikimi takohet me atmosferën e natës. Çdo gotë e shërbyer është një vepër arti, çdo moment — një kujtim i paharrueshëm.
+        </p>
+        <p class="about-desc" data-al="Koktelet tona premium, interiori elegant dhe atmosfera ekskluzive ju ftojnë të harroni rutinën dhe të përjetoni diçka të rrallë." data-mk="Нашите премиум коктели, елегантниот ентериер и ексклузивната атмосфера ве канат да ја заборавите рутината и да доживеете нешто ретко." data-en="Our premium cocktails, elegant interior and exclusive atmosphere invite you to forget the routine and experience something rare.">
+          Koktelet tona premium, interiori elegant dhe atmosfera ekskluzive ju ftojnë të harroni rutinën dhe të përjetoni diçka të rrallë.
+        </p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-num">50+</div>
+            <div class="stat-label" data-al="Koktele" data-mk="Коктели" data-en="Cocktails">Koktele</div>
+          </div>
+          <div>
+            <div class="stat-num">8+</div>
+            <div class="stat-label" data-al="Vite Eksperiencë" data-mk="Години Искуство" data-en="Years Experience">Vite Eksperiencë</div>
+          </div>
+          <div>
+            <div class="stat-num">5★</div>
+            <div class="stat-label" data-al="Vlerësim" data-mk="Оценка" data-en="Rating">Vlerësim</div>
+          </div>
         </div>
       </div>
-
-      <!-- Colored Macchiato -->
-      <div class="featured-card">
-        <img src="https://thumbs.dreamstime.com/b/pink-latte-heart-cookies-fresh-strawberries-background-385306274.jpg" alt="Colored Macchiato">
-        <div class="featured-info">
-          <h3>Colored Macchiato</h3>
-          <p>Layered pink latte with a heart design</p>
-          <div class="featured-price">300 ден</div>
-        </div>
-      </div>
-
-      <!-- Mini Pancakes -->
-      <div class="featured-card">
-        <img src="https://img.freepik.com/premium-photo/mini-pancakes-png-kids-breakfast-treat-chocolate-spread-strawberry-yogurt_53876-1011843.jpg?w=740" alt="Mini Pancakes">
-        <div class="featured-info">
-          <h3>Mini Pancakes</h3>
-          <p>10 Mini Pancakes with Chocolate Topping</p>
-          <div class="featured-price">220 ден</div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>The Garrison Bar</h3>
-                <p data-i18n="footerDesc">Crafting memories, one drink at a time.</p>
-            </div>
-            <div class="footer-section">
-                <h3 data-i18n="followUs">Follow Us</h3>
-<div class="social-links">
-    <a href="https://www.facebook.com/thegarrisonbar.mk" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.instagram.com/thegarrisonbar.mk" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.tiktok.com/@thegarrisonbar.mk" target="_blank">
-        <i class="fab fa-tiktok"></i>
-    </a>
-</div>
-
-
-            </div>
-            <div class="footer-section">
-                <h3 data-i18n="contact">Contact</h3>
-                <p>📍 Dervish Cara, Tetovë</p>
-                <p>📞 +389 76 633 625</p>
-                <p>📧 thegarrisonbarmk@gmail.com</p>
-            </div>
-        </div>
-    <div class="footer-bottom">
-    <p>
-        &copy; 2025 
-        <span style="color: #E6B800; font-weight: bold; text-decoration: none;">
-            The Garrison Bar
-        </span>. 
-        <span data-al="Të gjitha të drejtat e rezervuara." 
-              data-en="All rights reserved." 
-              data-mk="Сите права задржани.">
-            All rights reserved.
-        </span>
-        <br>
-        Powered by 
-        <a href="https://instagram.com/whiteluckdigital" target="_blank" 
-           style="color: #E6B800; font-weight: bold; text-decoration: none;">
-            WhiteLuckDigital
+<!-- MENU TEASER -->
+<section id="menu">
+  <div class="section-inner">
+    <div class="menu-teaser reveal-item">
+      <div class="menu-teaser-left">
+        <span class="section-label" data-al="Të Shijojmë" data-mk="Да Вкусиме" data-en="Indulge">Të Shijojmë</span>
+        <h2 class="section-title" data-al="Menuja <em>Jonë</em>" data-mk="Нашето <em>Мени</em>" data-en="Our <em>Menu</em>">Menuja <em>Jonë</em></h2>
+        <div class="gold-line"></div>
+        <p class="menu-teaser-desc" data-al="Nga koktelet artizanale deri tek lëngjet e freskëta dhe shijeve nga e gjithë bota — menuja jonë është kuruar me kujdes për çdo shije dhe rast." data-mk="Од занаетчиски коктели до свежи сокови и вкусови од целиот свет — нашето мени е внимателно курирано за секој вкус и прилика." data-en="From artisan cocktails to fresh juices and flavours from around the world — our menu is carefully curated for every taste and occasion.">Nga koktelet artizanale deri tek lëngjet e freskëta dhe shijeve nga e gjithë bota — menuja jonë është kuruar me kujdes për çdo shije dhe rast.</p>
+        <div class="menu-teaser-cats" id="teaserCats"></div>
+        <a href="menu.html" class="btn-primary menu-teaser-btn">
+          <span data-al="Shiko Menunë të Plotë" data-mk="Погледни го Целото Мени" data-en="Explore Full Menu">Shiko Menunë të Plotë</span>
         </a>
-    </p>
-</div>
+      </div>
+      <div class="menu-teaser-right">
+        <div class="menu-teaser-imgs">
+          <div class="teaser-img-main"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=700&q=80&auto=format&fit=crop" alt="Cocktail" /></div>
+          <div class="teaser-img-secondary">
+            <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&q=80&auto=format&fit=crop" alt="Drink" />
+            <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&q=80&auto=format&fit=crop" alt="Juice" />
+          </div>
+        </div>
+        <div class="menu-teaser-count">
+          <div class="teaser-stat">
+            <span class="teaser-num">33+</span>
+            <span class="teaser-lbl" data-al="Artikuj në Menu" data-mk="Артикли во Мени" data-en="Menu Items">Artikuj në Menu</span>
+          </div>
+          <div class="teaser-stat">
+            <span class="teaser-num">9</span>
+            <span class="teaser-lbl" data-al="Kategori" data-mk="Категории" data-en="Categories">Kategori</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    </footer>
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="gallery-header reveal-item">
+      <span class="section-label" data-al="Atmosfera" data-mk="Атмосфера" data-en="Atmosphere">Atmosfera</span>
+      <h2 class="section-title" data-al="Jeta në <em>Garrison</em>" data-mk="Животот во <em>Garrison</em>" data-en="Life at <em>Garrison</em>">Jeta në <em>Garrison</em></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="gallery-grid reveal-item" id="galleryGrid"></div>
+  </div>
+</section>
 
-    <script src="data.js"></script>
-    <script src="script.js"></script>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="exp-header reveal-item">
+      <span class="section-label" data-al="Pse Ne" data-mk="Зошто Ние" data-en="Why Us">Pse Ne</span>
+      <h2 class="section-title" data-al="Eksperienca <em>Garrison</em>" data-mk="Искуството <em>Garrison</em>" data-en="The <em>Garrison</em> Experience">Eksperienca <em>Garrison</em></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="exp-grid" id="expGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info reveal-item">
+        <span class="section-label" data-al="Na Gjeni" data-mk="Најдете Не" data-en="Find Us">Na Gjeni</span>
+        <h2 class="section-title" data-al="Kontakt &amp; <em>Lokacioni</em>" data-mk="Контакт &amp; <em>Локација</em>" data-en="Contact &amp; <em>Location</em>">Kontakt &amp; <em>Lokacioni</em></h2>
+        <div class="gold-line"></div>
+
+        <div class="contact-item">
+          <div class="contact-item-label" data-al="Adresa" data-mk="Адреса" data-en="Address">Adresa</div>
+          <div class="contact-item-value" data-al="Qendra e Tetovës, Maqedonia e Veriut" data-mk="Центар Тетово, Северна Македонија" data-en="City Center, Tetovo, North Macedonia">Qendra e Tetovës, Maqedonia e Veriut</div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-label" data-al="Telefon" data-mk="Телефон" data-en="Phone">Telefon</div>
+          <div class="contact-item-value"><a href="tel:+38970000000">+389 70 000 000</a></div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-label" data-al="Orari" data-mk="Работно Време" data-en="Opening Hours">Orari</div>
+          <div class="contact-item-value" data-al="E Hënë–E Enjte: 18:00–02:00<br>E Premte–E Diel: 18:00–04:00" data-mk="Понеделник–Четврток: 18:00–02:00<br>Петок–Недела: 18:00–04:00" data-en="Mon–Thu: 18:00–02:00<br>Fri–Sun: 18:00–04:00">E Hënë–E Enjte: 18:00–02:00<br>E Premte–E Diel: 18:00–04:00</div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-label">Social</div>
+          <div class="contact-social">
+            <a class="social-link" href="https://instagram.com/thegarrisonbar.mk" target="_blank" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            </a>
+            <a class="social-link" href="https://facebook.com" target="_blank" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a class="social-link" href="https://tiktok.com/thegarrisonbar" target="_blank" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
+            </a>
+            <a class="social-link" href="https://wa.me/38970000000" target="_blank" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-container reveal-item">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23679.60707015491!2d20.953890!3d41.999870!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1353f09cd32f0001%3A0x12c4d10f76e0370e!2sTetovo%2C%20North%20Macedonia!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Garrison Bar Location">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The Garrison <span style="font-style:italic">Bar</span></div>
+  <div class="footer-copy" data-al="© 2026 The Garrison Bar. Të gjitha të drejtat e rezervuara." data-mk="© 2026 The Garrison Bar. Сите права задржани." data-en="© 2026 The Garrison Bar. All rights reserved.">© 2026 The Garrison Bar. Të gjitha të drejtat e rezervuara.</div>
+  <div class="footer-links">
+    <a href="#about"><span data-al="Rreth" data-mk="За" data-en="About">Rreth</span></a>
+    <a href="#menu"><span data-al="Menu" data-mk="Мени" data-en="Menu">Menu</span></a>
+    <a href="#contact"><span data-al="Kontakt" data-mk="Контакт" data-en="Contact">Kontakt</span></a>
+  </div>
+</footer>
+
+<!-- =============================================
+     JAVASCRIPT
+     ============================================= -->
+<script>
+'use strict';
+
+/* ─────────────────────────────────────────────
+   LOADER
+───────────────────────────────────────────── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 2200);
+});
+
+/* ─────────────────────────────────────────────
+   CUSTOM CURSOR
+───────────────────────────────────────────── */
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursor-ring');
+
+let mouseX = 0, mouseY = 0;
+let ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+});
+
+(function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  cursorRing.style.left = ringX + 'px';
+  cursorRing.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+})();
+
+document.querySelectorAll('a, button, .gallery-item, .lang-btn, .teaser-cat-pill, .social-link').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+});
+
+/* ─────────────────────────────────────────────
+   NAVBAR SCROLL
+───────────────────────────────────────────── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ─────────────────────────────────────────────
+   MOBILE NAV
+───────────────────────────────────────────── */
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  document.getElementById('mobileNav').classList.toggle('open', menuOpen);
+  const spans = document.querySelectorAll('.nav-hamburger span');
+  if (menuOpen) {
+    spans[0].style.transform = 'translateY(6px) rotate(45deg)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+  } else {
+    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  }
+}
+function closeMenu() {
+  menuOpen = false;
+  document.getElementById('mobileNav').classList.remove('open');
+  document.querySelectorAll('.nav-hamburger span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+}
+
+/* ─────────────────────────────────────────────
+   LANGUAGE SYSTEM
+───────────────────────────────────────────── */
+let currentLang = 'al';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'al' ? 'sq' : lang;
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+  });
+
+  // Update all elements with data-{lang} attributes (non-menu elements)
+  document.querySelectorAll('[data-al]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.innerHTML = val;
+  });
+
+  // Re-render menu with translated content
+  renderTeaserCats();
+  renderExperience();
+  // Gallery images don't change per language — no re-render needed
+}
+
+/* ─────────────────────────────────────────────
+   MENU TEASER — category pills
+───────────────────────────────────────────── */
+const teaserCategories = {
+  al: ['Koktele', 'Mocktale', 'Uiski', 'Verë', 'Birrë', 'Kafe', 'Pije Freskuese', 'Lëngje Frutash', 'Të Tjera'],
+  mk: ['Коктели', 'Моктели', 'Виски', 'Вино', 'Пиво', 'Кафе', 'Освежувачки', 'Свежи Сокови', 'Останато'],
+  en: ['Cocktails', 'Mocktails', 'Whiskey', 'Wine', 'Beer', 'Coffee', 'Soft Drinks', 'Fresh Juices', 'Others']
+};
+
+function renderTeaserCats() {
+  const el = document.getElementById('teaserCats');
+  if (!el) return;
+  el.innerHTML = teaserCategories[currentLang].map(cat =>
+    `<a href="menu.html" class="teaser-cat-pill">${cat}</a>`
+  ).join('');
+  el.querySelectorAll('.teaser-cat-pill').forEach(addHover);
+}
+
+function addHover(el) {
+  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+}
+
+
+/* ─────────────────────────────────────────────
+   GALLERY
+───────────────────────────────────────────── */
+const galleryPhotos = [
+  'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1000&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=800&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1525268323446-0505b6fe7778?w=1200&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=800&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=1200&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80&auto=format&fit=crop',
+];
+
+function renderGallery() {
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = galleryPhotos.map((src, i) => `
+    <div class="gallery-item" onclick="openLightbox('${src}')">
+      <img src="${src}" alt="Garrison Bar photo ${i+1}" loading="lazy" />
+      <div class="gallery-overlay">
+        <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/><path stroke="currentColor" stroke-width="1.5" fill="none" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+      </div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.gallery-item').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+}
+
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeLightbox();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* ─────────────────────────────────────────────
+   EXPERIENCE CARDS
+───────────────────────────────────────────── */
+const expData = [
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`,
+    title: { al: 'Pije Premium', mk: 'Премиум Пијалаци', en: 'Premium Drinks' },
+    desc: { al: 'Koleksion i zgjedhur me kujdes: koktele artizanale, uiski vintage dhe verëra ekslusive.', mk: 'Внимателно избрана колекција: занаетчиски коктели, vintage виски и ексклузивни вина.', en: 'A carefully curated collection: artisan cocktails, vintage whiskies, and exclusive wines.' }
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>`,
+    title: { al: 'Bartenderë Ekspertë', mk: 'Стручни Бармани', en: 'Expert Bartenders' },
+    desc: { al: 'Ekipi ynë janë artistë. Çdo gotë krijohet me precizion dhe passion të vërtetë.', mk: 'Нашиот тим се уметници. Секоја чаша се создава со прецизност и вистинска страст.', en: 'Our team are artists. Every glass crafted with precision and genuine passion.' }
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    title: { al: 'Ambient Ekskluziv', mk: 'Ексклузивна Атмосфера', en: 'Exclusive Vibe' },
+    desc: { al: 'Interiori elegant, ndriçimi i kujdesshëm dhe muzika e zgjedhur krijojnë një ambient unik.', mk: 'Елегантен ентериер, внимателно осветлување и избрана музика создаваат уникатна амбиенција.', en: 'Elegant interior, curated lighting and music create a truly unique atmosphere.' }
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
+    title: { al: 'Energji Nate', mk: 'Ноќна Енергија', en: 'Nightlife Energy' },
+    desc: { al: 'Garrison Bar është shumë më tepër se një bar — është kujtime, lidhje njerëzore dhe moments.', mk: 'Garrison Bar е многу повеќе од бар — тоа е спомени, човечки врски и моменти.', en: 'Garrison Bar is far more than a bar — memories, connections and unforgettable moments.' }
+  }
+];
+
+function renderExperience() {
+  const grid = document.getElementById('expGrid');
+  grid.innerHTML = expData.map((item, i) => `
+    <div class="exp-card reveal-item">
+      <div class="exp-icon">${item.icon}</div>
+      <div class="exp-title">${item.title[currentLang]}</div>
+      <div class="exp-desc">${item.desc[currentLang]}</div>
+    </div>
+  `).join('');
+  // re-observe
+  observeRevealItems();
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL REVEAL (IntersectionObserver)
+───────────────────────────────────────────── */
+function observeRevealItems() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal-item').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 0.1 + 's';
+    observer.observe(el);
+  });
+}
+
+/* ─────────────────────────────────────────────
+   INIT
+───────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  renderTeaserCats();
+  renderGallery();
+  renderExperience();
+  observeRevealItems();
+});
+/* ─────────────────────────────────────────────
+   GOLD PARTICLES (Hero)
+───────────────────────────────────────────── */
+(function initParticles() {
+  const canvas = document.getElementById('particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles;
+
+  const PARTICLE_COUNT = 55;
+  const GOLD_COLORS = ['rgba(201,168,76,', 'rgba(224,192,110,', 'rgba(180,140,60,'];
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function makeParticle() {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.8 + 0.4,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: -(Math.random() * 0.4 + 0.1),
+      alpha: Math.random() * 0.6 + 0.1,
+      color: GOLD_COLORS[Math.floor(Math.random() * GOLD_COLORS.length)]
+    };
+  }
+
+  function init() {
+    resize();
+    particles = Array.from({ length: PARTICLE_COUNT }, makeParticle);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + p.alpha + ')';
+      ctx.fill();
+
+      p.x += p.vx;
+      p.y += p.vy;
+      p.alpha -= 0.0008;
+
+      if (p.y < -5 || p.alpha <= 0) {
+        Object.assign(p, makeParticle(), { y: H + 5 });
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  draw();
+})();
+</script>
 </body>
 </html>
-
-
-
-
