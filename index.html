@@ -9,9 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
 <style>
-/* =============================================
-   CSS VARIABLES & RESET
-   ============================================= */
+
 :root {
   --black: #0a0a0a;
   --charcoal: #111111;
@@ -51,9 +49,7 @@ a { text-decoration: none; color: inherit; }
 button { cursor: none; border: none; background: none; font-family: inherit; }
 ul { list-style: none; }
 
-/* =============================================
-   CUSTOM CURSOR
-   ============================================= */
+
 #cursor {
   width: 10px; height: 10px;
   background: var(--gold);
@@ -78,9 +74,7 @@ ul { list-style: none; }
 body.cursor-hover #cursor { width: 20px; height: 20px; opacity: 0.6; }
 body.cursor-hover #cursor-ring { width: 56px; height: 56px; border-color: var(--gold); }
 
-/* =============================================
-   LOADER
-   ============================================= */
+
 #loader {
   position: fixed; inset: 0;
   background: var(--black);
@@ -120,9 +114,7 @@ body.cursor-hover #cursor-ring { width: 56px; height: 56px; border-color: var(--
 @keyframes loaderFadeIn { to { opacity: 1; } }
 @keyframes loaderLine { to { width: 200px; } }
 
-/* =============================================
-   NAVBAR
-   ============================================= */
+
 #navbar {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
@@ -198,7 +190,6 @@ body.cursor-hover #cursor-ring { width: 56px; height: 56px; border-color: var(--
   transition: all 0.3s;
 }
 
-/* Mobile nav */
 .nav-mobile {
   display: none;
   position: fixed; inset: 0;
@@ -221,9 +212,6 @@ body.cursor-hover #cursor-ring { width: 56px; height: 56px; border-color: var(--
 }
 .nav-mobile a:hover { color: var(--gold); }
 
-/* =============================================
-   HERO
-   ============================================= */
 #hero {
   position: relative;
   height: 100vh; min-height: 700px;
@@ -363,9 +351,6 @@ body.cursor-hover #cursor-ring { width: 56px; height: 56px; border-color: var(--
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* =============================================
-   SECTIONS GENERAL
-   ============================================= */
 section { position: relative; }
 
 .section-inner {
@@ -400,7 +385,6 @@ section { position: relative; }
 }
 .reveal-item.visible .gold-line { width: 60px; }
 
-/* Scroll reveal */
 .reveal-item {
   opacity: 0;
   transform: translateY(40px);
@@ -411,9 +395,7 @@ section { position: relative; }
   transform: translateY(0);
 }
 
-/* =============================================
-   ABOUT
-   ============================================= */
+
 #about {
   padding: 10rem 0;
 }
@@ -482,9 +464,7 @@ section { position: relative; }
   margin-top: 0.4rem;
 }
 
-/* =============================================
-   MENU
-   ============================================= */
+
 #menu {
   padding: 10rem 0;
   background: var(--charcoal);
@@ -596,9 +576,7 @@ section { position: relative; }
   padding: 0.2rem 0.5rem;
 }
 
-/* =============================================
-   GALLERY
-   ============================================= */
+
 #gallery {
   padding: 10rem 0;
 }
@@ -644,7 +622,7 @@ section { position: relative; }
 .gallery-overlay svg { width: 32px; height: 32px; fill: var(--gold); }
 .gallery-item:hover .gallery-overlay { opacity: 1; }
 
-/* Lightbox */
+
 #lightbox {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.95);
@@ -668,9 +646,7 @@ section { position: relative; }
 }
 #lightbox-close:hover { color: var(--gold-light); }
 
-/* =============================================
-   EXPERIENCE / WHY US
-   ============================================= */
+
 #experience {
   padding: 10rem 0;
   background: var(--charcoal);
@@ -728,9 +704,7 @@ section { position: relative; }
   line-height: 1.7;
 }
 
-/* =============================================
-   CONTACT
-   ============================================= */
+
 #contact {
   padding: 10rem 0;
 }
@@ -785,9 +759,7 @@ section { position: relative; }
 .map-container:hover { filter: grayscale(0.3) contrast(1); }
 .map-container iframe { width: 100%; height: 100%; border: 0; }
 
-/* =============================================
-   MENU TEASER (homepage)
-   ============================================= */
+
 #menu { padding: 10rem 0; background: var(--charcoal); }
 
 .menu-teaser {
@@ -821,7 +793,6 @@ section { position: relative; }
 .teaser-cat-pill:hover { color: var(--gold); border-color: var(--gold-border); background: var(--gold-dim); }
 .menu-teaser-btn { align-self: flex-start; }
 
-/* right image collage */
 .menu-teaser-right { display: flex; flex-direction: column; gap: 1.2rem; }
 .menu-teaser-imgs { display: grid; grid-template-columns: 1.3fr 1fr; gap: .8rem; }
 .teaser-img-main { overflow: hidden; }
@@ -867,11 +838,6 @@ section { position: relative; }
   .teaser-img-secondary img { height: 130px; }
 }
 
-/* ─── remove old menu-specific CSS no longer needed ─── */
-
-/* =============================================
-   FOOTER
-   ============================================= */
 footer {
   padding: 3rem 4rem;
   border-top: 1px solid var(--charcoal-3);
@@ -901,9 +867,7 @@ footer {
 }
 .footer-links a:hover { color: var(--gold); }
 
-/* =============================================
-   RESPONSIVE
-   ============================================= */
+
 @media (max-width: 1024px) {
   .exp-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -943,7 +907,7 @@ footer {
   }
 }
 
-/* Gold particles canvas */
+
 #particles {
   position: absolute; inset: 0;
   pointer-events: none;
@@ -954,24 +918,24 @@ footer {
 </head>
 <body>
 
-<!-- CURSOR -->
+
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<!-- LOADER -->
+
 <div id="loader">
   <div class="loader-logo">The Garrison <span>Bar</span></div>
   <div class="loader-line"></div>
   <div class="loader-sub">Tetovo, North Macedonia</div>
 </div>
 
-<!-- LIGHTBOX -->
+
 <div id="lightbox" aria-modal="true" role="dialog">
   <span id="lightbox-close" onclick="closeLightbox()">✕</span>
   <img id="lightbox-img" src="" alt="" />
 </div>
 
-<!-- MOBILE NAV -->
+
 <nav class="nav-mobile" id="mobileNav">
   <a href="#about" onclick="closeMenu()">
     <span data-al="Rreth Nesh" data-mk="За Нас" data-en="About">Rreth Nesh</span>
@@ -990,7 +954,7 @@ footer {
   </a>
 </nav>
 
-<!-- NAVBAR -->
+
 <nav id="navbar">
   <div class="nav-logo">The Garrison <span>Bar</span></div>
   <ul class="nav-links">
@@ -1010,7 +974,7 @@ footer {
   </button>
 </nav>
 
-<!-- HERO -->
+
 <section id="hero">
   <div class="hero-bg"></div>
   <canvas id="particles"></canvas>
@@ -1034,7 +998,6 @@ footer {
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <div class="about-grid">
@@ -1073,7 +1036,7 @@ footer {
   </div>
 </section>
 
-<!-- MENU TEASER -->
+
 <section id="menu">
   <div class="section-inner">
     <div class="menu-teaser reveal-item">
@@ -1110,7 +1073,7 @@ footer {
   </div>
 </section>
 
-<!-- GALLERY -->
+
 <section id="gallery">
   <div class="section-inner">
     <div class="gallery-header reveal-item">
@@ -1122,7 +1085,7 @@ footer {
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+
 <section id="experience">
   <div class="section-inner">
     <div class="exp-header reveal-item">
@@ -1134,7 +1097,7 @@ footer {
   </div>
 </section>
 
-<!-- CONTACT -->
+
 <section id="contact">
   <div class="section-inner">
     <div class="contact-grid">
@@ -1198,26 +1161,28 @@ footer {
     <a href="#menu"><span data-al="Menu" data-mk="Мени" data-en="Menu">Menu</span></a>
     <a href="#contact"><span data-al="Kontakt" data-mk="Контакт" data-en="Contact">Kontakt</span></a>
   </div>
+   
+<div class="footer-credit">
+  Designed &amp; Developed by
+  <a href="https://www.instagram.com/muhamedaliiu/"
+     target="_blank"
+     rel="noopener noreferrer">M.A</a>
+</div>
+
 </footer>
 
-<!-- =============================================
-     JAVASCRIPT
-     ============================================= -->
+
 <script>
 'use strict';
 
-/* ─────────────────────────────────────────────
-   LOADER
-───────────────────────────────────────────── */
+
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hidden');
   }, 2200);
 });
 
-/* ─────────────────────────────────────────────
-   CUSTOM CURSOR
-───────────────────────────────────────────── */
+
 const cursor = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursor-ring');
 
@@ -1243,17 +1208,13 @@ document.querySelectorAll('a, button, .gallery-item, .lang-btn, .teaser-cat-pill
   el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
 });
 
-/* ─────────────────────────────────────────────
-   NAVBAR SCROLL
-───────────────────────────────────────────── */
+
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
 });
 
-/* ─────────────────────────────────────────────
-   MOBILE NAV
-───────────────────────────────────────────── */
+
 let menuOpen = false;
 function toggleMenu() {
   menuOpen = !menuOpen;
@@ -1273,9 +1234,7 @@ function closeMenu() {
   document.querySelectorAll('.nav-hamburger span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
 }
 
-/* ─────────────────────────────────────────────
-   LANGUAGE SYSTEM
-───────────────────────────────────────────── */
+
 let currentLang = 'al';
 
 function setLang(lang) {
@@ -1286,21 +1245,19 @@ function setLang(lang) {
     btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
   });
 
-  // Update all elements with data-{lang} attributes (non-menu elements)
+
   document.querySelectorAll('[data-al]').forEach(el => {
     const val = el.getAttribute('data-' + lang);
     if (val !== null) el.innerHTML = val;
   });
 
-  // Re-render menu with translated content
+
   renderTeaserCats();
   renderExperience();
-  // Gallery images don't change per language — no re-render needed
+
 }
 
-/* ─────────────────────────────────────────────
-   MENU TEASER — category pills
-───────────────────────────────────────────── */
+
 const teaserCategories = {
   al: ['Koktele', 'Mocktale', 'Uiski', 'Verë', 'Birrë', 'Kafe', 'Pije Freskuese', 'Lëngje Frutash', 'Të Tjera'],
   mk: ['Коктели', 'Моктели', 'Виски', 'Вино', 'Пиво', 'Кафе', 'Освежувачки', 'Свежи Сокови', 'Останато'],
@@ -1322,9 +1279,7 @@ function addHover(el) {
 }
 
 
-/* ─────────────────────────────────────────────
-   GALLERY
-───────────────────────────────────────────── */
+
 const galleryPhotos = [
   'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1000&q=80&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80&auto=format&fit=crop',
@@ -1366,9 +1321,7 @@ document.getElementById('lightbox').addEventListener('click', e => {
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-/* ─────────────────────────────────────────────
-   EXPERIENCE CARDS
-───────────────────────────────────────────── */
+
 const expData = [
   {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`,
@@ -1401,13 +1354,11 @@ function renderExperience() {
       <div class="exp-desc">${item.desc[currentLang]}</div>
     </div>
   `).join('');
-  // re-observe
+ 
   observeRevealItems();
 }
 
-/* ─────────────────────────────────────────────
-   SCROLL REVEAL (IntersectionObserver)
-───────────────────────────────────────────── */
+
 function observeRevealItems() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1424,18 +1375,14 @@ function observeRevealItems() {
   });
 }
 
-/* ─────────────────────────────────────────────
-   INIT
-───────────────────────────────────────────── */
+
 document.addEventListener('DOMContentLoaded', () => {
   renderTeaserCats();
   renderGallery();
   renderExperience();
   observeRevealItems();
 });
-/* ─────────────────────────────────────────────
-   GOLD PARTICLES (Hero)
-───────────────────────────────────────────── */
+
 (function initParticles() {
   const canvas = document.getElementById('particles');
   if (!canvas) return;
